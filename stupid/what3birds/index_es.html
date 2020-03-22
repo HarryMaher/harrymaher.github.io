@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>What3BirdsEs</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/0.7.7/leaflet.css" />
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            font: 14px/16px "Comic Sans MS", sans-serif;
+
+        }
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px "Comic Sans MS", sans-serif;
+            background: white;
+            background: rgba(255,255,255, 1.0);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            text-align: left;
+        }
+        .info h4 {
+            margin: 0 0 5px;
+            color: #000;
+        }
+
+
+        /*Leaflet Search*/
+        .leaflet-container .leaflet-control-search {
+            position:relative;
+            float:left;
+            background:#fff;
+            color:#1978cf;
+            border: 2px solid rgba(0,0,0,0.2);
+            background-clip: padding-box;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index:1000;   
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        .leaflet-control-search.search-exp {/*expanded*/
+            background: #fff;
+            border: 2px solid rgba(0,0,0,0.2);
+            background-clip: padding-box;   
+        }
+        .leaflet-control-search .search-input {
+            display:block;
+            float:left;
+            background: #fff;
+            border:1px solid #666;
+            border-radius:2px;
+            height:22px;
+            padding:0 20px 0 2px;
+            margin:4px 0 4px 4px;
+        }
+        .leaflet-control-search.search-load .search-input {
+            background: url('./images/loader.gif') no-repeat center right #fff;
+        }
+        .leaflet-control-search.search-load .search-cancel {
+            visibility:hidden;
+        }
+        .leaflet-control-search .search-cancel {
+            display:block;
+            width:22px;
+            height:22px;
+            position:absolute;
+            right:28px;
+            margin:6px 0;
+            background: url('./images/search-icon.png') no-repeat 0 -46px;
+            text-decoration:none;
+            filter: alpha(opacity=80);
+            opacity: 0.8;       
+        }
+        .leaflet-control-search .search-cancel:hover {
+            filter: alpha(opacity=100);
+            opacity: 1;
+        }
+        .leaflet-control-search .search-cancel span {
+            display:none;/* comment for cancel button imageless */
+            font-size:18px;
+            line-height:20px;
+            color:#ccc;
+            font-weight:bold;
+        }
+        .leaflet-control-search .search-cancel:hover span {
+            color:#aaa;
+        }
+        .leaflet-control-search .search-button {
+            display:block;
+            float:left;
+            width:30px;
+            height:30px;    
+            background: url('./images/search-icon.png') no-repeat 4px 4px #fff;
+            border-radius:4px;
+        }
+        .leaflet-control-search .search-button:hover {
+            background: url('./images/search-icon.png') no-repeat 4px -20px #fafafa;
+        }
+        .leaflet-control-search .search-tooltip {
+            position:absolute;
+            top:100%;
+            left:0;
+            float:left;
+            list-style: none;
+            padding-left: 0;
+            min-width:120px;
+            max-height:122px;
+            box-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+            background-color: rgba(0, 0, 0, 0.25);
+            z-index:1010;
+            overflow-y:auto;
+            overflow-x:hidden;
+            cursor: pointer;
+        }
+        .leaflet-control-search .search-tip {
+            margin:2px;
+            padding:2px 4px;
+            display:block;
+            color:black;
+            background: #eee;
+            border-radius:.25em;
+            text-decoration:none;   
+            white-space:nowrap;
+            vertical-align:center;
+        }
+        .leaflet-control-search .search-button:hover {
+            background-color: #f4f4f4;
+        }
+        .leaflet-control-search .search-tip-select,
+        .leaflet-control-search .search-tip:hover {
+            background-color: #fff;
+        }
+        .leaflet-control-search .search-alert {
+            cursor:pointer;
+            clear:both;
+            font-size:.75em;
+            margin-bottom:5px;
+            padding:0 .25em;
+            color:#e00;
+            font-weight:bold;
+            border-radius:.25em;
+        }
+
+
+        /*copy paste css*/
+        /*super hacky way to hide box, works on firefox at least...*/
+#hidden-birds{
+    font-size: 0px;
+    border-color: white;
+    border-bottom-style: inset;
+    border-top-style: outset;
+    border-left-style: outset;
+    border-right-style: inset;
+}
+        .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script src="https://cdn.jsdelivr.net/leaflet/0.7.7/leaflet.js"></script>
+    <script src="https://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.js"></script>
+
+    <script type="text/javascript" src="what3.js"></script>
+    <script type="text/javascript">
+
+        var whatbirds = new L.LayerGroup();
+        
+        var map = L.map('map',{
+        center: [47.615, -122.3321],
+        zoom: 11//,
+        //scrollWheelZoom: false
+        });
+
+        L.tileLayer('http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>. | Map by <a href="http://harrymaher.github.io" target="_blank">Harry</a> | <a href="https://what3words.com/" target="_blank">Original Idea</a> | <a  href="https://www.worldbirdnames.org/ioc-lists/master-list-2/" target="_blank">Datos de Aves</a> | <a href="./index.html">English</a>'
+        }).addTo(map);
+
+
+        // control that shows state info on hover
+        var info = L.control();
+
+        info.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info');
+            this.update();
+            return this._div;
+        };
+        var currentcopy = ""
+
+
+        info.update = function (props) {
+            this._div.innerHTML =  (props ?
+                '<img src="./images/3birdslogo_es.png"/>' +
+                '<p id = "birds" style="text-align: left;">' +
+                '<a href="https://www.google.com/search?tbm=isch&q=' 
+                + props.What3Bir_1.split(",")[0] + '" target="_blank">' 
+                + props.What3Bir_1.split(",")[0] + "</a>/"+
+                '<a href="https://www.google.com/search?tbm=isch&q=' 
+                + props.What3Bir_1.split(",")[1] + '" target="_blank">' 
+                + props.What3Bir_1.split(",")[1] + "</a>/"+
+                '<a href="https://www.google.com/search?tbm=isch&q=' 
+                + props.What3Bir_1.split(",")[2] + '" target="_blank">' 
+                + props.What3Bir_1.split(",")[2] + "</a>" + 
+
+                '</p><div class="tooltip">'+
+                '<button onclick="copyFunction('+ "\"poop\"" +')" onmouseout="outFunc()">'+
+                  '<span class="tooltiptext" id="myTooltip">Copy to clipboard</span>' +
+                  "Copy"+
+                  "</button>" + '<input type="text" value="'+ props.What3Bir_1 +'" id="hidden-birds">' +
+                "</div>"
+                : '<img src="./images/3birdslogo_es.png"/>');
+        };
+
+        info.addTo(map);
+
+
+        // document.getElementById('btn').addEventListener('click', function(){
+          
+          
+        // })
+
+        function copyFunction(current_birds) {
+            var textarea = document.createElement('textarea');
+          textarea.textContent = current_birds;
+          document.body.appendChild(textarea);
+
+          var selection = document.getSelection();
+          var range = document.createRange();
+        //  range.selectNodeContents(textarea);
+          range.selectNode(textarea);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          console.log('copy success', document.execCommand('copy'));
+          selection.removeAllRanges();
+          document.body.removeChild(textarea);
+
+
+          // var copyText = document.getElementById("hidden-birds");
+          // copyText.select();
+          // document.execCommand("copy");
+          
+          // var tooltip = document.getElementById("myTooltip");
+          // tooltip.innerHTML = "Copied: " + copyText.value;
+        }
+
+        function outFunc() {
+          var tooltip = document.getElementById("myTooltip");
+          tooltip.innerHTML = "Copy to clipboard";
+        }
+
+
+        function style(feature) {
+            return {
+                weight: 1,
+                opacity: .8,
+                color: 'white',
+                fillOpacity: 0.2,
+                fillColor: "white"
+            };
+        }
+        
+        var last_e = ""; 
+        function highlightFeature(e) {
+            if(last_e.type == "click" | last_e.type== "search:locationfound"){
+             resetHighlight(last_e);
+            }
+
+            var layer = e.target;
+
+            layer.setStyle({
+                weight: 2,
+                color: '#000',
+                dashArray: '',
+            });
+
+            if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+            }
+            info.update(layer.feature.properties);
+            last_e = e
+        }
+
+
+        function resetHighlight(e) {
+            geojson.resetStyle(e.target);
+        }
+
+        function onEachFeature(feature, layer) {
+            layer.on({
+                // mouseover: highlightFeature,
+                // mouseout: resetHighlight,
+                click: highlightFeature
+            });
+        }
+
+
+        geojson = L.geoJson(hoods, {
+            style: style,
+            onEachFeature: onEachFeature
+        }).addTo(whatbirds);
+        whatbirds.addTo(map);   
+
+var searchControl = new L.Control.Search({
+        layer: geojson,
+        propertyName: 'What3Bir_1',
+        marker: false,
+        moveToLocation: function(latlng, title, map) {
+            //map.fitBounds( latlng.layer.getBounds() );
+            var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+            map.setView(latlng, zoom); // access the zoom
+        }
+    });
+
+    searchControl.on('search:locationfound', function(e) {
+        e.layer.setStyle({color: '#000', weight: 2});
+        info.update(e.layer.feature.properties);
+        last_e = e;
+
+    });
+    
+    map.addControl( searchControl );  //inizialize search control
+
+// var addressControl = new L.Control.Search({
+//         url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
+//         jsonpParam: 'json_callback',
+//         propertyName: 'display_name',
+//         propertyLoc: ['lat','lon'],
+//         marker: L.circleMarker([0,0],{radius:5}),
+//         autoCollapse: true,
+//         autoType: false,
+//         minLength: 2
+//     });
+
+//map.addControl( addressControl );
+
+    </script>
+</body>
+</html>

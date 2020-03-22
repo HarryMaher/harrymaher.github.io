@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body {
+  font: 12px "Open Sans";
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: rgb(0,100,176);
+}
+
+.bar:hover {
+  fill: rgb(223, 54, 35);
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-family: "Open Sans", "sans-serif";
+  font-size: 14px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.svg-container {
+    position: relative;
+    max-width: 960px;
+    padding-bottom: 0;
+    vertical-align: top;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+/* Creates a small triangle extender for the tooltip */
+/*.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}*/
+
+/* Style northward tooltips differently */
+/*.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}*/
+
+table {
+  border-collapse: collapse;
+  max-width: 960px;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+h1, h2, h3{
+    text-align: center;
+    line-height: .5em;
+    color:rgb(0,100,176);
+}
+
+hr {
+    color:rgb(0,100,176);
+    max-width: 190px;
+}
+
+</style>
+<body>
+    <h1>Tunnel to Viaduct <span style="color:rgb(223, 54, 35)">8k</span></h1>
+    <h3>Seattle, WA</h3>
+    <h3>Feb 2, 2019 - 25,244 Finishers</h3>
+    <div id="container" class="svg-container">
+    </div>
+    <div id="table" class="table">
+        <table>
+          <tr>
+            <th></th>
+            <th>Fastest<br>Finisher</th>
+            <th>Median<br>Finisher</th>
+            <th>Average<br>Finisher</th>
+            <th>Slowest<br>Finisher</th>
+
+          </tr>
+          <tr>
+            <td>Time</td>
+            <td>25:23</td>
+            <td>60:06</td>
+            <td>68:29</td>
+            <td>4:32:54</td>
+          </tr>
+          <tr>
+            <td>Pace</td>
+            <td>5:07</td>
+            <td>12:06</td>
+            <td>13:47</td>
+            <td>54:54</td>
+          </tr>
+        </table>
+    </div>
+<br>
+<hr>
+<br>
+
+<h3><a href = "https://raceday.enmotive.com/#/events/tunnel-to-viaduct-8k/results" target = "_blank">Complete Race Results</a></h3>
+<h3>Data scraped ~noonish on 2/3/19 | Harry Maher</h3>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script src="tooltipd3.js"></script>
+<script src="tone.js"></script>
+<script>
+    // Synth!
+
+</script>
+<script>
+
+var margin = {top: 40, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .tickValues([25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145])
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    go(600 - d.frequency*.5);
+    return "<strong>"+d.letter +" to " + (parseInt(d.letter) + 1) +" minutes</strong><br>"
+    + d.frequency + " finishers"
+    + "<br>top " + d.pct_place + "%";
+  })
+
+var svg = d3.select("div").append("svg")
+    .attr("viewBox", "0 0 960 500")
+    .attr("preserveAspectRatio", "xMidYMid meet")
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.call(tip);
+
+var synth = new Tone.Synth().toMaster();
+function go(note){
+                    Tone.context.resume().then(() => {
+                  });
+    synth.triggerAttackRelease(note, "16n");
+    tip.show
+} 
+
+
+d3.tsv("data.tsv", type, function(error, data) {
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", 878)
+        .attr("y", -20)
+        .attr("dx", ".71em")
+        .text("Time (minutes)");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Finishers");
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("height", function(d) { return height - y(d.frequency); })
+      // .on('mouseover', tip.show)
+      //.on('mouseover', go("a4"))
+      .on('mouseover', tip.show)
+        //go(600 - d.frequency*.5); 
+      .on('mouseout', tip.hide)
+
+});
+
+function type(d) {
+  d.frequency = +d.frequency;
+  return d;
+}
+
+</script>

@@ -1,0 +1,192 @@
+﻿
+
+<!DOCTYPE html><html lang="pt" dir="ltr"><head><title>Map Comparison</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <link rel="icon" type="image/ico" href="C:\Users\Harry\Desktop\website\arrow.png> </head>
+
+<body><style type="text/css"> #wsb-element-00000000-0000-0000-0000-000559012268{top:104px;left:-98px;position:absolute;z-index:64}#wsb-element-00000000-0000-0000-0000-000559012268 .wsb-htmlsnippet-element{width:1148px;height:882px;overflow:hidden;margin:auto}#wsb-element-00000000-0000-0000-0000-000559052163{top:42px;left:851px;position:absolute;z-index:97}#wsb-element-00000000-0000-0000-0000-000559052163{width:143px;height:40px}#wsb-element-00000000-0000-0000-0000-000559299899{top:79px;left:964px;position:absolute;z-index:100}#wsb-element-00000000-0000-0000-0000-000559299899 .wsb-image-inner{}#wsb-element-00000000-0000-0000-0000-000559299899 .wsb-image-inner div{width:104px;height:98px;position:relative;overflow:hidden}#wsb-element-00000000-0000-0000-0000-000559299899 img{position:absolute} </style><div class="wsb-canvas body" style="background-color: #ffffff; background-position-x: center; background-position-y: top; background-position: center top; background-repeat: no-repeat; position: fixed; top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; overflow: hidden;"><div class="wsb-canvas-page-container" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; overflow: auto;"><div id="wsb-canvas-template-page" class="wsb-canvas-page page" style="height: 1032px; margin: auto; width: 960px; background-color: #ffffff; position: relative; margin-top: 50px"><div id="wsb-canvas-template-container" style="position: absolute;"> <div id="wsb-element-00000000-0000-0000-0000-000559012268" class="wsb-element-htmlsnippet" data-type="element">
+
+
+
+
+
+<div class="wsb-htmlsnippet-element"><style>
+   
+   
+    
+    
+iframe.iframe1 {
+    position: absolute;
+    top: 0px;
+    left: 40px;
+    overflow: hidden;
+}
+iframe.iframe2 {
+    position: absolute;
+    top: 0px;
+    left: 580px;
+    overflow: hidden;
+}
+body{
+    font-size: 18px;
+    font-family: "Georgia";
+}
+select{
+    font-size: 18px;
+    font-family: "Georgia";
+    position: absolute;
+    right:0px;
+}
+div.boxone{
+    width: 475px;
+    border: 1px solid #D3D3D3;
+    height: 93px;
+    position: absolute;
+    top: 460px;
+    left: 50px;
+    line-height: 150%;
+    font-family: "Georgia"
+}
+
+form {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    right: 80px;
+    font-family: "Georgia";
+}
+div.box2{
+    width: 475px;
+    border: 1px solid #D3D3D3;
+    height: 93px;
+    position: absolute;
+    top: 475px;
+    right: 50px;
+    line-height: 150%;
+    font-family: "Georgia";
+}
+
+button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 60px;
+    height: 73px;
+    font-family: "Georgia"
+}
+
+
+    
+</style>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<iframe class='iframe1' name="iframe1" scrolling='no' src="file:///C:/Users/Harry/Desktop/website/lial2.htm" height="450px" width="672px" seamless="seamless" frameborder="0"></iframe>
+
+<iframe class='iframe2' scrolling='no' name="iframe2" src="file:///C:/Users/Harry/Desktop/website/lial3.htm" height="450px" width="500px" seamless="seamless" frameborder="0"></iframe>
+
+
+<div class='boxone'>
+<form class='frm1' id="frm1">
+Eu quero ver:
+<select id="mySelect" name="slct1" onchange="populate(this.id,'slct2')">
+  <option value="" disabled="" selected="">(Selecionar)
+  <option value="li">Estilos de Vida
+  <option value="sh">Estado de Saúde
+</select>
+<br>em termos de:
+<script>
+function populate(s1,s2){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+	if(s1.value == "li"){
+		var optionArray = [,"pa|Atividade Física","al|Uso de Álcool","nu|Alimentação","tb|Uso de Tabaco"];
+	} else if(s1.value == "sh"){
+		var optionArray = ["sr|Auto-avaliação de Saúde","bmi|Índice de Massa Corporal","d|Depressão"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s2.options.add(newOption);
+	}
+}
+</script>
+
+<select id="slct2" name="slct2"></select>
+<br>entre:
+<select id="mySelect3">
+  <option value="1">Todo o mundo
+  <option value="2">Homens
+  <option value="3">Mulheres
+</select>
+</form> <button class='button1' onclick="myFunction()">Tô Pronto!</button>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("frm1");
+    var text = "";
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value;
+    }
+    frames['iframe1'].location.href ="file:///C:/Users/Harry/Desktop/website/" + text + ".htm"
+}
+</script>
+</div>
+    
+<div class='box2'>
+<form class='frm2' id="frm2">
+I want to look at 
+<select id="mySelect4" name="slct1" onchange="populate2(this.id,'slct5')">
+  <option value="" disabled="" selected="">(Select) 
+  <option value="li">Lifestyles
+  <option value="sh">State of Health
+</select>
+<br>in terms of
+<script>
+function populate2(s4,s5){
+	var s4 = document.getElementById(s4);
+	var s5 = document.getElementById(s5);
+	s5.innerHTML = "";
+	if(s4.value == "li"){
+		var optionArray = ["pa|Physical Activity","al|Alcohol Use","nu|Nutrition","tb|Tobacco Use"];
+	} else if(s4.value == "sh"){
+		var optionArray = ["sr|Self-Rating of Health","wa|Use of Walking Aids","d|Depression"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s5.options.add(newOption);
+	}
+}
+</script>
+
+<select id="slct5" name="slct5"></select>
+<br>for
+<select id="mySelect6">
+  <option value="1">Everyone
+  <option value="2">Men
+  <option value="3">Women
+</select>
+</form> <button class='button2' onclick="myFunction2()">Tô Pronto!</button>
+    </div>
+
+<script>
+function myFunction2() {
+    var x = document.getElementById("frm2");
+    var text = "";
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value;
+    }
+    frames['iframe2'].location.href ="file:///C:/Users/Harry/Desktop/website/" + text + ".htm"
+}
+</script>
+
+</body>
+</html>

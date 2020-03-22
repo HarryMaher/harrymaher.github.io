@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>RECID Map</title>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<link rel="stylesheet" href="mapStyles.css" />
+<link rel="stylesheet" href="markerCluster.css" />
+
+<style>
+span.capitalize {text-transform:capitalize;}
+map {background-color: white;}
+img {max-height: 300px;}
+</style>
+</head>
+<body>
+
+
+<div id='map'><div id='loading'><img src='Loading_icon.gif'></div></div>
+
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/fuse.js/1.2.2/fuse.min.js'></script>
+<script src='ktmValley.js'></script><!--the data !-->
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<script src="http://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.js"></script>
+<script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+<script src='markerCluster.js'></script>
+
+
+<script>
+
+
+var osmUrl = 'http://tile.stamen.com/toner/{z}/{x}/{y}.png';
+var attrb ='Map data © <a href="http://www.openstreetmap.org"style="color:black">OpenStreetMap</a> contributors, Map by <a href="index.html" style="color:black" >Harry Maher</a>, Map tiles by <a href="http://www.stamen.com"style="color:black">Stamen Design</a>';
+
+var osmStamen = new L.TileLayer(osmUrl, {"maxZoom": 18, "attribution": attrb});
+
+var map = new L.map('map', {"zoom": 12, "center": new L.latLng([27.69878, 85.33114]), "layers":[osmStamen]});
+
+var newlayer = new L.markerClusterGroup({
+	showCoverageOnHover: false,
+	spiderfyOnMaxZoom: true
+});
+
+var allSchools = newlayer;
+var under30School = newlayer;
+var thirtyto70 = newlayer;
+var seventyoneTo99 = newlayer;
+var oneHundredto199 = newlayer;
+var twohundredto499 = newlayer;
+var fiveHundredorMore = newlayer;
+
+var instructions = L.control({
+         position: 'bottomright'
+     });
+
+instructions.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'instructions');
+            this.update();
+            return this._div;
+        };
+		
+instructions.update = function (props) {
+            this._div.innerHTML = '<big><b>KTM Valley Schools</b></big><br> Here are all of the schools in the KTM Valley from the latest RECID spreadsheet of 638 schools omitting the 100 Southern Lalitpur Schools. This map is intended for exploratory purposes for schools with 30-70 students. The map includes all schools where Splash already works and where Splash is not yet working. <br><br> <b> Note:</b> there are still plenty of errors in this data. Many of the locations might be off by quite a bit. Also, there are places where there are two of what appear to be the same school on top of each other.  <br>Data collected by Splash-Nepal from October-November 2014 (pre-earthquake).<div id="theX"><b>x</b></div>'
+        };
+
+var iconyo = L.icon({
+            'iconUrl': 'icon5.png',
+            'iconSize': [30, 42], // size of the icon
+            'iconAnchor': [15, 35], // point of the icon which will correspond to marker's location
+            'popupAnchor': [1, -30], // point from which the popup should open relative to the iconAnchor
+            'className': 'dot'
+        })
+
+// code is heavily borrowed from mapbox's "slideshow gallery" tutorial! thanks!
+
+var allSchools1 = L.geoJson(geoJson,{
+	onEachFeature: function (feature, layer) {
+    var images = [feature.properties.schoolNameboard, feature.properties.roofPic, feature.properties.washStation2, feature.properties.waterSourcePic, feature.properties.drinkStationPic, feature.properties.bToiletInterior, feature.properties.bToiletExterior, feature.properties.gToiletInterior, feature.properties.gToiletExterior];
+    var slideshowContent = '';
+	var drinks = '';
+	var drinks = feature.properties.drinkSource + " - ";
+	var waterComesFrom = feature.properties.n81 + " - ";
+	
+	
+    for(var i = 0; i < images.length; i++) {
+        var img = images[i];
+		var pic = i+1;
+		var descript = '';
+		if (i === 0) {descript = 'Name Board - '
+		} else if (i === 1) {descript = 'Roof - '
+		} else if (i === 2) {descript = 'Handwashing Station - '
+		} else if (i === 3) {descript = 'Water Source - ' + waterComesFrom;
+		} else if (i === 4) {descript = 'Drinking Station - ' + drinks;
+		} else if (i === 5) {descript = 'Boys Toilet - '
+		} else if (i === 6) {descript = 'Boys Toilet Exterior - '
+		} else if (i === 7) {descript = 'Girls Toilet - '
+		} else if (i === 8) {descript = 'Girls Toilet Exterior - '};
+        slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+                              '<img src="' + img + '" />' + '<br>' + descript + pic + "/" + images.length +
+                            '</div>';
+    }
+		    var popupContent =  '<div id="' + feature.properties.title + '" class="popup"> <span class = "capitalize"><big>' +
+							feature.properties.schoolName +
+							'</big></span> <div class="slideshow">' +
+                                slideshowContent +
+							'</div><div class="cycle">' +
+                                '<p class="prev">&lt;</p>' +
+							feature.properties.contact +' - ' + feature.properties.contactInfo + 
+                                '<p class="next">&gt;</p>' +
+                            '</div>' +
+						'Girls: ' + feature.properties.girls +' / Boys: '+ feature.properties.boys +
+						'</div>';
+		layer.setIcon(iconyo);
+        layer.bindPopup(popupContent, {minWidth: 420});
+		}});
+		allSchools.addLayer(allSchools1);
+
+
+var under30School = L.geoJson(geoJson,{
+			filter: function (feature, layer) {
+				if (feature.properties) {
+					return feature.properties.under30 !== "FALSE" ? feature.properties.under30 : true;
+				}
+				return false;
+			},
+	onEachFeature: function (feature, layer) {
+    var images = [feature.properties.schoolNameboard, feature.properties.roofPic, feature.properties.washStation2, feature.properties.waterSourcePic, feature.properties.drinkStationPic, feature.properties.bToiletInterior, feature.properties.bToiletExterior, feature.properties.gToiletInterior, feature.properties.gToiletExterior];
+    var slideshowContent = '';
+	var drinks = '';
+	var drinks = feature.properties.drinkSource + " - ";
+	var waterComesFrom = feature.properties.n81 + " - ";
+	
+	
+    for(var i = 0; i < images.length; i++) {
+        var img = images[i];
+		var pic = i+1;
+		var descript = '';
+		if (i === 0) {descript = 'Name Board - '
+		} else if (i === 1) {descript = 'Roof - '
+		} else if (i === 2) {descript = 'Handwashing Station - '
+		} else if (i === 3) {descript = 'Water Source - ' + waterComesFrom;
+		} else if (i === 4) {descript = 'Drinking Station - ' + drinks;
+		} else if (i === 5) {descript = 'Boys Toilet - '
+		} else if (i === 6) {descript = 'Boys Toilet Exterior - '
+		} else if (i === 7) {descript = 'Girls Toilet - '
+		} else if (i === 8) {descript = 'Girls Toilet Exterior - '};
+        slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+                              '<img src="' + img + '" />' + '<br>' + descript + pic + "/" + images.length +
+                            '</div>';
+    }
+		    var popupContent =  '<div id="' + feature.properties.title + '" class="popup"> <span class = "capitalize"><big>' +
+							feature.properties.schoolName +
+							'</big></span> <div class="slideshow">' +
+                                slideshowContent +
+							'</div><div class="cycle">' +
+                                '<p class="prev">&lt;</p>' +
+							feature.properties.contact +' - ' + feature.properties.contactInfo + 
+                                '<p class="next">&gt;</p>' +
+                            '</div>' +
+						'Girls: ' + feature.properties.girls +' / Boys: '+ feature.properties.boys +
+						'</div>';
+		layer.setIcon(iconyo);
+        layer.bindPopup(popupContent, {minWidth: 420});
+		}});		
+		
+var thirtyto70 = L.geoJson(geoJson,{
+			filter: function (feature, layer) {
+				if (feature.properties) {
+					return feature.properties.thirtyTo70 !== "FALSE" ? feature.properties.thirtyTo70 : true;
+				}
+				return false;
+			},
+	onEachFeature: function (feature, layer) {
+    var images = [feature.properties.schoolNameboard, feature.properties.roofPic, feature.properties.washStation2, feature.properties.waterSourcePic, feature.properties.drinkStationPic, feature.properties.bToiletInterior, feature.properties.bToiletExterior, feature.properties.gToiletInterior, feature.properties.gToiletExterior];
+    var slideshowContent = '';
+	var drinks = '';
+	var drinks = feature.properties.drinkSource + " - ";
+	var waterComesFrom = feature.properties.n81 + " - ";
+	
+	
+    for(var i = 0; i < images.length; i++) {
+        var img = images[i];
+		var pic = i+1;
+		var descript = '';
+		if (i === 0) {descript = 'Name Board - '
+		} else if (i === 1) {descript = 'Roof - '
+		} else if (i === 2) {descript = 'Handwashing Station - '
+		} else if (i === 3) {descript = 'Water Source - ' + waterComesFrom;
+		} else if (i === 4) {descript = 'Drinking Station - ' + drinks;
+		} else if (i === 5) {descript = 'Boys Toilet - '
+		} else if (i === 6) {descript = 'Boys Toilet Exterior - '
+		} else if (i === 7) {descript = 'Girls Toilet - '
+		} else if (i === 8) {descript = 'Girls Toilet Exterior - '};
+        slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+                              '<img src="' + img + '" />' + '<br>' + descript + pic + "/" + images.length +
+                            '</div>';
+    }
+		    var popupContent =  '<div id="' + feature.properties.title + '" class="popup"> <span class = "capitalize"><big>' +
+							feature.properties.schoolName +
+							'</big></span> <div class="slideshow">' +
+                                slideshowContent +
+							'</div><div class="cycle">' +
+                                '<p class="prev">&lt;</p>' +
+							feature.properties.contact +' - ' + feature.properties.contactInfo + 
+                                '<p class="next">&gt;</p>' +
+                            '</div>' +
+						'Girls: ' + feature.properties.girls +' / Boys: '+ feature.properties.boys +
+						'</div>';
+		layer.setIcon(iconyo);
+        layer.bindPopup(popupContent, {minWidth: 420});
+		}});		
+
+var seventyoneTo99 = L.geoJson(geoJson,{
+			filter: function (feature, layer) {
+				if (feature.properties) {
+					return feature.properties.seventyoneTo99 !== "FALSE" ? feature.properties.seventyoneTo99 : true;
+				}
+				return false;
+			},
+	onEachFeature: function (feature, layer) {
+    var images = [feature.properties.schoolNameboard, feature.properties.roofPic, feature.properties.washStation2, feature.properties.waterSourcePic, feature.properties.drinkStationPic, feature.properties.bToiletInterior, feature.properties.bToiletExterior, feature.properties.gToiletInterior, feature.properties.gToiletExterior];
+    var slideshowContent = '';
+	var drinks = '';
+	var drinks = feature.properties.drinkSource + " - ";
+	var waterComesFrom = feature.properties.n81 + " - ";
+	
+	
+    for(var i = 0; i < images.length; i++) {
+        var img = images[i];
+		var pic = i+1;
+		var descript = '';
+		if (i === 0) {descript = 'Name Board - '
+		} else if (i === 1) {descript = 'Roof - '
+		} else if (i === 2) {descript = 'Handwashing Station - '
+		} else if (i === 3) {descript = 'Water Source - ' + waterComesFrom;
+		} else if (i === 4) {descript = 'Drinking Station - ' + drinks;
+		} else if (i === 5) {descript = 'Boys Toilet - '
+		} else if (i === 6) {descript = 'Boys Toilet Exterior - '
+		} else if (i === 7) {descript = 'Girls Toilet - '
+		} else if (i === 8) {descript = 'Girls Toilet Exterior - '};
+        slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+                              '<img src="' + img + '" />' + '<br>' + descript + pic + "/" + images.length +
+                            '</div>';
+    }
+		    var popupContent =  '<div id="' + feature.properties.title + '" class="popup"> <span class = "capitalize"><big>' +
+							feature.properties.schoolName +
+							'</big></span> <div class="slideshow">' +
+                                slideshowContent +
+							'</div><div class="cycle">' +
+                                '<p class="prev">&lt;</p>' +
+							feature.properties.contact +' - ' + feature.properties.contactInfo + 
+                                '<p class="next">&gt;</p>' +
+                            '</div>' +
+						'Girls: ' + feature.properties.girls +' / Boys: '+ feature.properties.boys +
+						'</div>';
+		layer.setIcon(iconyo);
+        layer.bindPopup(popupContent, {minWidth: 420});
+		}});
+		
+var oneHundredto199 = L.geoJson(geoJson,{
+			filter: function (feature, layer) {
+				if (feature.properties) {
+					return feature.properties.oneHundredto199 !== "FALSE" ? feature.properties.oneHundredto199 : true;
+				}
+				return false;
+			},
+	onEachFeature: function (feature, layer) {
+    var images = [feature.properties.schoolNameboard, feature.properties.roofPic, feature.properties.washStation2, feature.properties.waterSourcePic, feature.properties.drinkStationPic, feature.properties.bToiletInterior, feature.properties.bToiletExterior, feature.properties.gToiletInterior, feature.properties.gToiletExterior];
+    var slideshowContent = '';
+	var drinks = '';
+	var drinks = feature.properties.drinkSource + " - ";
+	var waterComesFrom = feature.properties.n81 + " - ";
+	
+	
+    for(var i = 0; i < images.length; i++) {
+        var img = images[i];
+		var pic = i+1;
+		var descript = '';
+		if (i === 0) {descript = 'Name Board - '
+		} else if (i === 1) {descript = 'Roof - '
+		} else if (i === 2) {descript = 'Handwashing Station - '
+		} else if (i === 3) {descript = 'Water Source - ' + waterComesFrom;
+		} else if (i === 4) {descript = 'Drinking Station - ' + drinks;
+		} else if (i === 5) {descript = 'Boys Toilet - '
+		} else if (i === 6) {descript = 'Boys Toilet Exterior - '
+		} else if (i === 7) {descript = 'Girls Toilet - '
+		} else if (i === 8) {descript = 'Girls Toilet Exterior - '};
+        slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+                              '<img src="' + img + '" />' + '<br>' + descript + pic + "/" + images.length +
+                            '</div>';
+    }
+		    var popupContent =  '<div id="' + feature.properties.title + '" class="popup"> <span class = "capitalize"><big>' +
+							feature.properties.schoolName +
+							'</big></span> <div class="slideshow">' +
+                                slideshowContent +
+							'</div><div class="cycle">' +
+                                '<p class="prev">&lt;</p>' +
+							feature.properties.contact +' - ' + feature.properties.contactInfo + 
+                                '<p class="next">&gt;</p>' +
+                            '</div>' +
+						'Girls: ' + feature.properties.girls +' / Boys: '+ feature.properties.boys +
+						'</div>';
+		layer.setIcon(iconyo);
+        layer.bindPopup(popupContent, {minWidth: 420});
+		}});		
+
+
+var twohundredto499 = L.geoJson(geoJson,{
+			filter: function (feature, layer) {
+				if (feature.properties) {
+					return feature.properties.twohundredto499 !== "FALSE" ? feature.properties.twohundredto499 : true;
+				}
+				return false;
+			},
+	onEachFeature: function (feature, layer) {
+    var images = [feature.properties.schoolNameboard, feature.properties.roofPic, feature.properties.washStation2, feature.properties.waterSourcePic, feature.properties.drinkStationPic, feature.properties.bToiletInterior, feature.properties.bToiletExterior, feature.properties.gToiletInterior, feature.properties.gToiletExterior];
+    var slideshowContent = '';
+	var drinks = '';
+	var drinks = feature.properties.drinkSource + " - ";
+	var waterComesFrom = feature.properties.n81 + " - ";
+	
+	
+    for(var i = 0; i < images.length; i++) {
+        var img = images[i];
+		var pic = i+1;
+		var descript = '';
+		if (i === 0) {descript = 'Name Board - '
+		} else if (i === 1) {descript = 'Roof - '
+		} else if (i === 2) {descript = 'Handwashing Station - '
+		} else if (i === 3) {descript = 'Water Source - ' + waterComesFrom;
+		} else if (i === 4) {descript = 'Drinking Station - ' + drinks;
+		} else if (i === 5) {descript = 'Boys Toilet - '
+		} else if (i === 6) {descript = 'Boys Toilet Exterior - '
+		} else if (i === 7) {descript = 'Girls Toilet - '
+		} else if (i === 8) {descript = 'Girls Toilet Exterior - '};
+        slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+                              '<img src="' + img + '" />' + '<br>' + descript + pic + "/" + images.length +
+                            '</div>';
+    }
+		    var popupContent =  '<div id="' + feature.properties.title + '" class="popup"> <span class = "capitalize"><big>' +
+							feature.properties.schoolName +
+							'</big></span> <div class="slideshow">' +
+                                slideshowContent +
+							'</div><div class="cycle">' +
+                                '<p class="prev">&lt;</p>' +
+							feature.properties.contact +' - ' + feature.properties.contactInfo + 
+                                '<p class="next">&gt;</p>' +
+                            '</div>' +
+						'Girls: ' + feature.properties.girls +' / Boys: '+ feature.properties.boys +
+						'</div>';
+		layer.setIcon(iconyo);
+        layer.bindPopup(popupContent, {minWidth: 420});
+		}});		
+		
+var fiveHundredorMore = L.geoJson(geoJson,{
+			filter: function (feature, layer) {
+				if (feature.properties) {
+					return feature.properties.fiveHundredorMore !== "FALSE" ? feature.properties.fiveHundredorMore : true;
+				}
+				return false;
+			},
+	onEachFeature: function (feature, layer) {
+    var images = [feature.properties.schoolNameboard, feature.properties.roofPic, feature.properties.washStation2, feature.properties.waterSourcePic, feature.properties.drinkStationPic, feature.properties.bToiletInterior, feature.properties.bToiletExterior, feature.properties.gToiletInterior, feature.properties.gToiletExterior];
+    var slideshowContent = '';
+	var drinks = '';
+	var drinks = feature.properties.drinkSource + " - ";
+	var waterComesFrom = feature.properties.n81 + " - ";
+	
+	
+    for(var i = 0; i < images.length; i++) {
+        var img = images[i];
+		var pic = i+1;
+		var descript = '';
+		if (i === 0) {descript = 'Name Board - '
+		} else if (i === 1) {descript = 'Roof - '
+		} else if (i === 2) {descript = 'Handwashing Station - '
+		} else if (i === 3) {descript = 'Water Source - ' + waterComesFrom;
+		} else if (i === 4) {descript = 'Drinking Station - ' + drinks;
+		} else if (i === 5) {descript = 'Boys Toilet - '
+		} else if (i === 6) {descript = 'Boys Toilet Exterior - '
+		} else if (i === 7) {descript = 'Girls Toilet - '
+		} else if (i === 8) {descript = 'Girls Toilet Exterior - '};
+        slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+                              '<img src="' + img + '" />' + '<br>' + descript + pic + "/" + images.length +
+                            '</div>';
+    }
+		    var popupContent =  '<div id="' + feature.properties.title + '" class="popup"> <span class = "capitalize"><big>' +
+							feature.properties.schoolName +
+							'</big></span> <div class="slideshow">' +
+                                slideshowContent +
+							'</div><div class="cycle">' +
+                                '<p class="prev">&lt;</p>' +
+							feature.properties.contact +' - ' + feature.properties.contactInfo + 
+                                '<p class="next">&gt;</p>' +
+                            '</div>' +
+						'Girls: ' + feature.properties.girls +' / Boys: '+ feature.properties.boys +
+						'</div>';
+		layer.setIcon(iconyo);
+        layer.bindPopup(popupContent, {minWidth: 420});
+		}});		
+		
+$('#map').on('click', '.popup .cycle p', function() {
+    var $slideshow = $('.slideshow'),
+        $newSlide;
+    if ($(this).hasClass('prev')) {
+        $newSlide = $slideshow.find('.active').prev();
+        if ($newSlide.index() < 0) {
+            $newSlide = $('.image').last();
+        }
+    } else {
+        $newSlide = $slideshow.find('.active').next();
+        if ($newSlide.index() < 0) {
+            $newSlide = $('.image').first();
+        }
+    }
+
+    $slideshow.find('.active').removeClass('active').hide();
+    $newSlide.addClass('active').show();
+    return false;
+});
+
+var ticks = {
+			"Under&nbsp;30&nbsp;Students": under30School,
+			"30-70&nbsp;Students": thirtyto70,
+			"71-99&nbsp;Students": seventyoneTo99,
+			"100-199&nbsp;Students": oneHundredto199,
+			"200-499&nbsp;Students":twohundredto499,
+			"500+&nbsp;Students": fiveHundredorMore,
+			"All&nbsp;Schools" : allSchools,
+			};
+
+/* var under30School = new L.LayerGroup();
+var thirtyto70 = new L.LayerGroup();
+var seventyoneto99 = new L.LayerGroup();
+var oneHundredto199 = new L.LayerGroup();
+var twohundredto499 = new L.LayerGroup();
+var allSchools = new L.LayerGroup().addTo(map);*/
+			
+						var control = L.control.layers({}, ticks,{collapsed:false, position: 'topright'});
+						
+						control.addTo(map);
+
+	instructions.addTo(map);
+	
+	
+	var controller = new L.Control.Search({zoom: 17, "layer": allSchools, 'propertyName': 'schoolName'});
+	
+    controller.on('search_locationfound', function(e) {
+            e.layer.openPopup();
+    });
+	map.addControl(controller);
+	
+	var controller_active=true;
+
+
+$("#theX").click(function(){
+  $(".instructions").hide();
+});
+
+
+</script>
+</body>
+</html>

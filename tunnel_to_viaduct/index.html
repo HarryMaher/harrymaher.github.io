@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body {
+  font: 12px "Open Sans";
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: rgb(0,100,176);
+}
+
+.bar:hover {
+  fill: rgb(223, 54, 35);
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-family: "Open Sans", "sans-serif";
+  font-size: 14px;
+  text-align: center;
+  border-radius: 2px;
+}
+.arc text{
+  fill: white;
+}
+.svg-container {
+    position: relative;
+    padding-bottom: 0;
+    vertical-align: top;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+.svg-container{
+    max-width: 960px;
+}
+
+#pie-container{
+  position:relative;
+  max-width: 40%;
+}
+.svg-content, .svg-donut {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Creates a small triangle extender for the tooltip */
+/*.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}*/
+
+/* Style northward tooltips differently */
+/*.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}*/
+
+table {
+  border-collapse: collapse;
+  max-width: 960px;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+h1, h2, h3, p{
+    text-align: center;
+    line-height: .5em;
+}
+
+h1, h2, h3, hr{
+    color:rgb(0,100,176);
+}
+
+hr {
+    max-width: 190px;
+}
+
+/* Yeah this is a dumb workaround to prevent highlighting being distracting when dragging across bars */
+::selection {
+  background: white; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: white; /* Gecko Browsers */
+}
+
+.text-tooltip{
+  font-size:4em !important;
+}
+</style>
+<body>
+    <h1>Tunnel to Viaduct <span style="color:rgb(223, 54, 35)">8k</span></h1>
+    <h3>Seattle, WA</h3>
+    <h3>Feb 2, 2019 - 25,244 Finishers</h3>
+    <div id="container" class="svg-container">
+    </div>
+    <div id="pie-container">
+    </div>
+    <p>Mouse over the graphs to see more details.</p><p>🔊Click the graphs or click and drag to hear an audio representation.</p>
+    <div id="table" class="table">
+        <table>
+          <tr>
+            <th></th>
+            <th>Fastest<br>Finisher</th>
+            <th>Median<br>Finisher</th>
+            <th>Average<br>Finisher</th>
+            <th>Slowest<br>Finisher</th>
+
+          </tr>
+          <tr>
+            <td>Time</td>
+            <td>25:23</td>
+            <td>60:06</td>
+            <td>68:29</td>
+            <td>4:32:54</td>
+          </tr>
+          <tr>
+            <td>Pace</td>
+            <td>5:07</td>
+            <td>12:06</td>
+            <td>13:47</td>
+            <td>54:54</td>
+          </tr>
+        </table>
+    </div>
+<br>
+<hr>
+<br>
+
+<h3><a href = "https://raceday.enmotive.com/#/events/tunnel-to-viaduct-8k/results" target = "_blank">Complete Race Results</a></h3>
+<h3>Data scraped ~noonish on 2/3/19</h3>
+<h3> Harry Maher | <a href = "all_data.csv">Download Scraped Data</a></h3>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script src="tooltipd3.js"></script>
+<script src="tone.js"></script>
+<script>
+
+//mousedown checker from: https://stackoverflow.com/questions/322378/javascript-check-if-mouse-button-down
+var mouseDown = 0;
+document.body.onmousedown = function() { 
+  ++mouseDown;
+}
+document.body.onmouseup = function() {
+  --mouseDown;
+}
+
+var margin = {top: 40, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .tickValues([25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145])
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    go(600 - d.frequency*.5);
+    return "<strong>"+d.letter +" to " + (parseInt(d.letter) + 1) +" minutes</strong><br>"
+    + d.frequency + " finishers"
+    + "<br>top " + Math.round(d.pct_place*100)/100 + "%";
+  })
+
+var svg = d3.select(".svg-container").append("svg")
+    .attr("viewBox", "0 0 960 500")
+    .attr("preserveAspectRatio", "xMidYMid meet")
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin. top + ")");
+
+svg.call(tip);
+
+//synth and drum. lol
+var synth = new Tone.Synth().toMaster();
+var drum = new Tone.MembraneSynth().toMaster();
+
+function go(note){
+                    Tone.context.resume().then(() => {
+                  });
+    
+    if(mouseDown){
+      synth.triggerAttackRelease(note, "16n");
+    }
+    tip.show
+} 
+
+function go2(note){
+                    Tone.context.resume().then(() => {
+                  });
+    //if(mouseDown){
+      synth.triggerAttackRelease(note, "16n");
+    //}
+    tip.show
+} 
+
+
+d3.tsv("data.tsv", type, function(error, data) {
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", 878)
+        .attr("y", -20)
+        .attr("dx", ".71em")
+        .text("Time (minutes)");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Finishers");
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("height", function(d) { return height - y(d.frequency); })
+      // .on('mouseover', tip.show)
+      //.on('mouseover', go("a4"))
+      .on('mouseover', tip.show)
+      .on('mousedown', function(d) {return go2(600 - d.frequency*.5)}) 
+      .on('mouseout', tip.hide);
+
+});
+
+function type(d) {
+  d.frequency = +d.frequency;
+  return d;
+}
+
+</script>
+<script>
+  // comma sep-er-er from: https://stackoverflow.com/questions/27761543/how-do-i-display-large-numbers-with-commas-html
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+</script>
+<script>
+  function donut(){  
+  // Default settings
+  var $el = d3.select("body")
+  var data = {};
+  // var showTitle = true;
+  var width = 300,
+      height = 300,
+      radius = Math.min(width, height) / 2;
+
+  var currentVal;
+
+  function color(sex){
+    if(sex == "male"){
+
+      if(mouseDown){
+        drum.triggerAttackRelease("c4", "16n");
+      }
+      return "rgb(223, 54, 35)"
+    }else{
+      if(mouseDown){
+        drum.triggerAttackRelease("c2", "16n");
+      }
+      return "rgb(0,100,176)"
+    }
+  };
+  var pie = d3.layout.pie()
+    .sort(null)
+    .value(function(d) {return d.value; });
+
+  var g, svg, arc; 
+
+
+  var object = {};
+
+  // Method for render/refresh graph
+  object.render = function(){
+    if(!svg){
+      arc = d3.svg.arc()
+      .outerRadius(radius)
+      .innerRadius(radius - (radius/2.5));
+
+      svg = $el.append("svg")
+          .attr("viewBox", "-350 -40 500 500")
+          .attr("preserveAspectRatio", "xMidYMid meet")
+      .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+      g = svg.selectAll(".arc")
+        .data(pie(d3.entries(data)))
+      .enter().append("g")
+      .attr("class", "arc");
+
+      g.append("path")
+        // Attach current value to g so that we can use it for animation
+        .each(function(d) { this._current = d; })
+        .attr("d", arc)
+        .style("fill", function(d) { 
+          return color(d.data.key); 
+        });
+      g.append("text")
+          .attr("transform", function(d) { console.log (arc.centroid(d)); return "translate(" + arc.centroid(d) + ")"; })
+          .attr("dy", ".35em")
+          .style("text-anchor", "middle");
+      g.select("text").text(function(d) { return d.data.key; });
+
+      svg.append("text")
+          .datum(data)
+          .attr("x", 0 )
+          .attr("y", 0 + radius/10 )
+          .attr("class", "text-tooltip")        
+          .style("text-anchor", "middle")
+          .attr("font-weight", "bold")
+          .style("font-size", radius/2.5+"px");
+
+      g.on("mouseover", function(obj){
+        //console.log(obj.data.key)
+        svg.select("text.text-tooltip")
+        .attr("fill", function(d) { return color(obj.data.key); })
+        .text(function(d){
+          return numberWithCommas(d[obj.data.key]);
+        });
+      });
+
+      g.on("mouseout", function(obj){
+        svg.select("text.text-tooltip").text("");
+      });
+
+      g.on("mousedown", function(d){
+        if (d.data.key == "male"){
+          drum.triggerAttackRelease("c4", "16n");
+        } else{
+          drum.triggerAttackRelease("c2", "16n");
+        }
+      })
+
+    }else{
+      g.data(pie(d3.entries(data))).exit().remove();
+
+      g.select("path")
+      .transition().duration(200)
+      .attrTween("d", function(a){
+        var i = d3.interpolate(this._current, a);
+        this._current = i(0);
+        return function(t) {
+            return arc(i(t));
+        };
+      })
+
+      g.select("text")
+      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; });
+
+      svg.select("text.text-tooltip").datum(data);
+    }      
+    return object;
+  };
+
+  // Getter and setter methods
+  object.data = function(value){
+    if (!arguments.length) return data;
+    data = value;
+    return object;
+  };
+
+  object.$el = function(value){
+    if (!arguments.length) return $el;
+    $el = value;
+    return object;
+  };
+
+  object.width = function(value){
+    if (!arguments.length) return width;
+    width = value;
+    radius = Math.min(width, height) / 2;
+    return object;
+  };
+
+  object.height = function(value){
+    if (!arguments.length) return height;
+    height = value;
+    radius = Math.min(width, height) / 2;
+    return object;
+  };
+
+  return object;
+};
+
+
+</script>
+<script>
+
+
+var getData = function(){
+  var size = 2;
+  var data = {};
+  var text = "";
+  data["male"] = 10886;
+  text = "one<br>two"
+  data["female"] = 14353;
+  d3.select("#data").html(text);
+  return data;
+};
+
+var chart = donut()
+              .$el(d3.select("svg"))
+              .data(getData())
+              .render();
+
+
+
+</script>

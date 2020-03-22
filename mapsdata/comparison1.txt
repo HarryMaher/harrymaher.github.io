@@ -1,0 +1,180 @@
+
+ <!DOCTYPE html><html lang="en" dir="ltr"><head><title>Map Comparison</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Fredericka+the+Great|Allura|Amatic+SC|Arizonia|Averia+Sans+Libre|Cabin+Sketch|Francois+One|Jacques+Francois+Shadow|Josefin+Slab|Kaushan+Script|Love+Ya+Like+A+Sister|Merriweather|Offside|Open+Sans|Open+Sans+Condensed|Oswald|Over+the+Rainbow|Pacifico|Romanesco|Sacramento|Seaweed+Script|Special+Elite"><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans"><link rel="stylesheet" type="text/css" href="site.css?v=00000000-0000-0000-0000-000559562070"><script> if (typeof ($sf) === "undefined") { $sf = { baseUrl: "https://img4.wsimg.com/wst/v7/WSB7_J_20150219_1633_mobile-ho_5355/v2", skin: "app", "preload": 0, require: { jquery: "https://img4.wsimg.com/wst/v7/WSB7_J_20150219_1633_mobile-ho_5355/v2/libs/jquery/jq.js", paths: { "knockout": "libs/knockout/knockout" } } }; } </script><script id="duel" src="//img4.wsimg.com/starfield/duel/v2.5.7/duel.js?appid=O3BkA5J1#TzNCa0E1SjF2Mi41Ljdwcm9k"></script><script> define('appconfig', [], { documentDownloadBaseUrl: 'http://nebula.wsimg.com' }); </script><link rel="icon" type="image/ico" href="http://www.clker.com/cliparts/d/5/1/9/1245687546683782411Soeb_Plain_Arrow_10.svg.hi.png"><script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-58166468-1', 'auto'); ga('send', 'pageview'); </script><meta http-equiv="Content-Location" content="map-comparison.html"><meta name="generator" content="Starfield Technologies; Website Builder 7.0.5350"><meta property="og:type" content="website"><meta property="og:title" content="Map Comparison"><meta property="og:site_name" content="Harry Maher"><meta property="og:url" content="http://harrymaher.net/map-comparison.html"><meta property="og:image" content="//nebula.wsimg.com/05ac3d3272467b0d005a70395f38bfa5?AccessKeyId=64C5E0005DE5B66A3E24&disposition=0&alloworigin=1"></head><body><style type="text/css"> #wsb-element-00000000-0000-0000-0000-000559012268{top:104px;left:-98px;position:absolute;z-index:64}#wsb-element-00000000-0000-0000-0000-000559012268 .wsb-htmlsnippet-element{width:1148px;height:882px;overflow:hidden;margin:auto}#wsb-element-00000000-0000-0000-0000-000559052163{top:42px;left:851px;position:absolute;z-index:97}#wsb-element-00000000-0000-0000-0000-000559052163{width:143px;height:40px}#wsb-element-00000000-0000-0000-0000-000559299899{top:79px;left:964px;position:absolute;z-index:100}#wsb-element-00000000-0000-0000-0000-000559299899 .wsb-image-inner{}#wsb-element-00000000-0000-0000-0000-000559299899 .wsb-image-inner div{width:104px;height:98px;position:relative;overflow:hidden}#wsb-element-00000000-0000-0000-0000-000559299899 img{position:absolute} </style><div class="wsb-canvas body" style="background-color: #ffffff; background-position-x: center; background-position-y: top; background-position: center top; background-repeat: no-repeat; position: fixed; top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; overflow: hidden;"><div class="wsb-canvas-page-container" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; overflow: auto;"><div id="wsb-canvas-template-page" class="wsb-canvas-page page" style="height: 1032px; margin: auto; width: 960px; background-color: #ffffff; position: relative; margin-top: 50px"><div id="wsb-canvas-template-container" style="position: absolute;"> <div id="wsb-element-00000000-0000-0000-0000-000559012268" class="wsb-element-htmlsnippet" data-type="element">
+
+
+
+
+        <div class="wsb-htmlsnippet-element"><style>
+   
+   
+    
+    
+iframe.iframe1 {
+    position: absolute;
+    top: 0px;
+    left: 40px;
+    overflow: hidden;
+}
+iframe.iframe2 {
+    position: absolute;
+    top: 0px;
+    left: 580px;
+    overflow: hidden;
+}
+body{
+    font-size: 14px;
+}
+div.boxone{
+    width: 475px;
+    border: 1px solid #D3D3D3;
+    height: 93px;
+    position: absolute;
+    top: 475px;
+    left: 50px;
+    line-height: 150%;
+}
+
+form {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 315px;
+}
+div.box2{
+    width: 475px;
+    border: 1px solid #D3D3D3;
+    height: 93px;
+    position: absolute;
+    top: 475px;
+    right: 50px;
+    line-height: 150%;
+}
+
+button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 60px;
+    height: 73px;
+}
+
+select{
+}
+
+    
+</style>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<iframe class='iframe1' name="iframe1" scrolling='no' src="http://www.harrymaher.net/lial1.html" height="450px" width="672px" seamless="seamless" frameborder="0"></iframe>
+
+<iframe class='iframe2' scrolling='no' name="iframe2" src="http://www.harrymaher.net/lial1.html" height="450px" width="500px" seamless="seamless" frameborder="0"></iframe>
+
+
+<div class='boxone'>
+<form class='frm1' id="frm1">
+I want to look at 
+<select id="mySelect" name="slct1" onchange="populate(this.id,'slct2')">
+  <option value="" disabled="" selected="">(Select) 
+  <option value="li">Estilos de Vida
+  <option value="sh">Estado de Saúde
+</select>
+<br>in terms of
+<script>
+function populate(s1,s2){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+	if(s1.value == "li"){
+		var optionArray = [,"pa|Atividade Física","al|Uso de Álcool","nu|Alimentação","tb|Uso de Tabaco"];
+	} else if(s1.value == "sh"){
+		var optionArray = ["sr|Auto-avaliação de Saúde","bmi|Índice de Massa Corporal","d|Depressão"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s2.options.add(newOption);
+	}
+}
+</script>
+
+<select id="slct2" name="slct2"></select>
+<br>for
+<select id="mySelect3">
+  <option value="1">Todo o mundo
+  <option value="2">Homens
+  <option value="3">Mulheres
+</select>
+</form> <button class='button1' onclick="myFunction()">Show me</button>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("frm1");
+    var text = "";
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value;
+    }
+    frames['iframe1'].location.href ="http://harrymaher.net/" + text + ".html"
+}
+</script>
+</div>
+    
+<div class='box2'>
+<form class='frm2' id="frm2">
+I want to look at 
+<select id="mySelect4" name="slct1" onchange="populate2(this.id,'slct5')">
+  <option value="" disabled="" selected="">(Select) 
+  <option value="li">Lifestyles
+  <option value="sh">State of Health
+</select>
+<br>in terms of
+<script>
+function populate2(s4,s5){
+	var s4 = document.getElementById(s4);
+	var s5 = document.getElementById(s5);
+	s5.innerHTML = "";
+	if(s4.value == "li"){
+		var optionArray = ["pa|Physical Activity","al|Alcohol Use","nu|Nutrition","tb|Tobacco Use"];
+	} else if(s4.value == "sh"){
+		var optionArray = ["sr|Self-Rating of Health","wa|Use of Walking Aids","d|Depression"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s5.options.add(newOption);
+	}
+}
+</script>
+
+<select id="slct5" name="slct5"></select>
+<br>for
+<select id="mySelect6">
+  <option value="1">Everyone
+  <option value="2">Men
+  <option value="3">Women
+</select>
+</form> <button class='button2' onclick="myFunction2()">Show me</button>
+    </div>
+
+<script>
+function myFunction2() {
+    var x = document.getElementById("frm2");
+    var text = "";
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value;
+    }
+    frames['iframe2'].location.href ="http://harrymaher.net/" + text + ".html"
+}
+</script>
+
+</body>
+</html></div>
+</div><div id="wsb-element-00000000-0000-0000-0000-000559052163" class="wsb-element-navigation" data-type="element"> <div style="width: 143px; height: 40px;" class="wsb-nav nav_theme nav-text-center nav-horizontal nav-btn-stretch wsb-navigation-rendered-top-level-container" id="wsb-nav-00000000-0000-0000-0000-000559052163"><style> #wsb-nav-00000000-0000-0000-0000-000559052163.wsb-navigation-rendered-top-level-container ul > li:hover, #wsb-nav-00000000-0000-0000-0000-000559052163.wsb-navigation-rendered-top-level-container ul > li:hover > a, #wsb-nav-00000000-0000-0000-0000-000559052163.wsb-navigation-rendered-top-level-container ul > li.active:hover, #wsb-nav-00000000-0000-0000-0000-000559052163.wsb-navigation-rendered-top-level-container ul > li.active > a:hover, #wsb-nav-00000000-0000-0000-0000-000559052163.wsb-navigation-rendered-top-level-container ul > li.active .nav-subnav li:hover, #wsb-nav-00000000-0000-0000-0000-000559052163.wsb-navigation-rendered-top-level-container ul > li.active .nav-subnav li:hover > a {background-color: !important;color: !important;} </style><ul class="wsb-navigation-rendered-top-level-menu "><li style="width: 100%"><a href="home.html" target="" data-title="Home" data-pageid="00000000-0000-0000-0000-000003632844" data-url="home.html">Home</a></li></ul></div> </div><div id="wsb-element-00000000-0000-0000-0000-000559299899" class="wsb-element-image" data-type="element"> <div class="wsb-image-inner "><div class="img"><img src="//nebula.wsimg.com/05ac3d3272467b0d005a70395f38bfa5?AccessKeyId=64C5E0005DE5B66A3E24&amp;disposition=0&amp;alloworigin=1" alt="" style="vertical-align:middle;width:104px;height:98px;"></div></div> </div> </div></div><div id="wsb-canvas-template-footer" class="wsb-canvas-page-footer footer" style="margin: auto; min-height:100px; height: 100px; width: 960px; position: relative;"><div id="wsb-canvas-template-footer-container" class="footer-container" style="position: absolute">  </div></div><div class="view-as-mobile" style="padding:10px;position:relative;text-align:center;display:none;"><a href="#" onclick="return false;">View on Mobile</a></div></div></div><script type="text/javascript"> require(['jq!starfield/jquery.mod', 'common/cookiemanager/cookiemanager', 'designer/iebackground/iebackground'], function ($, cookieManager, bg) { if (cookieManager.getCookie("WSB.ForceDesktop")) { $('.view-as-mobile', '.wsb-canvas-page-container').show().find('a').bind('click', function () { cookieManager.eraseCookie("WSB.ForceDesktop"); window.location.reload(true); }); } bg.fixBackground(); }); </script></body></html>

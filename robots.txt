@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /SplashLocales3.html
+Disallow: /LocationsWebmApp/

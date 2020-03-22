@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Harry Maher</title>
+  <link rel="icon" type="image/ico" href="north.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="Bootstrap3.2.0/css/bootstrap.min.css">
+  <script src="jquery/jquery.min.js"></script>
+  <script>
+$(document).ready(function(){
+	$(".spl-npl").click(splash);
+    $(".spl-npl").mouseenter(function(){
+        $(".spl-npl").css("opacity", 1.0);
+		$("#job").html("Splash-Nepal - Health and Hygiene Researcher");
+    }).mouseleave(function() { 
+    $(".spl-npl").css("opacity", .8);
+	});
+});
+$(document).ready(function(){
+	$(".tch-stl").css("opacity", .8);
+	$(".tch-stl").click(agape);
+    $(".tch-stl").mouseenter(function(){
+        $(".tch-stl").css("opacity", 1.0);
+		$("#job").html("Agape Academy - Teacher");
+    }).mouseleave(function() { 
+    $(".tch-stl").css("opacity", .8);
+	});
+});
+$(document).ready(function(){
+	$(".drm-sea").css("opacity", .8);
+	$(".drm-sea").click(nws);
+    $(".drm-sea").mouseenter(function(){
+        $(".drm-sea").css("opacity", 1.0);
+		$("#job").html("The Northwest School - Resident Advisor");
+    }).mouseleave(function() { 
+    $(".drm-sea").css("opacity", .8);
+	});
+});
+
+$(document).ready(function(){
+	$(".dssl-grnl").css("opacity", .8);
+	$(".dssl-grnl").click(dslgrn);
+    $(".dssl-grnl").mouseenter(function(){
+        $(".dssl-grnl").css("opacity", 1.0);
+		$("#job").html("Grinnell Data Analysis And Social Inquiry Lab - Tutor/Analyst");
+    }).mouseleave(function() { 
+    $(".dssl-grnl").css("opacity", .8);
+	});
+});
+$(document).ready(function(){
+	$(".dhall-grnl").css("opacity", .8);
+	$(".dhall-grnl").click(gdh);
+    $(".dhall-grnl").mouseenter(function(){
+        $(".dhall-grnl").css("opacity", 1.0);
+		$("#job").html("Grinnell Dining Hall - Cook");
+    }).mouseleave(function() { 
+    $(".dhall-grnl").css("opacity", .8);
+	});
+});
+$(document).ready(function(){
+	$(".ira-bra").css("opacity", .8);
+	$(".ira-bra").click(iracambi);
+    $(".ira-bra").mouseenter(function(){
+        $(".ira-bra").css("opacity", 1.0);
+		$("#job").html("Iracambi - GIS Intern");
+    }).mouseleave(function() { 
+    $(".ira-bra").css("opacity", .8);
+	});
+});
+$(document).ready(function(){
+	$(".obc-mmk").css("opacity", .8);
+	$(".obc-mmk").click(obcyo);
+    $(".obc-mmk").mouseenter(function(){
+        $(".obc-mmk").css("opacity", 1.0);
+		$("#job").html("Orienta Beach Club - Short Order Cook");
+    }).mouseleave(function() { 
+    $(".obc-mmk").css("opacity", .8);
+	});
+});
+
+</script>
+  <script src="Bootstrap3.2.0/js/bootstrap.min.js"></script>
+  <script>
+	function update(val) {
+		document.getElementById('textInput').value=val;
+		updateTimeline(val);
+	}
+	function splash(){
+		document.getElementById('slipnslide').value=282;
+		update(282);
+	}
+	function agape(){
+		document.getElementById('slipnslide').value=262;
+		update(262);
+	}
+	function nws(){
+		document.getElementById('slipnslide').value=70;
+		update(70);
+	}
+	function dslgrn(){
+		document.getElementById('slipnslide').value=103;
+		update(103);
+	}
+	function obcyo(){
+		document.getElementById('slipnslide').value=28;
+		update(28);
+	}
+	function gdh(){
+		document.getElementById('slipnslide').value=43;
+		update(43);
+	}
+	function iracambi(){
+		document.getElementById('slipnslide').value=164;
+		update(164);
+	}
+	
+	function updateTimeline(val){
+	    if(val >= 282){
+		$(".spl-npl").css("opacity", 1.0);
+		$(".tch-stl").css("opacity", .8);
+		$("#job").html("Splash-Nepal - Health and Hygiene Researcher")
+		} else if(val < 282 && val >= 261){
+		$(".tch-stl").css("opacity", 1.0);
+		$(".spl-npl").css("opacity", .8);
+		$(".drm-sea").css("opacity", .8);
+		$("#job").html("Agape Academy - Teacher")
+		} else if(val < 262 && val >= 250 || val < 199 && val >= 189 || val < 139 && val >= 129 || val < 79 && val >= 70){
+		$(".tch-stl").css("opacity", .8);
+		$(".dssl-grnl").css("opacity", .8);
+		$(".drm-sea").css("opacity", 1.0);
+		$(".dhall-grnl").css("opacity", .8);
+		$("#job").html("The Northwest School - Resident Advisor")
+		}else if(val < 250 && val >= 199 || val < 164 && val >= 139 || val < 129 && val >= 103){
+		$(".drm-sea").css("opacity", .8);
+		$(".ira-bra").css("opacity", .8);
+		$(".dssl-grnl").css("opacity", 1.0);
+		$(".dhall-grnl").css("opacity", .8);
+		$("#job").html("Grinnell Data Analysis And Social Inquiry Lab - Tutor/Analyst")
+		}else if(val < 189 && val >= 164){
+		$(".dssl-grnl").css("opacity", .8);
+		$(".ira-bra").css("opacity", 1.0);
+		$(".drm-sea").css("opacity", .8);
+		$("#job").html("Iracambi - GIS Intern")
+		}else if(val < 103 && val >= 79 || val < 68 && val >=43){
+		$(".dssl-grnl").css("opacity", .8);
+		$(".ira-bra").css("opacity", .8);
+		$(".dhall-grnl").css("opacity", 1.0);
+		$(".drm-sea").css("opacity", .8);
+		$(".obc-mmk").css("opacity", .8);
+		$("#job").html("Grinnell Dining Hall - Cook")
+		}else if(val < 43 && val >= 28 ){
+		$(".dhall-grnl").css("opacity", .8);
+		$(".obc-mmk").css("opacity", 1.0);
+		$("#job").html("Orienta Beach Club - Cook")
+		}else{
+		$(".obc-mmk").css("opacity", .8);
+		$("#job").html("&nbsp");
+		}
+		
+	}
+	
+
+  </script>
+  <style type="text/css">
+	.navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0;
+    border-radius: 4;
+    margin-bottom: 0;
+    font-size: 15px;
+    letter-spacing: 4px;
+	background-color: #41b6c4;
+	font-family: segoe ui;
+	color: #225ea8;
+	}
+	.navbar-nav li a:link, li a:visited{
+	display: block;
+	background-color: #225ea8;
+	color: #7fcdbb;
+	text-align: center;
+	}
+	.navbar-nav li a:hover {
+	background-color: #41b6c4;
+    color: #225ea8 !important;
+	}
+	body {
+	background-color: ;
+	color: #225ea8;
+	font-family: segoe ui;
+	}
+	#container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+	color: #225ea8;
+	font-family: segoe ui;
+	font-size: 1.3em;
+	}
+	#big{
+	font-size:2.4em
+	}
+	
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: #41b6c4;
+  border-radius: 0px;
+  border: 1px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 0px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #41b6c4;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: #41b6c4;
+  border-radius: 0px;
+  border: 1px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 0px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #41b6c4;
+  border: 1px solid #000000;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #41b6c4;
+  border: 1px solid #000000;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 0px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #41b6c4;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #41b6c4;
+}
+
+table { 
+  width: 100%; 
+  height: 100px;
+  border-collapse: collapse; 
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+	
+.tg  {border-collapse:collapse;border-spacing:0;border-width:0px;border-style:solid;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 0px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 0px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg .tch-stl{background-color:#41b6c4;vertical-align:top}
+.tg .drm-sea{background-color:#7fcdbb;vertical-align:top}
+.tg .spl-npl{background-color:#225ea8;;vertical-align:top}
+.tg .dhall-grnl{background-color:#c7e9b4;vertical-align:top}
+.tg .ira-bra{background-color:#1d91c0;vertical-align:top}
+.tg .obc-mmk{background-color:#edf8b1;vertical-align:top}
+.tg .dssl-grnl{background-color:#0c2c84;vertical-align:top}
+.tg .blank{background-color:#FFFFFF; vertical-align:top}
+
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="index.html" style="font-size: 2.9em; letter-spacing: 2px; color: #225ea8">harry maher</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+		<li><a href="index.html" style= "color: #7fcdbb">home</a></li>
+        <li><a href="content.html" style= "color: #7fcdbb">stuff</a></li>
+        <li><a href="about.html" style= "color: #7fcdbb">about</a></li>
+        <li><a href="contact.html" style= "color: #7fcdbb">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid bg-1 text-center">
+<br>
+<div id = "big">map</div>
+<br><br><br><br><br>
+<div class="container-fluid bg-1 text-center">
+<span class="rect1"style="display: inline-block; width: 3em; height: .3em"><span style="position: relative; display: inline-block; width: 3em; height: .3em"><i style="position: absolute;display:inline-block;width:14%;height:3%;background-color:#1142AA;left:0em;top:0em"></i></span></span>
+<br>
+</div>
+</div>
+<div class="container-fluid bg-1 text-center">
+<p id="job">Splash-Nepal - Health and Hygiene Researcher</p>
+</div>
+
+<div class="container-fluid bg-1 text-center">
+<table class="tg">
+  <tr>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="obc-mmk"></td>
+    <td class="obc-mmk"></td>
+    <td class="obc-mmk"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="drm-sea"></td>
+	<td class="drm-sea"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="drm-sea"></td>
+	<td class="drm-sea"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="ira-bra"></td>
+    <td class="ira-bra"></td>
+    <td class="ira-bra"></td>
+    <td class="ira-bra"></td>
+    <td class="ira-bra"></td>
+    <td class="drm-sea"></td>
+	<td class="drm-sea"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="drm-sea"></td>
+	<td class="drm-sea"></td>
+    <td class="tch-stl"></td>
+    <td class="tch-stl"></td>
+    <td class="tch-stl"></td>
+    <td class="tch-stl"></td>
+    <td class="spl-npl"></td>
+    <td class="spl-npl"></td>
+    <td class="spl-npl"></td>
+    <td class="spl-npl"></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+	<td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+	<td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+  </tr>
+    <tr>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+	<td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+	<td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+  </tr>
+</table>
+</div>
+<div class="container-fluid bg-1 text-center">
+    <input type="range" id="slipnslide" name="rangeInput" min="0" max="300" value="300" oninput="update(this.value)">                                      
+    <input type="text" id="textInput" value="300">
+
+</div>
+
+  
+</div>
+</body>
+</html>
+</div>

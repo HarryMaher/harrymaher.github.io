@@ -1,0 +1,269 @@
+<html style ="margin: auto;">
+  <head>
+  <title> Sanitation Study Map </title>
+  <link rel="icon" type="image/ico" href="north.png">
+  <style>
+	#wrapper { position: relative; }
+	#school { position: relative; top:-405px; left: 10px; z-index: 9999999; }
+	#map_div {}
+	#allInfo {position: relative; top: -20px; background-color:rgba(0,0,0,0.5);}
+	#textelement{color: white; width: auto;}
+	#directions{color: white; width: auto;}
+	p {padding: 5px 5px 5px 5px}
+	body {
+    background-image: url("ktm.jpg");
+	background-repeat: no-repeat;
+    }
+	a:link {
+    color: white;
+	}	
+	a:link {
+    text-decoration: none;
+	}
+
+	a:visited {
+		text-decoration: none;
+		color: white;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	</style>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {'packages': ['table', 'map', 'corechart']});
+      google.setOnLoadCallback(initialize);
+
+      function initialize() {
+		// this is the data for the viz. just add new rows. 
+        var geoData = google.visualization.arrayToDataTable([
+		["Lat","Lon","School","Place","Focus","Nudge","Principal","Contact","How to get there","CamerasNeeded","ShortBreak","Longbreak","SchoolID","Dir"],
+		[27.687175,85.426856,"Shree Azad Madhyamik Vidhyalaya","Jhoukhel, Bhaktapur","Child-Focused","Mirrors","Keshav Baniya","9841236470","??","??","??","??","nxdu-uv8a-u4jf","http://maps.google.com?q=27.687175,85.426856"],
+		[27.630372,85.320404,"Bal Kumari HSS","Sunakothi, Lalitpur","Child-Focused","Mirrors","Surya Kr Rai","9849188362, 9841419333","Bike ~6km?","??","??","??","xbw1-mw81-3grk","http://maps.google.com?q=27.630372,85.320404"],
+		[27.612991,85.364139,"Bishankhu Narayan SS","Godamchaur, Lalitpur","Child-Focused","Footsteps","Bansidhar Khadka","9841702727, 5560032","Take bus from Lagankel to Godamchaur. The bus is infrequent, so it may be better to take the bus going to Godawari and hop off at Badegaun and walk ~15 minutes. Or bike 10km. ","2"," 11:45","1:00","v2t1-51hc-wcaw","http://maps.google.com?q=27.612991,85.364139"],
+		[27.663166,85.468962,"Devi HSS","Tathali, Kathmandu","Teacher-Focused","No Nudges","Rajaram chhukan","9841654556, 9841654556","??","??","??","??","?","http://maps.google.com?q=27.663166,85.468962"],
+		[27.655325,85.440425,"Ganesh HSS","Sipadol, Bhaktapur","Teacher-Focused","Footsteps","Narayan Bdr Duwal","9851188662","??","??","??","??","?","http://maps.google.com?q=27.655325,85.440425"],
+		[27.674193,85.362431,"Jana Premi LS","Kaushaltar, Bhaktapur","Child-Focused","HW Signage - Splash","Ana Bdr Khadka","9841363923","7km bike east","??","??","??","NA","http://maps.google.com?q=27.674193,85.362431"],
+		[27.797707,85.332339,"Jhor Mahankal SS","Jhormahankal, Kathmandu","Child-Focused","Footsteps","Arjun Prasad Lamichane","9851061821, 9841393233","??","??","??","??","e9dn-d72h-y6ke","http://maps.google.com?q=27.797707,85.332339"],
+		[27.642216,85.373859,"Mahalaxmi HSS","Lubhoo, Lalitpur","Child-Focused","No Nudges","Chandra Pd Bajagain","9841733167, 15580103","8km bike ride?","??","??","??","NA","http://maps.google.com?q=27.642216,85.373859"],
+		[27.694113,85.304098,"Mahendra Saraswati Sewa LSS","Teku, Kathmandu","Teacher-Focused","Footsteps","Sarada Adhikary","9841572069, 14243331","3k bike/walk","??","??","??","NA","http://maps.google.com?q=27.694113,85.304098"],
+		[27.641448,85.327759,"Padhma Prakash SS","Dhapakhel, Lalitpur","Teacher-Focused","Combo - 17 Triggers","Dev Ratna Maharjan","9841400290, 9841438782","5k bike/walk","1","11:30","1:00","?","http://maps.google.com?q=27.641448,85.327759"],
+		[27.780108,85.352384,"Shree Panchakanya SS","Budhanilkantha, Kathmandu","Child-Focused","Combo - Splash","Shambhu Kunwor","9841880204, 9849184685","From Purano bus Park take the Shivapuri-Purano Bus and get off at the Budhanilkantha Stop","??","??","??","p6nw-c1sd-ppjq","http://maps.google.com?q=27.780108,85.352384"],
+		[27.744822,85.296385,"Purano Guheshshwori ","Goldhunga, Kathmandu","Teacher-Focused","No Nudges","Suman Maharjan","9841125937","9km bike ride","??","??","??","?","http://maps.google.com?q=27.744822,85.296385"],
+		[27.739743,85.386968,"Sahayogi HSS ","Gokarna, Kathmandu","Teacher-Focused","HW Signage - 17 Triggers","Nirman kr Neupane","9841315324","From Purano Bus Park go towards Sundarijal get off at Gokarna. Takes about 2 hours from Buddha Rooms.","1","12:30*play time*","1:00pm","?","http://maps.google.com?q=27.739743,85.386968"],
+		[27.672498,85.437227,"Samaj Sudhar SS ","Taulachen, Bhaktapur","Teacher-Focused","Mirrors","Laxmi Narayan Duwal","9841590304, 6610811","??","??","??","??","m4se-1184-0t3f","http://maps.google.com?q=27.672498,85.437227"],
+		[27.704558,85.351819,"Sarada LSS ","Tilganga, Kathmandu","Child-Focused","HW Signage - 17 Triggers","Purna Bahadur KC","9849658479","7km bike - near the airport","??","??","??","eu5f-u02w-gwm0","http://maps.google.com?q=27.704558,85.351819"],
+		[27.565607,85.315865,"Saraswoti  LSS","Lele, Lalitpur","Child-Focused","Combination - 17 Triggers","Krishna Prd Timalsina","9741041179, 9843580444","The bus line from Purano Bus Park-Nakhipot has a stop at Jawlakhel (and Lagankhel). Get off near the school. Very far away.","??","??","??","y6c3-f6hx-yf1s","http://maps.google.com?q=27.565607,85.315865"],
+		[27.677502,85.272774,"Shree Bishwo Rastryia SS","Kirtpur, Kathmandu","Child-Focused","No Nudges","Dinesh Kmr Maharjan","9841496402","4.3km walk/bike.","??","??","??","?","http://maps.google.com?q=27.677502,85.272774"],
+		[27.755199,85.446953,"Shree Siddhiganesh HSS","Gagalphedi, Kathmandu","Teacher-Focused","HW Signage - Splash","Buddhi Bilas Dhital","9841594520, 4156165","??","??","??","??","2u5y-24kc-fe9f","http://maps.google.com?q=27.755199,85.446953"],
+		[27.661913,85.411842,"Subarneshwor LSS","Katunje, Bhaktapur","Teacher-Focused","Mirrors","Chitra Bdr Achchami","9843724486, 9841236013","From Purano Bus Park take a bus heading to Chyamasingh or Dhulikhel and get off at the Chundevi bus stop. Hike up to the school for ~12 mins. Almost 3 hours with morning traffic.","1","11:15","1:20","35ur-vua4-0fa2","http://maps.google.com?q=27.661913,85.411842"],
+		[27.637404,85.301576,"Yuva Prativa Vidhya Mandir SS","Khokana, Lalitpur","Teacher-Focused","Combination W/ Splash Signs","Yagya Raj Dahal","9841730021","Either walk 4.3km or: Take bus from Ekantakuna to Khokana. This might be rare, so taking one to Bungamati or Chhampi and hopping off at the fork to Khokana and walking 15 minutes might be better.","1","11:30","1:00","yg8b-w1cd-ps4j","http://maps.google.com?q=27.637404,85.301576"],
+		]);
+
+		//dataResponse is Datatable with below specified columns        
+		var view = new google.visualization.DataView(geoData);
+		view.setColumns([2]); //here you set the columns to display
+
+
+		var options = {
+		streetViewControl: false,
+        mapType: 'styledMap',
+        showTip: false,
+		streetViewControl: false,
+		
+		zoomLevel: 11,
+		icons: {
+			default: {
+				normal:   'Picture2.png',
+				selected: 'Picture1.png'
+			}
+		},
+        maps: {
+          // Your custom mapTypeId holding custom map styles.
+          styledMap: {
+            name: 'Styled Map', // This name will be displayed in the map type control.
+            styles: [
+            {
+				"featureType": "landscape.natural",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"visibility": "on"
+					},
+					{
+						"color": "#e0efef"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"visibility": "on"
+					},
+					{
+						"hue": "#1900ff"
+					},
+					{
+						"color": "#c0e8e8"
+					}
+				]
+			},
+			{
+				"featureType": "transit.station.airport",
+				"elementType": "all",
+				"stylers": [
+					{
+						"visibility": "on"
+					},
+					{
+						"color": "#c0e8e8"
+					},
+				]
+			},
+			{
+				"featureType": "transit.station.airport",
+				"elementType": "labels.text",
+				"stylers": [
+					{
+						"visibility": "off"
+					}	
+				]
+			},
+			{
+				"featureType": "road",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"lightness": 100
+					},
+					{
+						"visibility": "simplified"
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "all",
+				"stylers": [
+					{
+						"color": "#7dcdcd"
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "labels",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			}
+        ]},
+		}
+      };
+
+        var geoView = new google.visualization.DataView(geoData);
+        geoView.setColumns([0, 1]);
+
+        var table =
+            new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(view, {showRowNumber: false, width: '100%', height: '100%'});
+
+        var map =
+            new google.visualization.Map(document.getElementById('map_div'));
+        map.draw(geoView, options);
+
+		// Set a 'select' event listener for the table.
+		// When the table is selected, we set the selection on the map.
+		// and bring up the text below using the parts of the table that aren't displayed
+		  google.visualization.events.addListener(table, 'select', function() {
+			map.setSelection(table.getSelection());
+			var row = table.getSelection()[0].row;
+			var school = geoData.getValue(row, 2);
+			var loc = geoData.getValue(row,3)
+			var cams = geoData.getValue(row, 9);
+			var princ = geoData.getValue(row, 6);
+			var call = geoData.getValue(row, 7);
+			var dir = geoData.getValue(row, 8);
+			var sb = geoData.getValue(row, 10);
+			var lb = geoData.getValue(row, 11);
+			var ID = geoData.getValue(row, 12);
+			var dirc = geoData.getValue(row, 13);
+			var intv = geoData.getValue(row, 4) + ", " + geoData.getValue(row, 5);
+			document.getElementById("school").innerHTML = "<b>" + school +"</b>";
+			document.getElementById("textelement").innerHTML = "<b>Information</b><br> Location: "+ loc + "<br>" + "Contact: " + princ + " at " + call + "<br>" +"Short break: " + sb + "&emsp;&emsp; Long break: "+ lb + "<br>Intervention: " + intv +"<br> Cameras: "+ cams;
+			document.getElementById("directions").innerHTML = "<b><a href='" + dirc + "' target = '_blank'>Directions</b></a><br>" + dir;
+			});
+        // Set a 'select' event listener for the table.
+        // When the table is selected, we set the selection on the map.
+		
+        //google.visualization.events.addListener(table, 'select',
+            //function() {
+              //map.setSelection(table.getSelection());
+			 // var row = table.getSelection()[1].row;
+			  //document.getElementById("textelement").innerHTML = geoData.getValue(row, 0);
+            //});
+
+        // Set a 'select' event listener for the map.
+        // When the map is selected, set the selection on the table.
+		// and bring up the text below using the parts of the table that aren't displayed
+        google.visualization.events.addListener(map, 'select',
+            function() {
+				table.setSelection(map.getSelection());
+				var row = table.getSelection()[0].row;
+				var school = geoData.getValue(row, 2);
+				var loc = geoData.getValue(row,3)
+				var cams = geoData.getValue(row, 9);
+				var princ = geoData.getValue(row, 6);
+				var call = geoData.getValue(row, 7);
+				var dir = geoData.getValue(row, 8);
+				var sb = geoData.getValue(row, 10);
+				var lb = geoData.getValue(row, 11);
+				var ID = geoData.getValue(row, 12);
+				var dirc = geoData.getValue(row, 13);
+				var intv = geoData.getValue(row, 4) + ", " + geoData.getValue(row, 5);
+				document.getElementById("school").innerHTML = "<b>" + school +"</b>";
+				document.getElementById("textelement").innerHTML = "<b>Information</b><br> Location: "+ loc + "<br>" + "Contact: " + princ + " at " + call + "<br>" +"Short break: " + sb + "&emsp;&emsp; Long break: "+ lb + "<br>Intervention: " + intv +"<br> Cameras: "+ cams;
+				document.getElementById("directions").innerHTML = "<b><a href='" + dirc + "' target = '_blank'>Directions</b></a><br>" + dir;
+			}
+		);
+		
+      }
+
+    </script>
+  </head>
+	
+  <body style = "font-family: Segoe UI; margin: auto;">
+  <div id="wrappr" style= "width: 960px; margin: auto;">
+    <table align="center">
+      <tr valign="top">
+        <td style="align: left;">
+			<div id ="wrapper">
+				<div id="map_div" style="height: 422px; width: 550px" valign="top"></div>
+				<div id = "school" align="center" valign="top" style="width: 100%; font-size: 135%; color: black; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff,1px 1px 0 #ffffff;"> &nbsp </div>
+			</div>
+		</td>
+        <td style="; align: right; height: 422px ; width: 250px;font-family: Segoe UI">
+          <div id="table_div"></div>
+        </td>
+      </tr>
+    </table>
+	<div id = "allInfo" style="width: 800px; margin: auto">
+		<table align = "center" >
+			<td style = "align:left; width: 320px; word-wrap: break-word;" valign="top">
+				<p id= "directions" align ="left" style = "font-family: Segoe UI"><b>Directions</b></p>
+			</td>
+			<td style = "align: left; width: 480px; top: 0px;" valign="top">
+				<p id="textelement" align ="left" style = "font-family: Segoe UI"><b>Information</b></p>
+			</td>
+			
+		</table>
+	</div>
+	</div>
+  </body>
+</html>

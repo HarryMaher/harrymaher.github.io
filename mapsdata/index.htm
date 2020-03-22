@@ -1,0 +1,185 @@
+﻿<html>
+<style>
+
+div.page{
+    height: 990px;    
+    width: 1020px;
+    margin-left: auto;
+    margin-right: auto;
+}
+iframe.iframe1 {
+    position: absolute;
+    top: 0px;
+    left: 40px;
+    overflow: hidden;
+}
+iframe.iframe2 {
+    position: absolute;
+    top: 0px;
+    left: 580px;
+    overflow: hidden;
+}
+body{
+    font-size: 18px;
+    font-family: "Georgia";
+}
+select{
+    font-size: 18px;
+    font-family: "Georgia";
+    position: absolute;
+    right:0px;
+}
+div.boxone{
+    width: 475px;
+    border: 1px solid #D3D3D3;
+    height: 93px;
+    position: absolute;
+    top: 440px;
+    left: 50px;
+    line-height: 150%;
+    font-family: "Georgia"
+}
+
+form {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    right: 80px;
+    font-family: "Georgia";
+}
+div.box2{
+    width: 475px;
+    border: 1px solid #D3D3D3;
+    height: 93px;
+    position: absolute;
+    top: 440px;
+    left: 575px;
+    line-height: 150%;
+    font-family: "Georgia";
+}
+
+button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 60px;
+    height: 73px;
+    font-family: "Georgia"
+}
+
+
+    
+</style>
+</head>
+
+<body>
+<div class ='page'>
+<iframe class='iframe1' name="iframe1" scrolling='no' src="https://f47886242f52ab48c903853b3b132ff343aed3ca-www.googledrive.com/host/0B_LT_T69LOyhfm1PUVRMTGZFdUlUVnVwMGtFRzEyQzI3TW9vaE1FX0tnTVFRQ3FnVm5fTnc/website/lial2.htm" height="450px" width="500px" seamless="seamless" frameborder="0"></iframe>
+
+<iframe class='iframe2' scrolling='no' name="iframe2" src="https://f47886242f52ab48c903853b3b132ff343aed3ca-www.googledrive.com/host/0B_LT_T69LOyhfm1PUVRMTGZFdUlUVnVwMGtFRzEyQzI3TW9vaE1FX0tnTVFRQ3FnVm5fTnc/website/lial3.htm" height="450px" width="500px" seamless="seamless" frameborder="0"></iframe>
+
+
+<div class='boxone'>
+<form class='frm1' id="frm1">
+Eu quero ver:
+<select id="mySelect" name="slct1" onchange="populate(this.id,'slct2')">
+  <option value="" disabled="" selected="">(Selecionar)
+  <option value="li">Estilos de Vida
+  <option value="sh">Estado de Saúde
+</select>
+<br>em termos de:
+<script>
+function populate(s1,s2){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+	if(s1.value == "li"){
+		var optionArray = [,"pa|Atividade Física","al|Uso de Álcool","nu|Alimentação","tb|Uso de Tabaco"];
+	} else if(s1.value == "sh"){
+		var optionArray = ["sr|Auto-avaliação de Saúde","bmi|Índice de Massa Corporal","d|Depressão"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s2.options.add(newOption);
+	}
+}
+</script>
+
+<select id="slct2" name="slct2"></select>
+<br>entre:
+<select id="mySelect3">
+  <option value="1">Todo o mundo
+  <option value="2">Homens
+  <option value="3">Mulheres
+</select>
+</form> <button class='button1' onclick="myFunction()">OK!</button>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("frm1");
+    var text = "";
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value;
+    }
+    frames['iframe1'].location.href ="https://f47886242f52ab48c903853b3b132ff343aed3ca-www.googledrive.com/host/0B_LT_T69LOyhfm1PUVRMTGZFdUlUVnVwMGtFRzEyQzI3TW9vaE1FX0tnTVFRQ3FnVm5fTnc/website/" + text + ".htm"
+}
+</script>
+</div>
+    
+<div class='box2'>
+<form class='frm2' id="frm2">
+I want to look at 
+<select id="mySelect4" name="slct1" onchange="populate2(this.id,'slct5')">
+  <option value="" disabled="" selected="">(Select) 
+  <option value="li">Lifestyles
+  <option value="sh">State of Health
+</select>
+<br>in terms of
+<script>
+function populate2(s4,s5){
+	var s4 = document.getElementById(s4);
+	var s5 = document.getElementById(s5);
+	s5.innerHTML = "";
+	if(s4.value == "li"){
+		var optionArray = ["pa|Physical Activity","al|Alcohol Use","nu|Nutrition","tb|Tobacco Use"];
+	} else if(s4.value == "sh"){
+		var optionArray = ["sr|Self-Rating of Health","wa|Use of Walking Aids","d|Depression"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s5.options.add(newOption);
+	}
+}
+</script>
+
+<select id="slct5" name="slct5"></select>
+<br>for
+<select id="mySelect6">
+  <option value="1">Everyone
+  <option value="2">Men
+  <option value="3">Women
+</select>
+</form> <button class='button2' onclick="myFunction2()">OK!</button>
+    </div>
+
+<script>
+function myFunction2() {
+    var x = document.getElementById("frm2");
+    var text = "";
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value;
+    }
+    frames['iframe2'].location.href ="https://f47886242f52ab48c903853b3b132ff343aed3ca-www.googledrive.com/host/0B_LT_T69LOyhfm1PUVRMTGZFdUlUVnVwMGtFRzEyQzI3TW9vaE1FX0tnTVFRQ3FnVm5fTnc/website/" + text + ".htm"
+}
+</script>
+</div>
+</body>
+</html>

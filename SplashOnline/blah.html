@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+	<link rel="icon" type="image/ico" href="picture3.png">
+</head>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+	margin-left: auto; 
+	margin-right: auto;
+}
+.select {
+  font-size: 20px;
+    position: absolute;
+    top: 7px;
+	margin-left: auto; 
+	margin-right: auto;
+    z-index: 33;
+	width: 100%;
+}
+.select select {
+  outline: none;
+  -webkit-appearance: none;
+  display: block;
+  padding: .6em .6em .6em .6em;
+  margin: 0;
+  transition: border-color 0.2s;
+  border: 4px solid #000;
+  border-radius: 4px;
+  text-align: center;
+  text-align-last:center; 
+  background: #fff;
+  color: #000;
+  line-height: normal;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: auto;
+}
+.map {
+  position: relative;
+  top: -100px;
+  z-index: 0
+}
+.direc{
+  position: absolute;
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 9999
+}
+
+
+
+</style>
+<body>
+<div class = "select">
+<select id="mySelect" onchange="markSwitch()">
+  <option selected="true" disabled="disabled">Pick a School!</option>
+  <option id="nxdu-uv8a-u4jf"><b>Shree Azad Madhyamik Vidhyalaya</b></option>
+  <option id="xbw1-mw81-3grk"><b>Bal Kumari HSS</b></option>
+  <option id="v2t1-51hc-wcaw"><b>Bishankhu Narayan SS</b></option>
+  <option id="ex33-gwav-74w5"><b>Devi HSS</b></option>
+  <option id="yy44-5e3s-q9k0"><b>Ganesh HSS</b></option>
+  <option id="ke3d-ht3g-9sw5"><b>Jana Premi LSS</b></option>
+  <option id="e9dn-d72h-y6ke"><b>Jhor Mahankal SS</b></option>
+  <option id="8wuv-714d-ym1k"><b>Mahalaxmi HSS</b></option>
+  <option id="y4n2-wfey-snhg"><b>Mahendra Saraswati LSS</b></option>
+  <option id="ba89-mwee-nx7m"><b>Padhma Prakash SS</b></option>
+  <option id="p6nw-c1sd-ppjq"><b>Shree Panchakanya SS</b></option>
+  <option id="ew2d-73gn-wj4b"><b>Purano Guheshshwori</b></option>
+  <option id="1t72-ucsw-3ynf"><b>Sahayogi HSS</b></option>
+  <option id="m4se-1184-0t3f"><b>Samaj Sudhar SS</b></option>
+  <option id="eu5f-u02w-gwm0"><b>Sarada LSS</b></option>
+  <option id="y6c3-f6hx-yf1s"><b>Saraswoti LSS</b></option>
+  <option id="ape5-pdvc-h6k3"><b>Shree Bishwo Rastryia SS</b></option>
+  <option id="2u5y-24kc-fe9f"><b>Shree Siddhiganesh HSS</b></option>
+  <option id="35ur-vua4-0fa2"><b>Subarneshwor LSS</b></option>
+  <option id="yg8b-w1cd-ps4j"><b>Yuva Prativa SS</b></option>
+</select>
+</div>
+<div id="map" style="width:99%;width:99vw; height:600px">
+</div>
+
+<!-- <div id= "splashid">SPLASH</div> this is where the splash school study ID would go!-->  
+
+
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+<script>
+var map = L.map('map').setView([27.681903, 85.36475325], 12);
+var osmUrl = 'http://tile.stamen.com/toner/{z}/{x}/{y}.png';
+var osmLayer = new L.TileLayer(osmUrl, {
+  maxZoom: 16,
+  attribution: 'Map data © OpenStreetMap contributors'
+});
+map.addLayer(osmLayer);
+var markers = [];
+var marker1 = L.marker([27.687175, 85.426856], {}).addTo(map).bindPopup('<b>Call:</b> Keshav Baniya <br> at: 9841236470<br><br><br><br>lol<br><br>'); markers.push(marker1);
+var marker2 = L.marker([27.630372, 85.320404], {
+  title: "xbw1-mw81-3grk"
+}).addTo(map).bindPopup("Bal Kumari HSS");
+marker2._myId=1;
+marker2._mytitle="xbw1-mw81-3grk";
+markers.push(marker2);
+var marker3 = L.marker([27.612991, 85.364139], {
+  title: "v2t1-51hc-wcaw"
+}).addTo(map).bindPopup("Bishankhu Narayan SS");
+marker3._myId=2;
+marker3._mytitle="v2t1-51hc-wcaw";
+markers.push(marker3);
+var marker4 = L.marker([27.663166, 85.468962], {
+  title: "ex33-gwav-74w5"
+}).addTo(map).bindPopup("Devi HSS");
+marker4._myId=3;
+marker4._mytitle="ex33-gwav-74w5";
+markers.push(marker4);
+var marker5 = L.marker([27.655325, 85.440425], {
+  title: "yy44-5e3s-q9k0"
+}).addTo(map).bindPopup("Ganesh HSS");
+marker5._myId=4;
+marker5._mytitle="yy44-5e3s-q9k0";
+markers.push(marker5);
+var marker6 = L.marker([27.674193, 85.362431], {
+  title: "ke3d-ht3g-9sw5"
+}).addTo(map).bindPopup("Jana Premi LSS");
+marker6._myId=5;
+marker6._mytitle="ke3d-ht3g-9sw5";
+markers.push(marker6);
+var marker7 = L.marker([27.797707, 85.332339], {
+  title: "e9dn-d72h-y6ke"
+}).addTo(map).bindPopup("Jhor Mahankal SS");
+marker7._myId=6;
+marker7._mytitle="e9dn-d72h-y6ke";
+markers.push(marker7);
+var marker8 = L.marker([27.642216, 85.373859], {
+  title: "8wuv-714d-ym1k"
+}).addTo(map).bindPopup("Mahalaxmi HSS");
+marker8._myId=7;
+marker8._mytitle="8wuv-714d-ym1k";
+markers.push(marker8);
+var marker9 = L.marker([27.694113, 85.304098], {
+  title: "y4n2-wfey-snhg"
+}).addTo(map).bindPopup("Mahendra Saraswati LSS");
+marker9._myId=8;
+marker9._mytitle="y4n2-wfey-snhg";
+markers.push(marker9);
+var marker10 = L.marker([27.641448, 85.327759], {
+  title: "ba89-mwee-nx7m"
+}).addTo(map).bindPopup("Padhma Prakash SS");
+marker10._myId=9;
+marker10._mytitle="ba89-mwee-nx7m";
+markers.push(marker10);
+var marker11 = L.marker([27.780108, 85.352384], {
+  title: "p6nw-c1sd-ppjq"
+}).addTo(map).bindPopup("Shree Panchakanya SS");
+marker11._myId=10;
+marker11._mytitle="p6nw-c1sd-ppjq";
+markers.push(marker11);
+var marker12 = L.marker([27.744822, 85.296385], {
+  title: "ew2d-73gn-wj4b"
+}).addTo(map).bindPopup("Purano Guheshshwori");
+marker12._myId=11;
+marker12._mytitle="ew2d-73gn-wj4b";
+markers.push(marker12);
+var marker13 = L.marker([27.739743, 85.386968], {
+  title: "1t72-ucsw-3ynf"
+}).addTo(map).bindPopup("Sahayogi HSS");
+marker13._myId=12;
+marker13._mytitle="1t72-ucsw-3ynf";
+markers.push(marker13);
+var marker14 = L.marker([27.672498, 85.437227], {
+  title: "m4se-1184-0t3f"
+}).addTo(map).bindPopup("Samaj Sudhar SS");
+marker14._myId=13;
+marker14._mytitle="m4se-1184-0t3f";
+markers.push(marker14);
+var marker15 = L.marker([27.704558, 85.351819], {
+  title: "eu5f-u02w-gwm0"
+}).addTo(map).bindPopup("Sarada LSS");
+marker15._myId=14;
+marker15._mytitle="eu5f-u02w-gwm0";
+markers.push(marker15);
+var marker16 = L.marker([27.565607, 85.315865], {
+  title: "y6c3-f6hx-yf1s"
+}).addTo(map).bindPopup("Saraswoti LSS");
+marker16._myId=15;
+marker16._mytitle="y6c3-f6hx-yf1s";
+markers.push(marker16);
+var marker17 = L.marker([27.677502, 85.272774], {
+  title: "ape5-pdvc-h6k3"
+}).addTo(map).bindPopup("Shree Bishwo Rastryia SS");
+marker17._myId=16;
+marker17._mytitle="ape5-pdvc-h6k3";
+markers.push(marker17);
+var marker18 = L.marker([27.755199, 85.446953], {
+  title: "2u5y-24kc-fe9f"
+}).addTo(map).bindPopup("Shree Siddhiganesh HSS");
+marker18._myId=17;
+marker18._mytitle="2u5y-24kc-fe9f";
+markers.push(marker18);
+var marker19 = L.marker([27.661913, 85.411842], {
+  title: "35ur-vua4-0fa2"
+}).addTo(map).bindPopup("Subarneshwor LSS");
+marker19._myId=18;
+marker19._mytitle="35ur-vua4-0fa2";
+markers.push(marker19);
+var marker20 = L.marker([27.637404, 85.301576], {
+  title: "yg8b-w1cd-ps4j"
+}).addTo(map).bindPopup("Yuva Prativa SS");
+marker20._myId=19;
+marker20._mytitle="yg8b-w1cd-ps4j";
+markers.push(marker20);
+
+
+
+
+
+//gets the selection and calls the markerfunction
+function markSwitch() {
+    var a = document.getElementById("mySelect").selectedIndex;
+    var b = document.getElementById("mySelect").options;
+    var txt = b[a].id ;
+    markerFunction(txt); 
+};
+//opens the markers to correspond to the selected marker. A helper function.
+function markerFunction(id) {
+  for (var i in markers) {
+    var markerID = markers[i].options.title;
+    if (markerID == id) {
+      markers[i].openPopup();
+	  document.getElementById("splashid").innerHTML= markerID;
+    };
+  }
+};
+
+map.on('popupopen', function(e) {
+	var px = map.project(e.popup._latlng); // find the pixel location on the map where the popup anchor is
+	px.y -= e.popup._container.clientHeight/2 // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
+	map.panTo(map.unproject(px),{animate: true}); // pan to new center
+	document.getElementById("mySelect").selectedIndex = e.popup._source._myId +1 ;// change the myselect to correspond to the open popup
+    //document.getElementById("splashid").innerHTML= e.popup._source._mytitle ; // to add the splash ID to the map somehow...
+	});
+
+
+</script>
+
+</body>
+</html>

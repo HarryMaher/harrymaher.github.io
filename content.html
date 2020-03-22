@@ -1,0 +1,167 @@
+﻿<!DOCTYPE HTML SYSTEM>
+<html>
+
+<head>
+	<title> things </title>
+	<link rel="icon" type="image/ico" href="north.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="Bootstrap3.2.0/css/bootstrap.min.css">
+	<script src="jquery/jquery.min.js"></script>
+	<script src="Bootstrap3.2.0/js/bootstrap.min.js"></script>
+	<link rel="icon" type="image/ico" href="north.png">
+<style>
+	.navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0;
+    border-radius: 4;
+    margin-bottom: 0;
+    font-size: 15px;
+    letter-spacing: 4px;
+	background-color: #41b6c4;
+	font-family: segoe ui;
+	color: #225ea8;
+	}
+	.navbar-nav li a:link, li a:visited{
+	display: block;
+	background-color: #225ea8;
+	color: #7fcdbb;
+	text-align: center;
+	}
+	.navbar-nav li a:hover {
+	background-color: #41b6c4;
+    color: #225ea8 !important;
+	}
+	body {
+	background-color: ;
+	color: #225ea8;
+	font-family: segoe ui;
+	text-align:center !important;
+	}
+	#wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+	color: #225ea8;
+	font-family: segoe ui;
+	font-size: 1.09em;
+	}
+	#description{
+	height: 360px;
+	width: 100%;
+	overflow: scroll;
+	}
+	small{
+	color: #225ea8 !important;
+	}
+	img{
+	margin-left:auto;
+	margin-right:auto;
+	max-width:80% !important; 
+}
+
+</style>
+
+
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="index.html" style="font-size: 2.9em; letter-spacing: 2px; color: #225ea8">harry maher</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+		<li><a href="index.html" style= "color: #7fcdbb">home</a></li>
+        <li><a href="content.html" style= "color: #7fcdbb">stuff</a></li>
+        <li><a href="about.html" style= "color: #7fcdbb">about</a></li>
+        <li><a href="contact.html" style= "color: #7fcdbb">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="wrapper">
+
+<h4><br>Below are some examples of my work: click on the pictures to open the projects in a new tab<br><br></h4>
+<div class = "container-fluid">
+    <div class = "row">
+    <div class='col-sm-6 vcenter' >
+    <a href = "https://raincitymaps.github.io/maps/scattermap/" target = "_blank"><img class="img-responsive" alt="An image of a histogram." title="Click here!" src="./imgs/scattermap.png"></a>
+    I put together the above tool to allow people to map out the residuals of simple bivariate regression models using <a href="https://d3js.org/" target="_blank">D3</a>, <a href="https://github.com/Tom-Alexander/regression-js" target="_blank">regression-js</a>, and <a href="https://leafletjs.com/" target="_blank">Leaflet</a>. The map shows where there is a high deviation between the expected and observed values for the Y values on the chart. (Using King County election data).
+    <br><br><br>
+    </div>
+
+    <div class='col-sm-6 vcenter' >
+    <a href = "http://harrymaher.github.io/stupid/tunnel_to_viaduct/" target = "_blank"><img class="img-responsive" alt="An image of a chart." title="Click here!" src="./imgs/graphs.png"></a>
+    Here is an interactive musical chart of finishing time data that I <a href="https://en.wikipedia.org/wiki/Web_scraping" target="_blank">scraped</a> from a race that I ran in (using <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a>). The chart was made by combining <a href="https://d3js.org/" target="_blank">D3</a> and <a href="https://tonejs.github.io/" target="_blank"> Tone.js</a>, and the ultimate goal is to create a band called "The Why Not Axis" that plays pop music covers using relevant charts as instruments. Click on these charts to play some tones! <br><br><br>
+    </div>
+
+    </div> <!-- endrow -->
+
+	<div class="row">
+	<div class='col-sm-6'>
+	<a href = "https://raincitymaps.github.io/" target = "_blank"><img class="img-responsive" alt="An image of a maps website." title="Click here!" src="./imgs/raincitymaps.png"></a>
+	When I first moved to Seattle in 2016, I made a handful of maps to help me better understand the city. Many of these maps are publicly viewable at <a href="https://raincitymaps.github.io/" target="_blank">https://raincitymaps.github.io/</a>. Topics range from Seattle school immunization rates to election results.
+	<br><br><br>
+	</div>
+	<div class='col-sm-6 vcenter' >
+	<a href = "Presentation.pdf" target = "_blank" ><img class="img-responsive" alt="An image of a map of LISA of the residuals." title="Click here!" src="./imgs/LISA.png"></a>
+	This is a pdf of a presentation I did my senior year for an applied GIS class looking at how a spatial error regression model can improve an ordinary least squares regression model. In this case, I looked used census data to form a model for life expectancy in Brazil.<br><br><br>
+	</div>
+	</div>
+	<div class="row">
+    <div class='col-sm-6 vcenter' >
+    <a href = "https://www.bigwaterconsulting.net/participatory-mapping" target = "_blank"><img class="img-responsive" alt="An image of a histogram." title="Click here!" src="./imgs/particpatory_mapping.png"></a>
+    At Big Water Consulting, I developed a customizable participatory mapping web application to help community members describe their spatial experiences. This GIS project utilized a creative combination of <a href= "https://leafletjs.com/" target="_blank">Leaflet</a>, <a href= "https://www.google.com/forms/about/" target="_blank">Google Forms</a>, and <a href= "https://www.openstreetmap.org/#map=4/38.01/-95.84" target="_blank">OSM</a>.
+    <br><br><br>
+    </div>
+
+    <div class='col-sm-6 vcenter' >
+    <a href = "./stupid/index.html" target = "_blank"><img class="img-responsive" alt="An image of a stupid application." title="Click here!" src="./imgs/stupid_apps.png"></a>
+    Here is an assortment of less serious programs that I created either alone or with teams for the <a href="http://seattlestupidhackathon.github.io/">Seattle Stupid Hackathon</a>, a group I help organize. (Pictured: <i><a href="./stupid/kondofy/index.html" target="_blank">Kondofy It!</a></i> the bookmarklet that helps you get rid of things that don't spark joy online.)<br><br><br>
+    </div>
+	</div>
+
+    <div class = "row">
+    <div class='col-sm-6'>
+    <a href = "mapcompar-en.html" target = "_blank"><img class="img-responsive" alt="An image of a map of brazil." title="Click here!" src="./imgs/mapcompar1.png"></a>
+    This is a set of interactive maps intended to allow users to explore how lifestyles influence (or don't influence) health outcomes at the Brazilian state level. It formed a part of the above semester-long Applied GIS project.<br><br><br></div>
+
+
+    <div class='col-sm-6 vcenter' >
+    <a href = "https://www.bigwaterconsulting.net/field-data-collection-dash" target = "_blank"><img class="img-responsive" alt="An image of a histogram." title="Click here!" src="./imgs/dashboard.png"></a>
+    For data collection projects at Big Water, I develop custom, interactive dashboards that pull in live data using R's <a href= "https://shiny.rstudio.com/" target="_blank">Shiny</a> library. This helps stakeholders and managers track a project's progress.
+    <br><br><br>
+    </div>
+    </div>
+
+	<div class='col-sm-6 vcenter' >
+	<a href = "https://drive.google.com/file/d/0B_LT_T69LOyhazdVNElQSVVaVmc/view?usp=sharing" target = "_blank"><img class="img-responsive" alt="An image of a histogram." title="Click here!" src="./imgs/paper1.png"></a>
+	This is an example of original research that I performed as an undergraduate. We wanted to see if we could reduce junk food consumption with social norms.  In this experiment, my lab partner and I either gave participants a fabricated "low-norm" condition or no such condition and observed the effect on junk food consumption.
+	<br><br><br>
+	
+	</div>
+
+	<div class='col-sm-6 vcenter' >
+	<a href = "https://dasil.sites.grinnell.edu/income-by-marital-status-race-and-gender/" target = "_blank"><img class="img-responsive" alt="An image of a chart." title="Click here!" src="./imgs/Dasil1.png"></a>
+	Here is an interactive data visualization about hourly wages (by race and gender) that I helped update when I worked at the Data Analysis and Social Inquiry Lab (DASIL) along with other similar visualizations viewable at <a href ="https://dasil.sites.grinnell.edu/">https://dasil.sites.grinnell.edu/</a>. <br><br><br>
+	</div>
+	</div>
+
+
+</div>
+</div>
+<br>
+<footer class="container-fluid bg-4 text-center" style="background-color: #225ea8; color:#7fcdbb"><br>
+  <p>harry maher - 2016 - <a style="color:#7fcdbb" href="contact.html">contact</p> 
+</footer>
+</body>
+</html>

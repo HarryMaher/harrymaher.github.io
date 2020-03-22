@@ -1,0 +1,126 @@
+﻿<html>
+
+
+<style>
+p {
+    position: fixed;
+    text-align: center;
+    width: 477px;
+    top: -20px;
+    left: 0px;
+    z-index: 1;
+    line-height: 100%;
+    font-family: Segoe UI, Arial; 
+    color: grey;
+    font-size: 130%;
+}
+
+div.hm {
+    text-align: center;
+    width: 100px;
+    height: 20px;
+    position: fixed;
+    top: 405px;
+    left: 380px;
+    z-index: 2;
+    font-family: Segoe UI, Arial;
+    font-size: 85%
+}
+
+div.regions_div {
+    position: fixed;
+    top: 35px;
+    left:0px;
+    font-family: Segoe UI; 
+    color: grey;
+}
+
+div.num {
+    display: inline-block;
+    font-family:  Segoe UI; color: grey;
+}
+</style>
+<head>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type='text/javascript'>
+  google.load('visualization', '1.1', {
+      packages: ['geochart'],
+      callback: drawRegionsMap
+  });
+
+  function drawRegionsMap() {
+
+      var data = google.visualization.arrayToDataTable([
+          ['State', 'Value', {
+              role: 'tooltip',
+              p: {
+                  html: true
+              }
+          }],
+
+
+["Rondônia", 	9.8	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Bandeira_de_Rond%C3%B4nia.svg/320px-Bandeira_de_Rond%C3%B4nia.svg.png" width="22" height="12"/> Percentage:<b> 	9.8	%</b></br>Population: 1,728,214</br>Per Capita Income in R$: 18,466</br>HDI:  0.690' ],
+["Acre", 	9.4	, '<img src="http://upload.wikimedia.org/wikipedia/commons/4/4c/Bandeira_do_Acre.svg" width="22" height="12"/> Percentage:<b> 	9.4	%</b></br>Population: 776,463</br>Per Capita Income in R$: 12,690</br>HDI:  0.663' ],
+["Amazonas", 	7.7	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bandeira_do_Amazonas.svg/320px-Bandeira_do_Amazonas.svg.png" width="22" height="12"/> Percentage:<b> 	7.7	%</b></br>Population: 3,807,921</br>Per Capita Income in R$: 17,856</br>HDI:  0.674' ],
+["Roraima", 	7.9	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Bandeira_de_Roraima.svg/320px-Bandeira_de_Roraima.svg.png" width="22" height="12"/> Percentage:<b> 	7.9	%</b></br>Population: 488,072</br>Per Capita Income in R$: 15,577</br>HDI:  0.707' ],
+["Pará", 	8	, '<img src="http://upload.wikimedia.org/wikipedia/commons/0/02/Bandeira_do_Par%C3%A1.svg" width="22" height="12"/> Percentage:<b> 	8	%</b></br>Population: 7,969,654</br>Per Capita Income in R$: 11,679</br>HDI:  0.646' ],
+["Amapá", 	11.4	, '<img src="http://upload.wikimedia.org/wikipedia/commons/0/0c/Bandeira_do_Amap%C3%A1.svg" width="22" height="12"/> Percentage:<b> 	11.4	%</b></br>Population: 734,996</br>Per Capita Income in R$: 14,915</br>HDI:  0.708' ],
+["Tocantins", 	13.3	, '<img src="http://www.printableworldflags.com/large-flags/Brazil_Tocantins_Flag-133.gif" width="22" height="12"/> Percentage:<b> 	13.3	%</b></br>Population: 1,478,164</br>Per Capita Income in R$: 13,776</br>HDI:  0.699' ],
+["Maranhão", 	9.8	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Bandeira_do_Maranh%C3%A3o.svg/320px-Bandeira_do_Maranh%C3%A3o.svg.png" width="22" height="12"/> Percentage:<b> 	9.8	%</b></br>Population: 6,794,301</br>Per Capita Income in R$: 8,760</br>HDI:  0.639' ],
+["Piauí", 	10.1	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Bandeira_do_Piau%C3%AD.svg/320px-Bandeira_do_Piau%C3%AD.svg.png" width="22" height="12"/> Percentage:<b> 	10.1	%</b></br>Population: 3,184,166</br>Per Capita Income in R$: 8,138</br>HDI:  0.646' ],
+["Ceará", 	7.4	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bandeira_do_Cear%C3%A1.svg/320px-Bandeira_do_Cear%C3%A1.svg.png" width="22" height="12"/> Percentage:<b> 	7.4	%</b></br>Population: 8,778,576</br>Per Capita Income in R$: 10,473</br>HDI:  0.682' ],
+["Rio Grande do Norte", 	7.9	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Bandeira_do_Rio_Grande_do_Norte.svg/320px-Bandeira_do_Rio_Grande_do_Norte.svg.png" width="22" height="12"/> Percentage:<b> 	7.9	%</b></br>Population: 3,373,959</br>Per Capita Income in R$: 12,249</br>HDI:  0.684' ],
+["Paraíba", 	7.7	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Bandeira_da_Para%C3%ADba.svg/320px-Bandeira_da_Para%C3%ADba.svg.png" width="22" height="12"/> Percentage:<b> 	7.7	%</b></br>Population: 3,914,421</br>Per Capita Income in R$: 10,152</br>HDI:  0.658' ],
+["Pernambuco", 	10.9	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Bandeira_de_Pernambuco.svg/320px-Bandeira_de_Pernambuco.svg.png" width="22" height="12"/> Percentage:<b> 	10.9	%</b></br>Population: 9,208,550</br>Per Capita Income in R$: 13,138</br>HDI:  0.673' ],
+["Alagoas", 	9.3	, '<img src="http://upload.wikimedia.org/wikipedia/commons/8/88/Bandeira_de_Alagoas.svg" width="22" height="12"/> Percentage:<b> 	9.3	%</b></br>Population: 3,300,935</br>Per Capita Income in R$: 9,333</br>HDI:  0.631' ],
+["Sergipe", 	9.9	, '<img src="http://upload.wikimedia.org/wikipedia/commons/b/be/Bandeira_de_Sergipe.svg" width="22" height="12"/> Percentage:<b> 	9.9	%</b></br>Population: 2,195,662</br>Per Capita Income in R$: 13,181</br>HDI:  0.665' ],
+["Bahia", 	14.5	, '<img src="http://upload.wikimedia.org/wikipedia/commons/2/28/Bandeira_da_Bahia.svg" width="22" height="12"/> Percentage:<b> 	14.5	%</b></br>Population: 1,5044,137</br>Per Capita Income in R$: 11,832</br>HDI:  0.660' ],
+["Minas Gerais", 	15.8	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Bandeira_de_Minas_Gerais.svg/320px-Bandeira_de_Minas_Gerais.svg.png" width="22" height="12"/> Percentage:<b> 	15.8	%</b></br>Population: 20,593,356</br>Per Capita Income in R$: 20,325</br>HDI:  0.731' ],
+["Espírito Santo", 	12	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bandeira_do_Esp%C3%ADrito_Santo.svg/320px-Bandeira_do_Esp%C3%ADrito_Santo.svg.png" width="22" height="12"/> Percentage:<b> 	12	%</b></br>Population: 3,839,366</br>Per Capita Income in R$: 29,996</br>HDI:  0.740' ],
+["Rio de Janeiro", 	14.1	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Bandeira_do_estado_do_Rio_de_Janeiro.svg/320px-Bandeira_do_estado_do_Rio_de_Janeiro.svg.png" width="22" height="12"/> Percentage:<b> 	14.1	%</b></br>Population: 16,369,179</br>Per Capita Income in R$: 31,065</br>HDI:  0.761' ],
+["São Paulo", 	12.6	, '<img src="http://upload.wikimedia.org/wikipedia/commons/2/2b/Bandeira_do_estado_de_S%C3%A3o_Paulo.svg" width="22" height="12"/> Percentage:<b> 	12.6	%</b></br>Population: 43,663,669</br>Per Capita Income in R$: 33,624</br>HDI:  0.783' ],
+["Paraná", 	16	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Bandeira_do_Paran%C3%A1.svg/320px-Bandeira_do_Paran%C3%A1.svg.png" width="22" height="12"/> Percentage:<b> 	16	%</b></br>Population: 10,997,465</br>Per Capita Income in R$: 24,195</br>HDI:  0.749' ],
+["Santa Catarina", 	15.2	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Bandeira_de_Santa_Catarina.svg/320px-Bandeira_de_Santa_Catarina.svg.png" width="22" height="12"/> Percentage:<b> 	15.2	%</b></br>Population: 6,634,254</br>Per Capita Income in R$: 27,772</br>HDI:  0.774' ],
+["Rio Grande do Sul", 	17.3	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bandeira_do_Rio_Grande_do_Sul.svg/320px-Bandeira_do_Rio_Grande_do_Sul.svg.png" width="22" height="12"/> Percentage:<b> 	17.3	%</b></br>Population: 11,164,043</br>Per Capita Income in R$: 25,779</br>HDI:  0.746' ],
+["Mato Grosso do Sul", 	15.6	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Bandeira_de_Mato_Grosso_do_Sul.svg/320px-Bandeira_de_Mato_Grosso_do_Sul.svg.png" width="22" height="12"/> Percentage:<b> 	15.6	%</b></br>Population: 2,587,269</br>Per Capita Income in R$: 21,744</br>HDI:  0.729' ],
+["Mato Grosso", 	14.9	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Bandeira_de_Mato_Grosso.svg/320px-Bandeira_de_Mato_Grosso.svg.png" width="22" height="12"/> Percentage:<b> 	14.9	%</b></br>Population: 3,182,113</br>Per Capita Income in R$: 25,946</br>HDI:  0.725' ],
+["Goiás", 	15.1	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Bandeira_de_Goi%C3%A1s.svg/320px-Bandeira_de_Goi%C3%A1s.svg.png" width="22" height="12"/> Percentage:<b> 	15.1	%</b></br>Population: 6,434,048</br>Per Capita Income in R$: 20,134</br>HDI:  0.735' ],
+["Distrito Federal", 	15.2	, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bandeira_do_Distrito_Federal_%28Brasil%29.svg/320px-Bandeira_do_Distrito_Federal_%28Brasil%29.svg.png" width="22" height="12"/> Percentage:<b> 	15.2	%</b></br>Population: 2,789,761</br>Per Capita Income in R$: 64,653</br>HDI:  0.824' ],
+
+["united states", 5, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bandeira_do_Distrito_Federal_%28Brasil%29.svg/320px-Bandeira_do_Distrito_Federal_%28Brasil%29.svg.png" width="22" height="12"/> Percentage:<b> 	25.8	%</b></br>Population: 2,789,761</br>Per Capita Income in R$: 64,653</br>HDI:  0.824'],
+["iran", 50, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bandeira_do_Distrito_Federal_%28Brasil%29.svg/320px-Bandeira_do_Distrito_Federal_%28Brasil%29.svg.png" width="22" height="12"/> Percentage:<b> 	25.8	%</b></br>Population: 2,789,761</br>Per Capita Income in R$: 64,653</br>HDI:  0.824'],
+
+
+      ]);
+
+      var options = {
+          region: 'BR',
+          displayMode: 'regions',
+          resolution: 'provinces',
+          width: 620,
+          height: 400,
+          colorAxis: {colors: ['#FFE6E6', '#FF0000', '#660000']},
+          tooltip: {
+              isHtml: true,
+              textStyle: {
+                  fontSize: 16
+              }
+          }
+
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+      chart.draw(data, options);
+  }
+</script>
+
+</head>
+<body>
+<div class='title'>    
+<p> Percent of women who generally consume alcoholic beverages once or more per week (%)</p></div>
+
+    <div class='hm'><span> <a href="http://www.harrymaher.net" target = "_blank" style="text-decoration: none; color:grey"> Harry Maher </a></span></div>
+
+    <span style="cursor:pointer"><div class="regions_div" id="regions_div"></div> </span>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>How Much Extra Would You Pay?</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/one-page-wonder.css" rel="stylesheet">
+
+    <!-- script for word picking  -->
+    <script src="date_ideas_generator.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">How Much Extra Tax Would You Pay Under AOC's 70% Marginal Tax Rate?</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="masthead text-center text-white">
+      <div class="masthead-content">
+        <form id="frm1" action="/action_page.php">
+ <input type="range" name="amountRange" id="income" min="0" max="10000005" value="0" oninput="this.form.amountInput.value=this.value"/><br>
+        $<input type="number" name="amountInput" min="0" max="10000005" value="0" oninput="this.form.amountRange.value=this.value" />
+</form> 
+
+
+<p>Drag the slider (or highlight and change the number) to enter your annual income then click the button below to see how much you extra would be taxed under Alexandria Ocasio Cortez's proposed 70% marginal tax rate.</p>
+
+<a href="#" class="btn btn-primary btn-xl rounded-pill mt-5" onclick="taxFun()">How Much Extra Will I Pay?</a>
+
+<p id="result"><br><br><br></p>
+<p><h3>FAQ</h3></p>
+
+<p><h5>This slider sucks, why does it jump over my income?</h5><p>
+<p>It moves at literally the width of one pixel at this scale and the slider's gotta fit all potential incomes within the supported range. Just type your income in the box if you want a <em>super specific</em> zero. </p>
+<br>
+<p><h5>This is wrong, 70% of my income is much more than $0?</h5><p>
+<p>Alexandria Ocasio Cortez proposed a 70% marginal tax rate at income over $10,000,000. So the 70% kicks in above your ten-millionth dollar. So even if you make $10,000,001 in a year you'd only be paying <em>70 cents</em> extra total in taxes that year under this fairly conservative proposal.</p>
+<br>
+<p><h5>I make more than $10,000,005 per year and it isn't letting me enter above that. Is this tool broken?</h5><p>
+<p>It's not broken, but you'll have to pay for the premium version at above $10,000,005. Not to worry, we offer it on an affordable sliding scale for billionaires at all levels! Just have your people Paypal me 0.001% of your net worth.</p>
+<br>
+<p><h5>That's a lot of Zeroes!?</h5><p>
+<p>Yeah.</p>
+<br>
+<p><h5>But aren't taxes the worst/isn't this a terrible idea?</h5><p>
+<p>No. Some experts think the optimal tax rate for top earners would be <a href="https://eml.berkeley.edu//~saez/diamond-saezJEP11opttax.pdf" target='_blank'>73%</a>.</p>
+<br>
+<p><h5>Hm, a marginal tax rate of 70% seems like a pretty good idea, any others?</h5><p>
+<p>A higher tax on money people make from investments including income from stocks they sell a.k.a. a capital gains tax. Seeing as investors do no work investing yet make incredible profits off of labor, wouldn't it be more fair if that tax were at least comparable to a normal income tax? Shouldn't Warren Buffet pay a higher tax rate than <a href="https://money.cnn.com/2013/03/04/news/economy/buffett-secretary-taxes/index.html" target="_blank">his secretary</a>?</p>
+
+    </div>
+      </div>
+<!--       <div class="bg-circle-1 bg-circle"></div>
+      <div class="bg-circle-2 bg-circle"></div>
+      <div class="bg-circle-3 bg-circle"></div>
+      <div class="bg-circle-4 bg-circle"></div> -->
+    </header>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-black">
+      <div class="container">
+        <div class="m-0 text-center text-white small">70% Marginal Tax - 2019</div>
+      </div>
+      <!-- /.container -->
+    </footer>
+<script>
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+function taxFun() {
+  var x = document.getElementById("income").value;
+  if (x < 10000000){
+    taxed = 0
+  } else {
+  taxed = numberWithCommas(((x - 10000000) * .7).toFixed(2))
+  }
+  document.getElementById("result").innerHTML = "<br>Since you make $" + numberWithCommas(x) + " annually, you would be taxed an extra $" + taxed +" per year under AOC's <a href='https://www.politifact.com/truth-o-meter/article/2019/jan/08/explaining-alexandria-ocasio-cortezs-70-percent-ta/' target='_blank'> proposed plan</a>.<br><br>";
+}
+</script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

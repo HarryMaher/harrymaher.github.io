@@ -1,0 +1,210 @@
+﻿
+<html>
+<title> Mapas do Saúde no Brasil </title>
+<link rel="icon" type="image/ico" href="north.png">
+
+<style>
+body{height: 990px; width: 960px; margin-left: auto; margin-right: auto; font-size: 16px; font-family: Segoe UI; color: grey;}
+div.name {position: absolute; top: 20px; z-index: 2}
+div.line1 {position: relative; top: 55px; width: 960px}
+div.cont {position: relative; top: 50px; font-size: 130%; width: 960px; z-index: 2}
+div.line3 {position: relative; top: 80px; width 960px; text-size: 75%}
+div.message {line-height: 160%; position: relative; top: -40px; font-size: 120%; margin-left: auto; margin-right: auto; width: 900px}
+div.cite {position: relative; top: -18px; font-size: 65%; margin-left: auto; margin-right: auto; width: 900px}
+
+iframe.iframe1 {
+    position: relative;
+    top: 70px;
+    left: -10px;
+    overflow: hidden;
+}
+iframe.iframe2 {
+    position: relative;
+    top: 70px;
+    left: 0px;
+    overflow: hidden;
+}
+select{
+    font-size: 18px;
+    font-family: Segoe UI;
+    position: relative;
+    right:0px;
+    color: grey;
+}
+div.boxone{
+    width: 460px;
+    border: 1px solid #D3D3D3;
+    height: 93px;
+    position: relative;
+    top: 45px;
+    left: 0px;
+    line-height: 150%;
+    font-family: Segoe UI;
+    font-size: 18px
+}
+
+form {
+    position: relative;
+    top: 5px;
+    left: 10px;
+    right: 80px;
+    font-family: Segoe UI;
+}
+div.box2{
+    width: 460px;
+    border: 1px solid #D3D3D3;
+    height: 93px;
+    position: relative;
+    top: -50px;
+    left: 490px;
+    line-height: 150%;
+    font-family: Segoe UI;
+    font-size: 18px;
+}
+
+button{
+    position: relative;
+    top: -91px;
+    left: 390px;
+    width: 60px;
+    height: 73px;
+    font-family: Segoe UI
+}
+
+
+    
+</style>
+</head>
+
+<body>
+
+<div class = "name"; style="font-size: 340%"><a href="index.html" style="color: grey; text-decoration: none; font-family: Segoe UI">Harry Maher</style></a></div>
+<div class = "cont" align="right">
+<a href = "index.html" style = "color: grey; text-decoration: none; font-family: Segoe UI">Home</a></style> &nbsp;&nbsp;&nbsp; <a href = "content.html" style = "color: grey; text-decoration: none; font-family: Segoe UI">Content</a></style> &nbsp;&nbsp;&nbsp; <a href = "contact.html" style = "color: grey; text-decoration: none; font-family: Segoe UI">Contact</a></style>
+</div>
+<div class = "line1">
+<hr>
+</div>
+
+<iframe class='iframe1' name="iframe1" scrolling='no' src="mapsdata/elinu1.htm" height="450px" width="477px" seamless="seamless" frameborder="0"></iframe>
+
+<iframe class='iframe2' scrolling='no' name="iframe2" src="mapsdata/eshle1.htm" height="450px" width="477px" seamless="seamless" frameborder="0"></iframe>
+
+
+<div class='boxone'>
+<form class='frm1' id="frm1">
+I want to see:
+<select id="mySelect" name="slct1" onchange="populate(this.id,'slct2')">
+  <option value="" disabled="" selected="">(Select)
+  <option value="li">Lifestyles
+  <option value="sh">State of Health
+</select>
+<br>in terms of:
+<script>
+function populate(s1,s2){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+	if(s1.value == "li"){
+		var optionArray = ["pa|Physical Activity","al|Alcohol Use","nu|Nutrition","tb|Tobacco Use"];
+	} else if(s1.value == "sh"){
+		var optionArray = ["sr|Self-Health Rating","bmi|Body Mass Index","le|Life Expectancy"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s2.options.add(newOption);
+	}
+}
+</script>
+
+<select id="slct2" name="slct2"></select>
+<br>among:
+<select id="mySelect3">
+  <option value="1">Everyone
+  <option value="2">Men
+  <option value="3">Women
+</select>
+</form> <button class='button1' onclick="myFunction()">OK!</button>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("frm1");
+    var text = "";
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value;
+    }
+    frames['iframe1'].location.href = "mapsdata/e" + text + ".htm"
+}
+</script>
+</div>
+    
+<div class='box2'>
+<form class='frm2' id="frm2">
+I want to see
+<select id="mySelect4" name="slct1" onchange="populate2(this.id,'slct5')">
+  <option value="" disabled="" selected="">(Select)
+  <option value="li">Lifestyles
+  <option value="sh">State of Health
+</select>
+<br>in terms of:
+<script>
+function populate2(s4,s5){
+	var s4 = document.getElementById(s4);
+	var s5 = document.getElementById(s5);
+	s5.innerHTML = "";
+	if(s4.value == "li"){
+		var optionArray = ["pa|Physical Activity","al|Alcohol Use","nu|Nutrition","tb|Tobacco Use"];
+	} else if(s4.value == "sh"){
+		var optionArray = ["sr|Self-Health Rating","bmi|Body Mass Index","le|Life Expectancy"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s5.options.add(newOption);
+	}
+}
+</script>
+
+<select id="slct5" name="slct5"></select>
+<br>among:
+<select id="mySelect6">
+  <option value="1">Everyone
+  <option value="2">Men
+  <option value="3">Women
+</select>
+</form> <button class='button2' onclick="myFunction2()">OK!</button>
+    </div>
+
+<script>
+function myFunction2() {
+    var x = document.getElementById("frm2");
+    var text = "";
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value;
+    }
+    frames['iframe2'].location.href = "mapsdata/e" + text + ".htm"
+}
+</script>
+<div class = "message">
+Here is a set of interactive set of maps intended to allow users to explore how lifestyles influence (or don't influence) health outcomes at the Brazilian state level. For my final project I used data at the municipal level from <a href="http://www.atlasbrasil.org.br/2013/" style = "color: grey; font-family: Segoe UI">the atlas of human development in Brazil</a>. 
+</div>
+<div class = "cite">
+Data were obtained from the Instituto Brasileiro de Geografia e Estatística (IBGE) at: <a href="http://www.ibge.gov.br/home/" style="color:grey"> http://www.ibge.gov.br/home</a><br>
+</div>
+
+
+<div class = "line3">
+<hr>
+This webpage was written by harry in Notepad in 2015 and is not currently updated to the bootstrapped 2016 version of the site. Sorry.
+</div>
+
+
+</body>
+</html>

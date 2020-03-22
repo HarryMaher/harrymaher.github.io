@@ -1,0 +1,128 @@
+﻿<html>
+
+
+<style>
+p {
+    position: fixed;
+    text-align: center;
+    width: 477px;
+    top: -20px;
+    left: 0px;
+    z-index: 1;
+    line-height: 100%;
+    font-family: Segoe UI, Arial; 
+    color: grey;
+    font-size: 130%;
+}
+
+div.hm {
+    text-align: center;
+    width: 100px;
+    height: 20px;
+    position: fixed;
+    top: 405px;
+    left: 380px;
+    z-index: 2;
+    font-family: Segoe UI, Arial;
+    font-size: 85%
+}
+
+div.regions_div {
+    position: fixed;
+    top: 35px;
+    left:0px;
+    font-family: Segoe UI; 
+    color: grey;
+}
+
+div.num {
+    display: inline-block;
+    font-family:  Segoe UI; color: grey;
+}
+
+</style>
+<head>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type='text/javascript'>
+  google.load('visualization', '1.1', {
+      packages: ['geochart'],
+      callback: drawRegionsMap
+  });
+
+  function drawRegionsMap() {
+
+      var data = google.visualization.arrayToDataTable([
+          ['State', 'Value', {
+              role: 'tooltip',
+              p: {
+                  html: true
+              }
+          }],  
+[{v:"Rondônia" ,f:""}, 12.1, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Bandeira_de_Rond%C3%B4nia.svg/320px-Bandeira_de_Rond%C3%B4nia.svg.png" width=22" height="12"/><b><big><big>&nbsp;Rondônia</big></br>Percent: <div class ="num" id="num">12.1</div>%</b></br>Population: <div class ="num" id="num">1,728,214</div></br>Per Capita Income in R$: <div class ="num" id="num">18,466</div></br>HDI: <div class ="num" id="num"> 0.690</div></big>' ],
+[{v:"Acre" ,f:""}, 19.3, '<img src= "http://upload.wikimedia.org/wikipedia/commons/4/4c/Bandeira_do_Acre.svg" width=22" height="12"/><b><big><big>&nbsp;Acre</big></br>Percent: <div class ="num" id="num">19.3</div>%</b></br>Population: <div class ="num" id="num">776,463</div></br>Per Capita Income in R$: <div class ="num" id="num">12,690</div></br>HDI: <div class ="num" id="num"> 0.663</div></big>' ],
+[{v:"Amazonas" ,f:""}, 13.4, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bandeira_do_Amazonas.svg/320px-Bandeira_do_Amazonas.svg.png" width=22" height="12"/><b><big><big>&nbsp;Amazonas</big></br>Percent: <div class ="num" id="num">13.4</div>%</b></br>Population: <div class ="num" id="num">3,807,921</div></br>Per Capita Income in R$: <div class ="num" id="num">17,856</div></br>HDI: <div class ="num" id="num"> 0.674</div></big>' ],
+[{v:"Roraima" ,f:""}, 14.5, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Bandeira_de_Roraima.svg/320px-Bandeira_de_Roraima.svg.png" width=22" height="12"/><b><big><big>&nbsp;Roraima</big></br>Percent: <div class ="num" id="num">14.5</div>%</b></br>Population: <div class ="num" id="num">488,072</div></br>Per Capita Income in R$: <div class ="num" id="num">15,577</div></br>HDI: <div class ="num" id="num"> 0.707</div></big>' ],
+[{v:"Pará" ,f:""}, 13.0, '<img src= "http://upload.wikimedia.org/wikipedia/commons/0/02/Bandeira_do_Par%C3%A1.svg" width=22" height="12"/><b><big><big>&nbsp;Pará</big></br>Percent: <div class ="num" id="num">13.0</div>%</b></br>Population: <div class ="num" id="num">7,969,654</div></br>Per Capita Income in R$: <div class ="num" id="num">11,679</div></br>HDI: <div class ="num" id="num"> 0.646</div></big>' ],
+[{v:"Amapá" ,f:""}, 13.3, '<img src= "http://upload.wikimedia.org/wikipedia/commons/0/0c/Bandeira_do_Amap%C3%A1.svg" width=22" height="12"/><b><big><big>&nbsp;Amapá</big></br>Percent: <div class ="num" id="num">13.3</div>%</b></br>Population: <div class ="num" id="num">734,996</div></br>Per Capita Income in R$: <div class ="num" id="num">14,915</div></br>HDI: <div class ="num" id="num"> 0.708</div></big>' ],
+[{v:"Tocantins" ,f:""}, 14.6, '<img src= "http://www.printableworldflags.com/large-flags/Brazil_Tocantins_Flag-133.gif" width=22" height="12"/><b><big><big>&nbsp;Tocantins</big></br>Percent: <div class ="num" id="num">14.6</div>%</b></br>Population: <div class ="num" id="num">1,478,164</div></br>Per Capita Income in R$: <div class ="num" id="num">13,776</div></br>HDI: <div class ="num" id="num"> 0.699</div></big>' ],
+[{v:"Maranhão" ,f:""}, 15.8, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Bandeira_do_Maranh%C3%A3o.svg/320px-Bandeira_do_Maranh%C3%A3o.svg.png" width=22" height="12"/><b><big><big>&nbsp;Maranhão</big></br>Percent: <div class ="num" id="num">15.8</div>%</b></br>Population: <div class ="num" id="num">6,794,301</div></br>Per Capita Income in R$: <div class ="num" id="num">8,760</div></br>HDI: <div class ="num" id="num"> 0.639</div></big>' ],
+[{v:"Piauí" ,f:""}, 18.0, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Bandeira_do_Piau%C3%AD.svg/320px-Bandeira_do_Piau%C3%AD.svg.png" width=22" height="12"/><b><big><big>&nbsp;Piauí</big></br>Percent: <div class ="num" id="num">18.0</div>%</b></br>Population: <div class ="num" id="num">3,184,166</div></br>Per Capita Income in R$: <div class ="num" id="num">8,138</div></br>HDI: <div class ="num" id="num"> 0.646</div></big>' ],
+[{v:"Ceará" ,f:""}, 17.1, '<img src= "http://upload.wikimedia.org/wikipedia/commons/2/2e/Bandeira_do_Cear%C3%A1.svg" width=22" height="12"/><b><big><big>&nbsp;Ceará</big></br>Percent: <div class ="num" id="num">17.1</div>%</b></br>Population: <div class ="num" id="num">8,778,576</div></br>Per Capita Income in R$: <div class ="num" id="num">10,473</div></br>HDI: <div class ="num" id="num"> 0.682</div></big>' ],
+[{v:"Rio Grande do Norte" ,f:""}, 13.5, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Bandeira_do_Rio_Grande_do_Norte.svg/320px-Bandeira_do_Rio_Grande_do_Norte.svg.png" width=22" height="12"/><b><big><big>&nbsp;Rio Grande do Norte</big></br>Percent: <div class ="num" id="num">13.5</div>%</b></br>Population: <div class ="num" id="num">3,373,959</div></br>Per Capita Income in R$: <div class ="num" id="num">12,249</div></br>HDI: <div class ="num" id="num"> 0.684</div></big>' ],
+[{v:"Paraíba" ,f:""}, 12.7, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Bandeira_da_Para%C3%ADba.svg/320px-Bandeira_da_Para%C3%ADba.svg.png" width=22" height="12"/><b><big><big>&nbsp;Paraíba</big></br>Percent: <div class ="num" id="num">12.7</div>%</b></br>Population: <div class ="num" id="num">3,914,421</div></br>Per Capita Income in R$: <div class ="num" id="num">10,152</div></br>HDI: <div class ="num" id="num"> 0.658</div></big>' ],
+[{v:"Pernambuco" ,f:""}, 15.2, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Bandeira_de_Pernambuco.svg/320px-Bandeira_de_Pernambuco.svg.png" width=22" height="12"/><b><big><big>&nbsp;Pernambuco</big></br>Percent: <div class ="num" id="num">15.2</div>%</b></br>Population: <div class ="num" id="num">9,208,550</div></br>Per Capita Income in R$: <div class ="num" id="num">13,138</div></br>HDI: <div class ="num" id="num"> 0.673</div></big>' ],
+[{v:"Alagoas" ,f:""}, 13.1, '<img src= "http://upload.wikimedia.org/wikipedia/commons/8/88/Bandeira_de_Alagoas.svg" width=22" height="12"/><b><big><big>&nbsp;Alagoas</big></br>Percent: <div class ="num" id="num">13.1</div>%</b></br>Population: <div class ="num" id="num">3,300,935</div></br>Per Capita Income in R$: <div class ="num" id="num">9,333</div></br>HDI: <div class ="num" id="num"> 0.631</div></big>' ],
+[{v:"Sergipe" ,f:""}, 12.0, '<img src= "http://upload.wikimedia.org/wikipedia/commons/b/be/Bandeira_de_Sergipe.svg" width=22" height="12"/><b><big><big>&nbsp;Sergipe</big></br>Percent: <div class ="num" id="num">12.0</div>%</b></br>Population: <div class ="num" id="num">2,195,662</div></br>Per Capita Income in R$: <div class ="num" id="num">13,181</div></br>HDI: <div class ="num" id="num"> 0.665</div></big>' ],
+[{v:"Bahia" ,f:""}, 13.5, '<img src= "http://upload.wikimedia.org/wikipedia/commons/2/28/Bandeira_da_Bahia.svg" width=22" height="12"/><b><big><big>&nbsp;Bahia</big></br>Percent: <div class ="num" id="num">13.5</div>%</b></br>Population: <div class ="num" id="num">1,5044,137</div></br>Per Capita Income in R$: <div class ="num" id="num">11,832</div></br>HDI: <div class ="num" id="num"> 0.660</div></big>' ],
+[{v:"Minas Gerais" ,f:""}, 18.1, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Bandeira_de_Minas_Gerais.svg/320px-Bandeira_de_Minas_Gerais.svg.png" width=22" height="12"/><b><big><big>&nbsp;Minas Gerais</big></br>Percent: <div class ="num" id="num">18.1</div>%</b></br>Population: <div class ="num" id="num">20,593,356</div></br>Per Capita Income in R$: <div class ="num" id="num">20,325</div></br>HDI: <div class ="num" id="num"> 0.731</div></big>' ],
+[{v:"Espírito Santo" ,f:""}, 13.1, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bandeira_do_Esp%C3%ADrito_Santo.svg/320px-Bandeira_do_Esp%C3%ADrito_Santo.svg.png" width=22" height="12"/><b><big><big>&nbsp;Espírito Santo</big></br>Percent: <div class ="num" id="num">13.1</div>%</b></br>Population: <div class ="num" id="num">3,839,366</div></br>Per Capita Income in R$: <div class ="num" id="num">29,996</div></br>HDI: <div class ="num" id="num"> 0.740</div></big>' ],
+[{v:"Rio de Janeiro" ,f:""}, 12.7, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Bandeira_do_estado_do_Rio_de_Janeiro.svg/320px-Bandeira_do_estado_do_Rio_de_Janeiro.svg.png" width=22" height="12"/><b><big><big>&nbsp;Rio de Janeiro</big></br>Percent: <div class ="num" id="num">12.7</div>%</b></br>Population: <div class ="num" id="num">16,369,179</div></br>Per Capita Income in R$: <div class ="num" id="num">31,065</div></br>HDI: <div class ="num" id="num"> 0.761</div></big>' ],
+[{v:"São Paulo" ,f:""}, 14.9, '<img src= "http://upload.wikimedia.org/wikipedia/commons/2/2b/Bandeira_do_estado_de_S%C3%A3o_Paulo.svg" width=22" height="12"/><b><big><big>&nbsp;São Paulo</big></br>Percent: <div class ="num" id="num">14.9</div>%</b></br>Population: <div class ="num" id="num">43,663,669</div></br>Per Capita Income in R$: <div class ="num" id="num">33,624</div></br>HDI: <div class ="num" id="num"> 0.783</div></big>' ],
+[{v:"Paraná" ,f:""}, 18.1, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Bandeira_do_Paran%C3%A1.svg/320px-Bandeira_do_Paran%C3%A1.svg.png" width=22" height="12"/><b><big><big>&nbsp;Paraná</big></br>Percent: <div class ="num" id="num">18.1</div>%</b></br>Population: <div class ="num" id="num">10,997,465</div></br>Per Capita Income in R$: <div class ="num" id="num">24,195</div></br>HDI: <div class ="num" id="num"> 0.749</div></big>' ],
+[{v:"Santa Catarina" ,f:""}, 16.0, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Bandeira_de_Santa_Catarina.svg/320px-Bandeira_de_Santa_Catarina.svg.png" width=22" height="12"/><b><big><big>&nbsp;Santa Catarina</big></br>Percent: <div class ="num" id="num">16.0</div>%</b></br>Population: <div class ="num" id="num">6,634,254</div></br>Per Capita Income in R$: <div class ="num" id="num">27,772</div></br>HDI: <div class ="num" id="num"> 0.774</div></big>' ],
+[{v:"Rio Grande do Sul" ,f:""}, 14.2, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bandeira_do_Rio_Grande_do_Sul.svg/320px-Bandeira_do_Rio_Grande_do_Sul.svg.png" width=22" height="12"/><b><big><big>&nbsp;Rio Grande do Sul</big></br>Percent: <div class ="num" id="num">14.2</div>%</b></br>Population: <div class ="num" id="num">11,164,043</div></br>Per Capita Income in R$: <div class ="num" id="num">25,779</div></br>HDI: <div class ="num" id="num"> 0.746</div></big>' ],
+[{v:"Mato Grosso do Sul" ,f:""}, 18.6, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Bandeira_de_Mato_Grosso_do_Sul.svg/320px-Bandeira_de_Mato_Grosso_do_Sul.svg.png" width=22" height="12"/><b><big><big>&nbsp;Mato Grosso do Sul</big></br>Percent: <div class ="num" id="num">18.6</div>%</b></br>Population: <div class ="num" id="num">2,587,269</div></br>Per Capita Income in R$: <div class ="num" id="num">21,744</div></br>HDI: <div class ="num" id="num"> 0.729</div></big>' ],
+[{v:"Mato Grosso" ,f:""}, 12.8, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Bandeira_de_Mato_Grosso.svg/320px-Bandeira_de_Mato_Grosso.svg.png" width=22" height="12"/><b><big><big>&nbsp;Mato Grosso</big></br>Percent: <div class ="num" id="num">12.8</div>%</b></br>Population: <div class ="num" id="num">3,182,113</div></br>Per Capita Income in R$: <div class ="num" id="num">25,946</div></br>HDI: <div class ="num" id="num"> 0.725</div></big>' ],
+[{v:"Goiás" ,f:""}, 14.0, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Bandeira_de_Goi%C3%A1s.svg/320px-Bandeira_de_Goi%C3%A1s.svg.png" width=22" height="12"/><b><big><big>&nbsp;Goiás</big></br>Percent: <div class ="num" id="num">14.0</div>%</b></br>Population: <div class ="num" id="num">6,434,048</div></br>Per Capita Income in R$: <div class ="num" id="num">20,134</div></br>HDI: <div class ="num" id="num"> 0.735</div></big>' ],
+[{v:"Distrito Federal" ,f:""}, 11.0, '<img src= "http://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bandeira_do_Distrito_Federal_%28Brasil%29.svg/320px-Bandeira_do_Distrito_Federal_%28Brasil%29.svg.png" width=22" height="12"/><b><big><big>&nbsp;Distrito Federal</big></br>Percent: <div class ="num" id="num">11.0</div>%</b></br>Population: <div class ="num" id="num">2,789,761</div></br>Per Capita Income in R$: <div class ="num" id="num">64,653</div></br>HDI: <div class ="num" id="num"> 0.824</div></big>' ],
+
+["united states", 7, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bandeira_do_Distrito_Federal_%28Brasil%29.svg/320px-Bandeira_do_Distrito_Federal_%28Brasil%29.svg.png" width="22" height="12"/> Percent:<b> 25.8%</b></br>Population: 2,789,761</br>Per Capita Income in R$: 64,653</br>HDI:  0.824'],
+["iran", 24, '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bandeira_do_Distrito_Federal_%28Brasil%29.svg/320px-Bandeira_do_Distrito_Federal_%28Brasil%29.svg.png" width="22" height="12"/> Percent:<b> 25.8%</b></br>Population: 2,789,761</br>Per Capita Income in R$: 64,653</br>HDI:  0.824'],
+
+
+      ]);
+
+      var options = {
+          region: 'BR',
+          displayMode: 'regions',
+          resolution: 'provinces',
+          width: 620,
+          height: 400,
+          colorAxis: {colors: ['#FFE6E6', '#FF0000', '#660000']},
+          tooltip: {
+              isHtml: true
+          },
+          legend: {
+              textStyle: {
+                  fontName: 'Book Antiqua',
+                  auraColor: 'none',
+              }
+          }
+
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+      chart.draw(data, options);
+  }
+</script>
+
+</head>
+<body>
+<div class='title'>    
+<p> Percent of current users of tobacco products (%)</p></div>
+
+    <div class='hm'><span> <a href="http://www.harrymaher.net" target = "_blank" style="text-decoration: none; color:grey"> Harry Maher </a></span></div>
+
+    <span style="cursor:pointer"><div class="regions_div" id="regions_div"></div> </span>
+</body></html>

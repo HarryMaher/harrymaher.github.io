@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Harry Maher</title>
+  <link rel="icon" type="image/ico" href="north.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="Bootstrap3.2.0/css/bootstrap.min.css">
+  <script src="jquery/jquery.min.js"></script>
+  <script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
+
+<!-- Pls don't read this code until the next update !-->
+  <script>
+	var grinnellStudent= "</div><div class='container-fluid'><div class='row'><div class='col-xs-7' style='' id= 'title'><h3>Grinnell College Student</h3></div><div class='col-xs-5' style='text-align:right;' id= 'dates'><h3><small>Aug. 2011 - May 2015</small></div></div><i>Grinnell College, Grinnell, IA</i><p><li>Graduated May 2015 with a B.A. in Psychology with a Neuroscience concentration with 3.6 GPA </li><p><li>Awards/Honors: Dean's List twice, four times Acadmeic All-Conference XC, Nationwide Center For Anthropology Essay Contest Winner</li></p></div></div>"
+	var courseraStudent= "</div><div class='container-fluid'><div class='row'><div class='col-xs-7' style='' id= 'title'><h3>Data Analysis Student</h3></div><div class='col-xs-5' style='text-align:right;' id= 'dates'><h3><small>Aug. 2011 - May 2015</small></div></div><i>Online</i><p><li>Enrolled in Data Analysis Specialization offered through Johns Hopkins</li><p><li>Completed courses include: R Programming, Getting and Cleaning Data, Exploratory Data Analysis</li></p></div></div>"
+	var NRHSStudent= "</div><div class='container-fluid'><div class='row'><div class='col-xs-7' style='' id= 'title'><h3>New Rochelle High Student</h3></div><div class='col-xs-5' style='text-align:right;' id= 'dates'><h3><small>Sept. 2008 - June 2011</small></div></div><i>New Rochelle High School, New Rochelle, NY</i><p><li>Graduated June 2011</li><p><li>Awards/Honors: AP Scholar with Distinction, Scholar-Athlete of the Year, 2011</li></p></div></div>"
+ 	var dasilDescription= '<div style="height:350px; overflow:auto;"> <div class="container-fluid"><div class="row"><div class="col-xs-7" style="" id= "title"><h3>Data Analyst&#8201;/&#8201;Tutor</h3></div><div class="col-xs-5" style="text-align:right;" id= "dates"><h3><small>Jan. 2013 - May 2015</small></div></div><i>Grinnell College, Grinnell, IA</i><p><li>Located, cleaned, and analyzed data sets for use in class exercises </li></p><p><li>Assisted students, professors, and campus groups with data collection, analysis, and visualization using Excel, SPSS, Minitab, and ArcGIS </li></p><p><li>Helped produce online visualizations using JavaScript, HTML, and CSS as well as publish online maps using ArcGISOnline and Google Maps Engine. Some public visualizations are up at <a>http://dasil.grinnell.edu</a></li><p><li>Assisted professors in solving big spatial data problems in work for academic publication</li></p>' + grinnellStudent
+	var splashDescription = '<div style="height:350px; overflow:auto;"> <div class="container-fluid"><div class="row"><div class="col-xs-8" style="" id= "title"><h3>Health & Hygiene Researcher</h3></div><div class="col-xs-4" style="text-align:right;" id= "dates"><h3><small>Dec. 2015 – Present</small></div></div><i>Splash-Nepal, Kathmandu, Nepal</i><p><li>Study the impact of different education and sanitation interventions on hand washing at 20 schools in Kathmandu Valley using cameras to observe behaviors; record data; analyze results both quantitatively and qualitatively; provide feedback and recommendations to Splash headquarters for future programming to maximize effectiveness, sustainability, and scaling-up potential.</li></p><p><li>Collaborate and communicate with Splash-Nepal and Splash-International teams in Kathmandu and Seattle, respectively, and act as a liaison for communication between the two</li></p>	<p><li>Rewrote and designed hygiene education manual for teachers</li></p>' + courseraStudent
+	var teachDescription = '<div style="height:350px; overflow:auto;"> <div class="container-fluid"><div class="row"><div class="col-xs-6" style="" id= "title"><h3>Volunteer Teacher</h3></div><div class="col-xs-6" style="text-align:right;" id= "dates"><h3><small>Sept. 2015 – Dec. 2015</small></div></div> <i>Agape Academy, Santalabari, West Bengal, India</i><p><li>Taught secondary level English grammar classes and a weekly ethics class to all students on such topics as gender equality, environmental sustainability, and civil disobedience</li></p><p><li>Conducted and presented institutional research on factors that influence student grades and matriculation rates such native language and caste</li></p> <p><li>Designed and taught a computer class with the intention of introducing computer science concepts to 8th graders</li></p></div></div>'
+	var nwsDescription= '<div style="height:350px; overflow:auto;"> <div class="container-fluid"><div class="row"><div class="col-xs-6" style="" id= "title"><h3>Resident Advisor</h3></div><div class="col-xs-6" style="text-align:right;" id= "dates"><h3><small>Summers 2012 – 2015</small></div></div> <i>The Northwest School, Seattle, Washington</i><p><li>Supervised predominantly international high school and middle school students enrolled in The Northwest School Summer Camp program</li></p><p><li>Organized and facilitated large group activities and trips to Seattle attractions</li></p><p><li>Maintained good communication with other RAs to work as an effective team</li></p><p><li>Provided academic, emotional, and social support for students while cultivating a safe, open-minded,  engaged, culturally competent community of global citizens </li></p></div></div>'
+	var iracambiDescription= '<div style="height:350px; overflow:auto;"> <div class="container-fluid"><div class="row"><div class="col-xs-6" style="" id= "title"><h3>GIS Intern</h3></div><div class="col-xs-6" style="text-align:right;" id= "dates"><h3><small>Jan. 2014 – May 2014</small></div></div> <i>Iracambi, Rosario da Limeira, MG, Brazil</i><p><li>Worked on a team that helped map plans for new wildlife corridors using specific environmental criteria and went to farms to speak to local farmers to discuss how they could partner with Iracambi to aid in reforestation attempts of the delicate ecosystem</li></p><p><li>Created spatial database of reforestation activity done by the organization</li></p><p><li>Created land use maps, trail maps, and maps of local flora and fauna</li></p><p><li>Reorganized old GIS databases using ArcCatalog</li></p>'+ grinnellStudent
+	var obcDescription= '<div style="height:350px; overflow:auto;"> <div class="container-fluid"><div class="row"><div class="col-xs-6" style="" id= "title"><h3>Short Order Cook</h3></div><div class="col-xs-6" style="text-align:right;" id= "dates"><h3><small>Summers 2010, 2011</small></div></div> <i>Orienta Beach Club, Mamaroneck, New York</i><p><li>Maintained friendly interactions with customers</li></p> <p><li>Heavy multitasking: during rush hours was responsible for cooking up to a dozen orders at once and delivering them on <i>short order</i></li></p><p><li>Maintained a clean and sanitary work space</li></p>' + NRHSStudent
+	var dhallDescription= "<div style='height:350px; overflow:auto;'> <div class='container-fluid'><div class='row'><div class='col-xs-6' style='' id= 'title'><h3>Various Positions</h3></div><div class='col-xs-6' style='text-align:right;' id= 'dates'><h3><small>Jan. 2012 - Dec 2012</small></div></div> <i>Grinnell College Dining Hall, Mamaroneck, New York</i><p><p><li>Maintained a clean and sanitary work space</li></p><p><li>Required to be adaptable - different positions included: Baker's Helper, Custodial Work, Stir-Fry cook, and Line Prep </li></p>"+ grinnellStudent
+	
+	// so this block is all the jobs.
+$(document).ready(function(){
+	$(".spl-npl").click(splash);
+    $(".spl-npl").mouseenter(function(){
+        $(".spl-npl").css("opacity", 1.0);
+		$("#job").html("Splash-Nepal - Health and Hygiene Researcher");
+    }).mouseleave(function() { 
+    $(".spl-npl").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+});
+$(document).ready(function(){
+	$(".tch-stl").css("opacity", .8);
+	$(".tch-stl").click(agape);
+    $(".tch-stl").mouseenter(function(){
+        $(".tch-stl").css("opacity", 1.0);
+		$("#job").html("Agape Academy - Teacher");
+    }).mouseleave(function() { 
+    $(".tch-stl").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+});
+$(document).ready(function(){
+	$(".drm-sea").css("opacity", .8);
+	$(".drm-sea").click(nws);
+    $(".drm-sea").mouseenter(function(){
+        $(".drm-sea").css("opacity", 1.0);
+		$("#job").html("The Northwest School - Resident Advisor");
+    }).mouseleave(function() { 
+    $(".drm-sea").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+});
+$(document).ready(function(){
+	$(".dssl-grnl").css("opacity", .8);
+	$(".dssl-grnl").click(dslgrn);
+    $(".dssl-grnl").mouseenter(function(){
+        $(".dssl-grnl").css("opacity", 1.0);
+		$("#job").html("Grinnell Data Analysis And Social Inquiry Lab - Tutor/Analyst");
+    }).mouseleave(function() { 
+    $(".dssl-grnl").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+});
+$(document).ready(function(){
+	$(".dhall-grnl").css("opacity", .8);
+	$(".dhall-grnl").click(gdh);
+    $(".dhall-grnl").mouseenter(function(){
+        $(".dhall-grnl").css("opacity", 1.0);
+		$("#job").html("Grinnell Dining Hall - Cook");
+    }).mouseleave(function() { 
+    $(".dhall-grnl").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+});
+$(document).ready(function(){
+	$(".ira-bra").css("opacity", .8);
+	$(".ira-bra").click(iracambi);
+    $(".ira-bra").mouseenter(function(){
+        $(".ira-bra").css("opacity", 1.0);
+		$("#job").html("Iracambi - GIS Intern");
+    }).mouseleave(function() { 
+    $(".ira-bra").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+});
+$(document).ready(function(){
+	$(".obc-mmk").css("opacity", .8);
+	$(".obc-mmk").click(obcyo);
+    $(".obc-mmk").mouseenter(function(){
+        $(".obc-mmk").css("opacity", 1.0);
+		$("#job").html("Orienta Beach Club - Short Order Cook");
+    }).mouseleave(function() { 
+    $(".obc-mmk").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+});
+$(document).ready(function(){
+	$(".GC1").css("opacity", .8);
+	$(".GC1").click(gdh);
+    $(".GC1").mouseenter(function(){
+        $(".GC1").css("opacity", 1.0);
+		$("#job").html("Grinnell College - Year 1");
+    }).mouseleave(function() { 
+    $(".GC1").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+	$(".GC2").css("opacity", .8);
+	$(".GC2").click(dslgrn);
+    $(".GC2").mouseenter(function(){
+        $(".GC2").css("opacity", 1.0);
+		$("#job").html("Grinnell College - Year 2");
+    }).mouseleave(function() { 
+    $(".GC2").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+	$(".GC3").css("opacity", .8);
+	$(".GC3").click(iracambi);
+    $(".GC3").mouseenter(function(){
+        $(".GC3").css("opacity", 1.0);
+		$("#job").html("Grinnell College - Year 3");
+    }).mouseleave(function() { 
+    $(".GC3").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+	$(".GC4").css("opacity", .8);
+	$(".GC4").click(GC4fn);
+    $(".GC4").mouseenter(function(){
+        $(".GC4").css("opacity", 1.0);
+		$("#job").html("Grinnell College - Year 4");
+    }).mouseleave(function() { 
+    $(".GC4").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+	$(".NRHS").css("opacity", .8);
+	$(".NRHS").click(obcyo);
+    $(".NRHS").mouseenter(function(){
+        $(".NRHS").css("opacity", 1.0);
+		$("#job").html("New Rochelle High School");
+    }).mouseleave(function() { 
+    $(".NRHS").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+	$(".courserayo").css("opacity", .8);
+	$(".courserayo").click(splash);
+    $(".courserayo").mouseenter(function(){
+        $(".courserayo").css("opacity", 1.0);
+		$("#job").html("Coursera - Data Science Specialization");
+    }).mouseleave(function() { 
+    $(".courserayo").css("opacity", .8);
+	$("#job").html("&emsp;");
+	});
+});
+
+</script>
+  <script src="Bootstrap3.2.0/js/bootstrap.min.js"></script>
+  <script>
+  
+  // this pushes the timeline value to the box value. but I'll hide the box in the end...
+	function update(val) {
+		document.getElementById('textInput').value=val;
+		updateTimeline(val);
+	}
+	function splash(){
+		document.getElementById('slipnslide').value=282;
+		update(282);
+		$("#Description").html(splashDescription);
+		changeCoords(splashCoords);
+	}
+	function agape(){
+		document.getElementById('slipnslide').value=262;
+		update(262);
+		$("#Description").html(teachDescription);
+		changeCoords(agapeCoords);
+	}
+	function nws(){
+		document.getElementById('slipnslide').value=68;
+		update(70);
+		$("#Description").html(nwsDescription);
+		changeCoords(nwsCoords);
+	}
+	function dslgrn(){
+		document.getElementById('slipnslide').value=103;
+		update(103);
+		$("#Description").html(dasilDescription);
+		changeCoords(dasilCoords);
+	}
+	function obcyo(){
+		document.getElementById('slipnslide').value=0;
+		update(0);
+		$("Description").html(obcDescription);
+		changeCoords(obcCoords);
+	}
+	function gdh(){
+		document.getElementById('slipnslide').value=37;
+		update(37);
+		changeCoords(dhallCoords);
+		$("Description").html(dhallDescription);
+	}
+	function iracambi(){
+		document.getElementById('slipnslide').value=164;
+		update(164);
+		$("#Description").html(iracambiDescription)
+		changeCoords(iracambiCoords);
+	}
+	function GC4fn(){
+		document.getElementById('slipnslide').value=200;
+		update(200);
+		$("#Description").html(iracambiDescription)
+		changeCoords(dasilCoords);
+	}
+	
+	function updateTimeline(val){
+	    if(val >= 282){
+		$(".spl-npl").css("opacity", 1.0);
+		$(".tch-stl").css("opacity", .8);
+		$("#Description").html(splashDescription);
+		changeCoords(splashCoords);
+		} else if(val < 282 && val >= 261){
+		$(".tch-stl").css("opacity", 1.0);
+		$(".spl-npl").css("opacity", .8);
+		$(".drm-sea").css("opacity", .8);
+		$("#Description").html(teachDescription);
+		changeCoords(agapeCoords);
+		} else if(val < 262 && val >= 250 || val < 199 && val >= 189 || val < 139 && val >= 129 || val < 79 && val >= 68){
+		$(".tch-stl").css("opacity", .8);
+		$(".dssl-grnl").css("opacity", .8);
+		$(".drm-sea").css("opacity", 1.0);
+		$(".dhall-grnl").css("opacity", .8);
+		$("#Description").html(nwsDescription);
+		changeCoords(nwsCoords);
+		}else if(val < 250 && val >= 199 || val < 164 && val >= 139 || val < 129 && val >= 103){
+		$(".drm-sea").css("opacity", .8);
+		$(".ira-bra").css("opacity", .8);
+		$(".dssl-grnl").css("opacity", 1.0);
+		$(".dhall-grnl").css("opacity", .8);
+		$("#Description").html(dasilDescription);
+		changeCoords(dasilCoords);
+		}else if(val < 189 && val >= 164){
+		$(".dssl-grnl").css("opacity", .8);
+		$(".ira-bra").css("opacity", 1.0);
+		$(".drm-sea").css("opacity", .8);
+		$("#Description").html(iracambiDescription);
+		changeCoords(iracambiCoords);
+		}else if(val < 103 && val >= 79 || val < 68 && val >=13){
+		$(".dssl-grnl").css("opacity", .8);
+		$(".dhall-grnl").css("opacity", 1.0);
+		$(".drm-sea").css("opacity", .8);
+		$(".obc-mmk").css("opacity", .8);
+		$("#Description").html(dhallDescription);
+		changeCoords(dhallCoords);
+		}else if(val < 13){
+		$(".dhall-grnl").css("opacity", .8);
+		$(".obc-mmk").css("opacity", 1.0);
+		$("#Description").html(obcDescription);
+		changeCoords(obcCoords);
+		}else{
+		$(".obc-mmk").css("opacity", .8);
+		$("#job").html("&emsp;");
+		}
+	}
+	
+
+  </script>
+  <style type="text/css">
+	.navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0;
+    border-radius: 4;
+    margin-bottom: 0;
+    font-size: 15px;
+    letter-spacing: 4px;
+	background-color: #41b6c4;
+	font-family: segoe ui;
+	color: #225ea8;
+	}
+	.navbar-nav li a:link, li a:visited{
+	display: block;
+	background-color: #225ea8;
+	color: #7fcdbb;
+	text-align: center;
+	}
+	.navbar-nav li a:hover {
+	background-color: #41b6c4;
+    color: #225ea8 !important;
+	}
+	body {
+	background-color: ;
+	color: #225ea8;
+	font-family: segoe ui;
+	}
+	#wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+	color: #225ea8;
+	font-family: segoe ui;
+	font-size: 1.09em;
+	}
+	#description{
+	height: 360px;
+	width: 100%;
+	overflow: scroll;
+	}
+	small{
+	color: #225ea8 !important;
+	}
+	
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #41b6c4;
+  border-radius: 0px;
+}
+input[type=range]::-webkit-slider-thumb {
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 0px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #41b6c4;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #41b6c4;
+  border-radius: 0px;
+}
+input[type=range]::-moz-range-thumb {
+  height: 30px;
+  width: 15px;
+  border-radius: 0px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 0%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0px;
+}
+input[type=range]::-ms-fill-upper {
+  background: #41b6c4;
+  border: 1px solid transparent;
+  border-radius: 0px;
+}
+input[type=range]::-ms-thumb {
+  border: 1px solid transparent;
+  height: 30px;
+  width: 15px;
+  border-radius: 0px;
+  background: transparent;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: transparent;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: transparent;
+}
+
+table { 
+  width: 100%; 
+  height: 66px;
+  border-collapse: collapse; 
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+	
+.tg  {border-collapse:collapse;border-spacing:0;border-width:0px;border-style:solid;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 0px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 0px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg .tch-stl{background-color:#41b6c4;vertical-align:top}
+.tg .drm-sea{background-color:#7fcdbb;vertical-align:top}
+.tg .spl-npl{background-color:#225ea8;;vertical-align:top}
+.tg .dhall-grnl{background-color:#c7e9b4;vertical-align:top}
+.tg .ira-bra{background-color:#1d91c0;vertical-align:top}
+.tg .obc-mmk{background-color:#edf8b1;vertical-align:top}
+.tg .dssl-grnl{background-color:#0c2c84;vertical-align:top}
+.tg .blank{background-color:#ffffd9; vertical-align:top; cursor: default !important;}
+.tg .NRHS{background-color: #c7e9b4; vertical-align: top}
+.tg .GC1{background-color: #7fcdbb; vertical-align:top}
+.tg .GC2{background-color: #41b6c4; vertical-align:top}
+.tg .GC3{background-color: #1d91c0; vertical-align:top}
+.tg .GC4{background-color: #225ea8; vertical-align:top}
+.tg .courserayo{background-color: #0c2c84; vertical-align: top}
+.tg .sea-ctrl{background-color: #c7e9b4; vertical-align: top}
+	#map {top:0; bottom:0; width:100%; height: 360px;}
+	.leaflet-compact-attribution, path, input#textInput{
+	display: none !important;
+	}
+	html, body, #wrapper, #welcome, #resume{
+	height: 100%
+	}
+	body{
+	background-color: white;
+	}
+	#welcome{
+	text-align:center;
+	background-color: #225ea8;
+	color: #7fcdbb;
+	}
+	#resume{
+	background-color: #FFFFFF;
+	}
+	.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #225ea8; 
+  color:#7fcdbb;
+  text-align: center;}
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div id="welcome">
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="index.html" style="font-size: 2.9em; letter-spacing: 2px; color: #225ea8">Harry Maher</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+		<li><a href="index.html" style= "color: #7fcdbb">home</a></li>
+        <li><a href="content.html" style= "color: #7fcdbb">stuff</a></li>
+        <li><a href="about.html" style= "color: #7fcdbb">about</a></li>
+        <li><a href="contact.html" style= "color: #7fcdbb">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<h3 style="position: relative; top:20%">Hello! <br><br>check out my <a href="#resume" style="color:#41b6c4">interactive resume</a>, <br><br>check out some <a href="content.html"style="color:#41b6c4">stuff</a> I've made, <br><br>or <a href="contact.html"style="color:#41b6c4">tell</a> me something. </h3>
+</div>
+<div id= "resume">
+<div id="wrapper">
+<div id="center" style="text-align:center"><br>
+<h4>Timeline Resume Directions:</h4> The top row of colors is job experience, the bottom row is education. <br>Click and slide around to see. The colors are from least to most relevant.
+</div>
+<div class="container-fluid">
+	<div class="row">
+	<br>
+	<div class="col-xs-6 col-xs-push-6">
+		<div id='map'></div>
+		<script>
+		L.mapbox.accessToken = 'pk.eyJ1IjoibWFoZXJoYXIiLCJhIjoiY2lsZXVoMnlkMDAyMHdnbTRjcm9mbTZvdyJ9.xPq7CFyMpvYomXCBa5wOwA';
+		var map = L.mapbox.map('map').setView([0, 0], 1);
+
+		//my custom map
+		L.mapbox.styleLayer('mapbox://styles/maherhar/cilfgbt0z0046cykvufqsgvsn').addTo(map);
+
+
+		// Generate a GeoJSON line. You could also load GeoJSON via AJAX
+		// or generate it some other way.
+		var geojson = { type: 'LineString', coordinates: [] };
+		var start = [85.317314, 27.660711];
+		var momentum = [1, 1];
+
+		var splashCoords = [85.317314, 27.660711];
+		var agapeCoords = [89.561542, 26.728793];
+		var nwsCoords = [-122.325935, 47.613417];
+		var iracambiCoords = [-42.540110, -20.930021];
+		var dasilCoords = [-92.721973, 41.748473];
+		var dhallCoords = [-92.720029, 41.749690];
+		var obcCoords = [-73.724037, 40.936381];
+
+		function changeCoords(to){
+			var switch0 = (to[0]-start[0])/75;
+			var switch1 = (to[1]-start[1])/75;
+			for (var i = 0; i < 75; i++) {
+				start[0]+= switch0;
+				start[1]+= switch1;
+				geojson.coordinates.push(start.slice());;
+				}
+			// add generated geojson object to  map.
+			L.geoJson(geojson).addTo(map);
+			tick(); 	//	set the lilguy into motion
+		}
+
+
+
+
+		// Create a counter with a value of 0.
+		var j = 0;
+
+		// Create a marker and add it to the map.
+		var marker = L.marker([27.660711, 85.317314], {
+		  icon: L.mapbox.marker.icon({
+			'marker-color': '#7fcdbb'
+		  })
+		}).addTo(map);
+
+		function tick() {
+			// Set the marker to be at the same point as one
+			// of the segments or the line.
+			marker.setLatLng(L.latLng(
+				geojson.coordinates[j][1],
+				geojson.coordinates[j][0]));
+
+			// Move to the next point of the line
+			// until `j` reaches the length of the array.
+			if (++j < geojson.coordinates.length) setTimeout(tick, 12);
+		};
+
+		var credits = L.control.attribution().addTo(map);
+		credits.addAttribution("Map tiles by <a href='http://stamen.com'>Stamen Design</a>© <a href='https://www.mapbox.com/map-feedback/'>Mapbox</a>, © <a href='http://www.openstreetmap.org/copyright'>OSM</a>, <a href='index.html'>harry maher</a>.");		
+		</script>
+    </div>
+	<div class="col-xs-6 col-xs-pull-6" style="" id= "Description">
+	<div style="height:350px; overflow:auto;"> 
+	<div class="container-fluid"><div class="row"><div class="col-xs-8" style="" id= "title"><h3>Health & Hygiene Researcher</h3></div><div class="col-xs-4" style="text-align:right;" id= "dates"><h3><small>Dec. 2015 – Present</small></div></div><i>Splash-Nepal, Kathmandu, Nepal</i><p><li>Study the impact of different education and sanitation interventions on hand washing at 20 schools in Kathmandu Valley using cameras to observe behaviors; record data; analyze results both quantitatively and qualitatively; provide feedback and recommendations to Splash headquarters for future programming to maximize effectiveness, sustainability, and scaling-up potential.</li></p><p><li>Collaborate and communicate with Splash-Nepal and Splash-International teams in Kathmandu and Seattle, respectively, and act as a liaison for communication between the two</li></p>	<p><li>Rewrote and designed hygiene education manual for teachers</li></p>
+    </div>
+	<div class='container-fluid'><div class='row'><div class='col-xs-7' style='' id= 'title'><h3>Data Analysis Student</h3></div><div class='col-xs-5' style='text-align:right;' id= 'dates'><h3><small>Aug. 2011 - May 2015</small></div></div><i>Online</i><p><li>Enrolled in Data Analysis Specialization offered through Johns Hopkins</li><p><li>Completed courses include: R Programming, Getting and Cleaning Data, Exploratory Data Analysis</li></p></div></div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid bg-1 text-center">
+<small><br></small>
+<p id="job">&emsp;</p>
+</div>
+
+<div class="container-fluid bg-1 text-center">
+<table class="tg">
+  <tr>
+    <td class="obc-mmk"></td>
+    <td class="obc-mmk"></td>
+    <td class="obc-mmk"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="drm-sea"></td>
+	<td class="drm-sea"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dhall-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="drm-sea"></td>
+	<td class="drm-sea"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="ira-bra"></td>
+    <td class="ira-bra"></td>
+    <td class="ira-bra"></td>
+    <td class="ira-bra"></td>
+    <td class="ira-bra"></td>
+    <td class="drm-sea"></td>
+	<td class="drm-sea"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="dssl-grnl"></td>
+    <td class="drm-sea"></td>
+	<td class="drm-sea"></td>
+    <td class="tch-stl"></td>
+    <td class="tch-stl"></td>
+    <td class="tch-stl"></td>
+    <td class="tch-stl"></td>
+    <td class="spl-npl"></td>
+    <td class="spl-npl"></td>
+    <td class="spl-npl"></td>
+    <td class="spl-npl"></td>
+  </tr>
+  <tr>
+    <td class="NRHS"></td>
+    <td class="NRHS"></td>
+    <td class="NRHS"></td>
+    <td class="GC1"></td>
+    <td class="GC1"></td>
+    <td class="GC1"></td>
+    <td class="GC1"></td>
+    <td class="GC1"></td>
+    <td class="GC1"></td>
+    <td class="GC1"></td>
+    <td class="GC1"></td>
+    <td class="GC1"></td>
+    <td class="GC1"></td>
+    <td class="GC1"></td>
+	<td class="GC2"></td>
+    <td class="GC2"></td>
+    <td class="GC2"></td>
+    <td class="GC2"></td>
+    <td class="GC2"></td>
+    <td class="GC2"></td>
+    <td class="GC2"></td>
+    <td class="GC2"></td>
+    <td class="GC2"></td>
+    <td class="GC2"></td>
+    <td class="GC2"></td>
+    <td class="GC2"></td>
+	<td class="GC3"></td>
+    <td class="GC3"></td>
+    <td class="GC3"></td>
+    <td class="GC3"></td>
+    <td class="GC3"></td>
+    <td class="GC3"></td>
+    <td class="GC3"></td>
+    <td class="GC3"></td>
+    <td class="GC3"></td>
+    <td class="GC3"></td>
+    <td class="GC3"></td>
+    <td class="GC3"></td>
+	<td class="GC4"></td>
+    <td class="GC4"></td>
+    <td class="GC4"></td>
+    <td class="GC4"></td>
+    <td class="GC4"></td>
+    <td class="GC4"></td>
+    <td class="GC4"></td>
+    <td class="GC4"></td>
+    <td class="GC4"></td>
+    <td class="GC4"></td>
+    <td class="GC4"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="blank"></td>
+    <td class="courserayo"></td>
+    <td class="courserayo"></td>
+    <td class="courserayo"></td>
+    <td class="courserayo"></td>
+  </tr>
+</table>
+<small><br></small>
+    <input type="range" id="slipnslide" name="rangeInput" min="0" max="300" value="300" onInput="update(this.value)">                                      
+    <input type="text" id="textInput" value="300">
+
+</div>
+</div>
+</div>
+<footer class="footer" style="background-color: #225ea8; color:#7fcdbb; bottom:0px;"><br>
+  <p>harry maher - 2016 - <a style="color:#7fcdbb" href="contact.html">contact</p> 
+</footer>
+</div>
+
+</body>
+</html>
