@@ -20,6 +20,54 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
   <style>
+
+  /*Graph Styles*/
+   svg {
+      font-family: 'Calibri', sans-serif;
+      font-size: 16px;
+      width: 620px;
+      height:400px;
+      display:block;
+      margin:auto;
+      border:1px solid black;
+    }
+
+    .link {
+      stroke: #c1c1c1;
+    /*stroke-width: 2px;*/
+    pointer-events: all;
+    }
+
+  .node circle {
+      pointer-events: all;
+      stroke: #777;
+      stroke-width: 1px;
+    }
+  
+    
+    div.tooltip {
+      font-family: 'Calibri', sans-serif !important;
+      font-size: 16px !important;
+    position: absolute;
+    background-color: white;
+    max-width; 200px;
+    height: auto;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 4px;
+    border-width: 1px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+    pointer-events: none;
+    color: black !important;
+    line-height: 115% !important;
+  }
+
+  .label {
+    font-size: 100% !important;
+    font-weight: 100 !important;
+  }
+
+  /*Navbar styles*/
     .navbar {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -28,31 +76,39 @@
     margin-bottom: 0;
     font-size: 15px;
     letter-spacing: 4px;
-    background-color: #41b6c4;
-    font-family: segoe ui;
-    color: #225ea8;
-    }
-    iframe{
-    overflow:hidden;
-    margin-left:auto;
-    margin-right:auto;
-    display: block;
-    }
-    .navbar-nav li a:link, li a:visited{
-    display: block;
-    background-color: #225ea8;
-    color: #7fcdbb;
-    text-align: center;
-    }
-    .navbar-nav li a:hover {
-    background-color: #41b6c4;
+  background-color: #41b6c4;
+  font-family: segoe ui;
+  color: #225ea8;
+  }
+  .navbar-nav li a:link, li a:visited{
+  display: block;
+  background-color: #225ea8;
+  color: #7fcdbb;
+  text-align: center;
+  }
+  .navbar-nav li a:hover {
+  background-color: #41b6c4;
     color: #225ea8 !important;
-    }
-    body {
-    background-color: ;
-    color: #225ea8;
-    font-family: segoe ui;
-    }
+  }
+  body {
+  color: #225ea8;
+  }
+  #wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+  color: #225ea8;
+  font-family: segoe ui;
+  font-size: 1.09em;
+  }
+  #description{
+  height: 360px;
+  width: 100%;
+  overflow: scroll;
+  }
+  small{
+  color: #225ea8 !important;
+  }
     
     #container{
     margin-left: auto;
@@ -70,12 +126,14 @@
   color:#7fcdbb;
   text-align: center;}
     
+
+
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -83,7 +141,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span> 
       </button>
-      <a class="navbar-brand" href="../../index.html" style="font-size: 2.9em; letter-spacing: 2px;color: #225ea8">harry maher</a>
+      <a class="navbar-brand" href="../../index.html" style="font-size: 2.9em; letter-spacing: 2px;color: #225ea8">Harry Maher</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -103,23 +161,262 @@
 <br><br>
   <div class="row">
     <div class="col-md-12" style="">
-    <p><h2>Democracy Voucher Data Show Small Donors Support Opposing Campaigns</h2></p>
+    <p><h2>Why are Seattle Democracy Voucher Users Funding Opposing Campaigns?</h2></p>
     <br>
-    <iframe src="network.html" width="700px" height="450px" frameborder="1" scrolling="yes" align="center"></iframe>
-    <br><br>
-    <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:18px;font-family:"Calibri",sans-serif;'><span style="font-size: 16px;">Many of the Seattleites that contributed money to candidates using the Democracy Voucher program donated to <i>opposing candidates running for the same office</i>. The program provides Seattle residents with four $25 vouchers to donate to candidates running for city offices with the intention of taking power from big corporate donors and returning it to the voters in the form of publicly-funded elections. While it may be mysterious that many program participants are donating these small amounts of money to competing campaigns, the fact that they are doing this reflects the complicated reality of the electorate and provides an argument in support of Ranked Choice Voting.</span></p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:18px;font-family:"Calibri",sans-serif;'><span style="font-size: 16px;">As with all direct campaign donation data, democracy voucher data are public and accessible through the City of Seattle&rsquo;s <a href="http://www.seattle.gov/democracyvoucher">Board of Elections</a> website where they are updated and released regularly throughout the election season. Vouchers received by the Seattle Ethics and Elections Commission (SEEC) are reviewed to ensure the signature matches the voter&rsquo;s signature and funds are issued to qualifying campaigns. The data displayed in the above graph includes all received vouchers that were assigned to a campaign as of the date marked on the chart. (Note: the vouchers may not have been reviewed, accepted, or redeemed.)</span></p>
-
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:18px;font-family:"Calibri",sans-serif;'><span style="font-size: 16px;">The chart shows how many Seattleites have contributed to each campaign using Democracy Vouchers. Each circle represents one campaign, and the circle sizes are directly proportional to the number of vouchers assigned to that campaign. The lines connecting the circles represent the number of shared individual donors each candidate has with every other candidate. When you hover your mouse over one of the circles you can see the number of vouchers, donors, and average number of vouchers per donor that each campaign has been assigned by donors. When you hover your mouse over the lines between the campaigns, a tooltip displays the names of the two campaigns and the number of common donors the two campaigns have shared.</span></p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:18px;font-family:"Calibri",sans-serif;'><span style="font-size: 16px;">For example, as of <span style="background:yellow;">March 12, 2,651 donors assigned 7,178</span> vouchers to mayoral candidate Colleen Echohawk, who received the most donations to-date. At the same time, <span style="background:yellow;">757</span> of her donors also donated at least one voucher to her opponent Lorena Gonz&aacute;lez, and, in total, <span style="background:yellow;">1,086 (41%)</span> of her donors allocated vouchers to at least one other mayor candidate. Meanwhile, Gonz&aacute;lez had <span style="background:yellow;">1,703</span> donors, but a majority (<span style="background:yellow;">58%)</span> donated vouchers to at least or other candidate for mayor. Overall, 4,614 donors assigned one or more voucher to a mayoral candidate and <span style="background:yellow;">1,370 (29.6%)</span> donors donated to an opposing campaign.</span></p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:18px;font-family:"Calibri",sans-serif;'><span style="font-size: 16px;">This behavior may be baffling to some political campaigns. They may think that some voters are confused: why would they effectively cancel out their donation to one politician by donating to another competing politician? But, as a voter I think it makes some sense: in the last Mayoral race, for example, I might have been happy to have candidate A or candidate B win, just as long as candidate C didn&rsquo;t <em>(yet we still ended up with candidate C).</em></span></p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:18px;font-family:"Calibri",sans-serif;'><span style="font-size: 16px;">In most elections, I have a preferred candidate, other candidates who I may also support, and others who I don&rsquo;t. With Democracy Vouchers, we have the power to freely support who we want with small donations. Ranked Choice Voting, a system that allows individuals to vote for multiple candidates based on their order of preference, would give us similar freedom to vote for who we want, in the order we want, without fear of throwing of throwing our vote away. Similar to what the network graph above shows, Ranked Choice Voting allows citizens to voice their complicated and often overlapping preferences for politicians, which makes it &ldquo;the most promising reform to democratize and depolarize our politics,&rdquo; <a href="https://time.com/5718941/ranked-choice-voting/">according to Larry Diamond</a>, former director of Stanford&rsquo;s Center on Democracy, Development, and the Rule of Law.</span></p>
-
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:18px;font-family:"Calibri",sans-serif;'><span style="font-size: 16px;">Together, Democracy Vouchers and Ranked Choice Voting can dramatically improve local elections nationwide&mdash;they underscore that our officials are selected by a complicated electorate network of individuals who come together to form coalitions consensus that ultimately select their preferred candidates. &nbsp;</span></p>
+    <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-size: 18px;">Harry Maher<br>March 15, 2021</span></p>
+<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-size: 18px;">Seattle&rsquo;s unique Democracy Voucher program provides residents with four $25 certificates to donate to <a href="http://www.seattle.gov/democracyvoucher/i-am-a-seattle-resident/participating-candidates" target="_blank">eligible candidates</a>. The program was developed with the intention to flood city elections with small, publicly-funded donations that would reduce the influence of powerful donors. Interestingly, many Seattleites that contributed to candidates using the Democracy Voucher program have donated to opposing candidates running for the same position. This may seem strange, but the fact that so many donors are doing this merely reflects the complicated reality of the electorate and provides an argument in support of Ranked Choice Voting.</span></p>
+<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-size: 18px;">As with all direct campaign donation data, democracy voucher data are public and accessible through the City of Seattle&rsquo;s <a href="http://www.seattle.gov/democracyvoucher" target="_blank">Board of Elections</a> website where they are updated and released regularly throughout the election season. Vouchers received by the Seattle Ethics and Elections Commission (SEEC) are reviewed to ensure the signature matches the voter&rsquo;s signature and funds are issued to qualifying campaigns.</span></p>
+<br>
+<svg width="680" height="375"></svg>
+<br>
+<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-size: 18px;">The chart above shows how many Seattleites have contributed to each campaign using Democracy Vouchers as of March 12. (Note: the displayed vouchers may not have been reviewed, accepted, or redeemed.) Each circle represents one campaign, and the circle sizes are directly proportional to the number of vouchers assigned to that campaign. The lines connecting the circles represent the number of shared individual donors each candidate has with every other candidate. When you hover your mouse over one of the circles, you can see the number of vouchers, donors, and average number of vouchers per donor that each campaign has been assigned by donors. When you hover your mouse over the lines between the campaigns, a tooltip displays the names of the two campaigns and the number of common donors the two campaigns have shared.</span></p>
+<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-size: 18px;">The result is a fascinating network that shows how support for different candidates running for the same office can overlap. For example, as of March 12, 2,651 donors assigned 7,178 vouchers to mayoral candidate Colleen Echohawk, who received the most donations to-date. At the same time, 757 of her donors also donated at least one voucher to her opponent Lorena Gonz&aacute;lez, and, in total, 1,086 (41%) of her donors allocated vouchers to at least one other mayoral candidate. Meanwhile, Gonz&aacute;lez had 1,703 donors, but a majority (58%) donated vouchers to at least or other candidate for mayor. Overall, 4,614 donors assigned one or more voucher to a mayoral candidate and 1,370 (29.6%) donors donated to an opposing campaign.</span></p>
+<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-size: 18px;">This behavior may be baffling to some political campaigns. They may think that some voters are confused: why would they effectively cancel out their donation to one politician by donating to another competing politician? <a href="https://www.opensecrets.org/news/2010/11/democrats-and-republicans-sharing-b/" target="_blank">Large corporations, such as Comcast</a>, commonly contribute large donations to both sides this so they can <a href="https://www.cio.com/article/3037467/comcast-us-telcos-gave-88m-to-lawmakers-in-2015.html" target="_blank">influence law and policy</a> regardless of who wins. But nobody is buying a local official for a few $25 Democracy Vouchers. So what gives?</span></p>
+<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-size: 18px;">As a voter, I think voucher splitting makes some sense: in the last Mayoral race, for example, I would have been happy to have candidate A or candidate B win, just as long as candidate C didn&rsquo;t <em>(yet we still ended up with candidate C<span id="content"></span>).</em> In most races, I have a preferred candidate, other candidates who I may also support, and others who I don&rsquo;t. With Democracy Vouchers, we have the power to freely support who we want with small donations.</span></p>
+<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-size: 18px;">Ranked Choice Voting, a system that allows individuals to vote for multiple candidates based on their order of preference, would give us similar freedom to vote for who we want, in the order we want, without fear of &ldquo;throwing our vote away&rdquo; by voting for an outsider candidate. Similar to what the network graph above shows, Ranked Choice Voting allows citizens to voice their complex and often overlapping preferences for politicians. It is &ldquo;the most promising reform to democratize and depolarize our politics,&rdquo; <a href="https://time.com/5718941/ranked-choice-voting/" target="_blank">according to Larry Diamond</a>, former director of Stanford&rsquo;s Center on Democracy, Development, and the Rule of Law.</span></p>
+<div style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;border:none;border-bottom:solid windowtext 1.0pt;padding:0in 0in 1.0pt 0in;'>
+    <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0in;'><span style="font-size: 18px;">Together, Democracy Vouchers and Ranked Choice Voting could dramatically improve local elections nationwide&mdash;they underscore that our officials are selected by coalitions of people, not corporations, who come together to more democratically select their preferred candidates.</span></p>
+    <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0in;'><span style="font-size: 18px;">&nbsp;</span></p>
+</div>
+<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:112%;font-size:15px;font-family:"Calibri",sans-serif;'><em><span style="font-size: 18px;">Harry Maher is a volunteer organizer with the <a href="https://transitriders.org/">Seattle Transit Riders Union</a>, which is a member of <a href="https://representingwa.org/">Washington For Equitable Representation</a>, a coalition with the mission to ensure fair representation in our elected bodies through Ranked-Choice Voting and create a civil democracy that works for all Washington residents. In his day job, he is a data analyst at <a href="https://www.bigwaterconsulting.net/">Big Water Consulting</a>, a data consulting firm in Ballard that specializes in primary data collection and analysis. All views expressed above are his own and not representative of the views or opinions of any of the organizations linked above.</span></em></p>
 
       <p></p>
         <br><br><br>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
+<!-- <div id ="CheckLegend">
+  <input type="checkbox" class="checkbox" value="A" checked><label>City Attorney</label><br>
+  <input type="checkbox" class="checkbox" value="B" checked><label>Council 8</label><br>
+  <input type="checkbox" class="checkbox" value="C" checked><label>Council 9</label><br>
+  <input type="checkbox" class="checkbox" value="D" checked><label>Mayor</label><br>
+</div> -->
+
+</body>
+
+
+<script>
+            
+
+
+var color = d3.scaleOrdinal(d3.schemeSet3);
+
+  
+function numberWithCommas(number) {
+    try {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } catch (e){
+        return "Not Available";
+    }
+}
+
+var tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+  
+  
+d3.json("voucher_data2.json", function(error, graph) {
+
+
+  // so that the largest node circles stay uniformly not too large
+  lst_vouchers = [];
+  for (i in graph.nodes) {
+    lst_vouchers.push(graph.nodes[i].vouchers)
+  } 
+  circle_size_divisor = d3.max(lst_vouchers)/27;
+
+  function circle_size(vouchers,circle_size_divisor){
+    return (vouchers/circle_size_divisor) + 2;
+  }
+
+  // and same with the links between the nodes (stroke width divider)
+  lst_links = [];
+  // console.log(graph.links)
+  for (i in graph.links){
+    lst_links.push(graph.links[i].value)
+  }
+  line_size_divisor = d3.max(lst_links)/19
+
+  function line_size(donors, line_size_divisor){
+    return (donors/line_size_divisor) + .2;
+  }
+
+  if (error) throw error;
+    const svg = d3.select('svg'),
+        width = +svg.attr('width'),
+            height = +svg.attr('height');
+  const simulation = d3.forceSimulation()
+    .nodes(graph.nodes)
+    .force('link', d3.forceLink().id(d => d.id).strength(0))
+    //.force('charge', d3.forceManyBody())
+    .force('center', d3.forceCenter(width / 2, height / 2))
+    .force("collide", d3.forceCollide(40))
+    .force("x", d3.forceX())
+    .force("y", d3.forceY())
+    .on('tick', ticked);
+
+  simulation.force('link')
+    .links(graph.links);
+
+  // force.nodes(data)
+  //   .on('tick', function() {
+  //       node
+  //           .attr('transform', (d) => {
+  //               return 'translate(' + (d.x) + ',' + (d.y) + ')';
+  //           });
+  //   });
+
+
+  //this const was the circle size, fyi.
+  //const R = 6;
+
+ 
+
+
+  let link = svg.selectAll('line')
+    .data(graph.links)
+    .enter().append('line')
+      .attr("class", "link")
+    .style("stroke-width", function(d) { return line_size(d.value, line_size_divisor); });
+
+  link 
+    .attr('class', 'link')
+    .on('mouseover.tooltip', function(d) {
+        tooltip.transition()
+            .duration(300)
+            .style("opacity", .8);
+        tooltip.html("<div class = 'tooltip_div'><b>"+ d.source.id + 
+                     " and " + d.target.id +
+                    "</b><br>" + numberWithCommas(d.value) + " Common Donors</div>")
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY + 10) + "px");
+        })
+        .on("mouseout.tooltip", function() {
+          tooltip.transition()
+            .duration(100)
+            .style("opacity", 0);
+        })
+        .on('mouseout.fade', fade(1))
+        .on("mousemove", function() {
+          tooltip.style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY + 10) + "px");
+        });
+  let node = svg.selectAll('.node')
+    .data(graph.nodes)
+    .enter().append('g')
+    .attr('class', 'node')
+    .call(d3.drag()
+        .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended));;
+  node.append('circle')
+    .attr('r', function(d) {return circle_size(d.vouchers, circle_size_divisor)})
+    .attr("fill", function(d) {return color(d.group);})    
+    .on('mouseover.tooltip', function(d) {
+        tooltip.transition()
+            .duration(300)
+            .style("opacity", .8);
+        tooltip.html("<div class= 'tooltip_div' ><b>" + d.id + " (" + d.group + ")</b>" + "<br>" + numberWithCommas(d.vouchers) + " Vouchers" + "<br>" + numberWithCommas(d.donors) + " Donors"+ "<br>" + d.ratio + " Average</div>")
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY + 10) + "px");
+        })
+    .on('mouseover.fade', fade(0.1))
+    .on("mouseout.tooltip", function() {
+        tooltip.transition()
+            .duration(100)
+            .style("opacity", 0);
+        })
+    .on('mouseout.fade', fade(1))
+        .on("mousemove", function() {
+          tooltip.style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY + 10) + "px");
+        })
+    .on('dblclick', releasenode)
+    
+    
+  node.append('text')
+    .attr('x', 0)
+    .attr('dy', '.35em')
+    .text(d => d.name);
+
+  function ticked() {
+    link
+      .attr('x1', d => d.source.x)
+      .attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x)
+      .attr('y2', d => d.target.y);
+
+    node
+      .attr('transform', d => `translate(${d.x},${d.y})`);
+  }
+
+function dragstarted(d) {
+  if (!d3.event.active) simulation.alphaTarget(0.1).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragged(d) {
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+
+function dragended(d) {
+  if (!d3.event.active) simulation.alphaTarget(0);
+  //d.fx = null;
+  //d.fy = null;
+}
+function releasenode(d) {
+    d.fx = null;
+    d.fy = null;
+}
+  
+  const linkedByIndex = {};
+  graph.links.forEach(d => {
+    linkedByIndex[`${d.source.index},${d.target.index}`] = 1;
+  });
+
+  function isConnected(a, b) {
+    return linkedByIndex[`${a.index},${b.index}`] || linkedByIndex[`${b.index},${a.index}`] || a.index === b.index;
+  }
+
+  function fade(opacity) {
+    return d => {
+      node.style('stroke-opacity', function (o) {
+        const thisOpacity = isConnected(d, o) ? 1 : opacity;
+        this.setAttribute('fill-opacity', thisOpacity);
+        return thisOpacity;
+      });
+
+      link.style('stroke-opacity', o => (o.source === d || o.target === d ? 1 : opacity));
+
+    };
+  }
+  var sequentialScale = d3.scaleOrdinal(d3.schemeSet3)
+  .domain(["City Attorney", "Council 8", "Council 9", "Mayor"]);
+
+
+svg.append("g")
+  .attr("class", "legendSequential")
+  .attr("transform", "translate("+(width/14)+","+(height/6)+")");
+
+var legendSequential = d3.legendColor()
+    .shapeWidth(30)
+    .cells(11)
+    .orient("vertical")
+    .scale(sequentialScale)
+    .title("Race:")
+
+svg.select(".legendSequential")
+  .call(legendSequential); 
+
+  
+})
+
+
+</script>
 <br>
 <br>
 <br>
