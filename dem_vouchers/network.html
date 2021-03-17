@@ -131,7 +131,32 @@ d3.json("voucher_data2.json", function(error, graph) {
   //this const was the circle size, fyi.
   //const R = 6;
 
- 
+  function tooltipX(pagex){
+    if (pagex<500){
+      return pagex
+    }else{
+      return pagex-100
+    }
+    
+  }
+
+  function tooltipY1(pagey){
+    console.log(pagey)
+    if(pagey > 315){
+      return pagey-85
+    } else{
+      return pagey+10
+    }
+  }
+
+  function tooltipY(pagey){
+    console.log(pagey)
+    if(pagey > 350){
+      return pagey-42
+    } else{
+      return pagey+10
+    }
+  }
 
 
   let link = svg.selectAll('line')
@@ -149,8 +174,8 @@ d3.json("voucher_data2.json", function(error, graph) {
         tooltip.html("<div class = 'tooltip_div'><b>"+ d.source.id + 
                      " and " + d.target.id +
                     "</b><br>" + numberWithCommas(d.value) + " Common Donors</div>")
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY + 10) + "px");
+            .style("left", (tooltipX(d3.event.pageX)) + "px")
+            .style("top", (tooltipY(d3.event.pageY)) + "px");
         })
         .on("mouseout.tooltip", function() {
           tooltip.transition()
@@ -159,8 +184,8 @@ d3.json("voucher_data2.json", function(error, graph) {
         })
         .on('mouseout.fade', fade(1))
         .on("mousemove", function() {
-          tooltip.style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY + 10) + "px");
+          tooltip.style("left", (tooltipX(d3.event.pageX)) + "px")
+            .style("top", (tooltipY(d3.event.pageY)) + "px");
         });
   let node = svg.selectAll('.node')
     .data(graph.nodes)
@@ -178,8 +203,8 @@ d3.json("voucher_data2.json", function(error, graph) {
             .duration(300)
             .style("opacity", .8);
         tooltip.html("<div class= 'tooltip_div' ><b>" + d.id + " (" + d.group + ")</b>" + "<br>" + numberWithCommas(d.vouchers) + " Vouchers" + "<br>" + numberWithCommas(d.donors) + " Donors"+ "<br>" + d.ratio + " Average</div>")
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY + 10) + "px");
+            .style("left", (tooltipX(d3.event.pageX)) + "px")
+            .style("top", (tooltipY1(d3.event.pageY)) + "px");
         })
     .on('mouseover.fade', fade(0.1))
     .on("mouseout.tooltip", function() {
@@ -189,8 +214,8 @@ d3.json("voucher_data2.json", function(error, graph) {
         })
     .on('mouseout.fade', fade(1))
         .on("mousemove", function() {
-          tooltip.style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY + 10) + "px");
+          tooltip.style("left", tooltipX((d3.event.pageX)) + "px")
+            .style("top", tooltipY1((d3.event.pageY)) + "px");
         })
     .on('dblclick', releasenode)
     
