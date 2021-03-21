@@ -7,9 +7,13 @@
 <style>
     body {
       font-family: 'Open Sans', sans-serif;
+    }
+    svg {
+      font-family: 'Open Sans', sans-serif;
       font-size: 14px;
       width: 620px;
       height:400px;
+      border:1px solid black;
     }
     .link {
       stroke: #c1c1c1;
@@ -35,12 +39,30 @@
     border-width: 1px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
     pointer-events: none;
+    font-size:14px;
+  }
+
+  #reloadbutton{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    text-decoration: none;
+    background-color: #17becf;
+    color: #FFFFFF;
+    padding: 6px 8px 6px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+
+  #reloadbutton:hover{
+    background-color: #0f7d8a;
   }
 
 </style>
 </head>
 <body>
 <svg width="680" height="375"></svg>
+<a id="reloadbutton" href="#" onClick="window.location.reload();">↻ Refresh position</button>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
@@ -76,7 +98,7 @@ var tooltip = d3.select("body")
     .style("opacity", 0);
   
   
-d3.json("voucher_data2.json", function(error, graph) {
+d3.json("output.json", function(error, graph) {
 
 
   // so that the largest node circles stay uniformly not too large
@@ -233,7 +255,7 @@ d3.json("voucher_data2.json", function(error, graph) {
       .attr('y2', d => d.target.y);
 
     node
-      .attr('transform', d => `translate(${d.x},${d.y})`);
+      .attr('transform', d => `translate(${d.x},${d.y})`)
   }
 
 function dragstarted(d) {
