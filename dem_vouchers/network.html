@@ -66,7 +66,9 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+        crossorigin="anonymous"></script>
 <!-- <div id ="CheckLegend">
   <input type="checkbox" class="checkbox" value="A" checked><label>City Attorney</label><br>
   <input type="checkbox" class="checkbox" value="B" checked><label>Council 8</label><br>
@@ -80,7 +82,7 @@
 <script>
             
 
-
+$( document ).ready(function() {
 var color = d3.scaleOrdinal(d3.schemeSet3);
 
   
@@ -163,7 +165,7 @@ d3.json("voucher_data2.json", function(error, graph) {
   }
 
   function tooltipY1(pagey){
-    console.log(pagey)
+    //console.log(pagey)
     if(pagey > 315){
       return pagey-85
     } else{
@@ -172,7 +174,7 @@ d3.json("voucher_data2.json", function(error, graph) {
   }
 
   function tooltipY(pagey){
-    console.log(pagey)
+    //console.log(pagey)
     if(pagey > 350){
       return pagey-42
     } else{
@@ -320,7 +322,7 @@ svg.select(".legendSequential")
 
   
 })
-
+});
 
 
 </script>
