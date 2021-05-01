@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Harry Maher</title>
+  <link rel="icon" type="../../image/ico" href="north.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <style>
+
+  /*Graph Styles*/
+   svg {
+      font-family: 'Calibri', sans-serif;
+      font-size: 16px;
+      width: 620px;
+      height:400px;
+      display:block;
+      margin:auto;
+      border:1px solid black;
+    }
+
+    .link {
+      stroke: #c1c1c1;
+    /*stroke-width: 2px;*/
+    pointer-events: all;
+    }
+
+  .node circle {
+      pointer-events: all;
+      stroke: #777;
+      stroke-width: 1px;
+    }
+  
+    
+    div.tooltip {
+      font-family: 'Calibri', sans-serif !important;
+      font-size: 16px !important;
+    position: absolute;
+    background-color: white;
+    max-width; 200px;
+    height: auto;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 4px;
+    border-width: 1px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+    pointer-events: none;
+    color: black !important;
+    line-height: 115% !important;
+  }
+
+  .label {
+    font-size: 100% !important;
+    font-weight: 100 !important;
+  }
+
+  /*Navbar styles*/
+    .navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0;
+    border-radius: 4;
+    margin-bottom: 0;
+    font-size: 15px;
+    letter-spacing: 4px;
+  background-color: #41b6c4;
+  font-family: segoe ui;
+  color: #225ea8;
+  }
+  .navbar-nav li a:link, li a:visited{
+  display: block;
+  background-color: #225ea8;
+  color: #7fcdbb;
+  text-align: center;
+  }
+  .navbar-nav li a:hover {
+  background-color: #41b6c4;
+    color: #225ea8 !important;
+  }
+  body {
+  color: #225ea8;
+  }
+  #wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+  color: #225ea8;
+  font-family: segoe ui;
+  font-size: 1.09em;
+  }
+  #description{
+  height: 360px;
+  width: 100%;
+  overflow: scroll;
+  }
+  small{
+  color: #225ea8 !important;
+  }
+    
+    #container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    font-family: segoe ui;
+    font-size: 1.1em;
+    }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #225ea8; 
+  color:#7fcdbb;
+  text-align: center;}
+    
+.container-fluid {
+  max-width: 900px;
+}
+
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="../../index.html" style="font-size: 2.9em; letter-spacing: 2px;color: #225ea8">Harry Maher</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="../../index.html" style= "color: #7fcdbb">home</a></li>
+        <li><a href="../../content.html" style= "color: #7fcdbb">stuff</a></li>
+        <li><a href="../../about.html" style= "color: #7fcdbb">about</a></li>
+        <li><a href="../../contact.html" style= "color: #7fcdbb">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="container">
+
+
+<div class="container-fluid">
+<br><br>
+  <div class="row">
+    <div class="col-md-12" style="">
+    <p><h2>Why are Seattle Democracy Voucher Users Funding Opposing Campaigns?</h2></p>
+    <br>
+    <p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><span style="font-size:18px;line-height:111%;">Harry Maher<br>March 21, 2021</span></p>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><span style="font-size:18px;line-height:111%;">Seattle&rsquo;s unique Democracy Voucher program provides residents with four $25 vouchers to donate to&nbsp;</span><a href="http://www.seattle.gov/democracyvoucher/i-am-a-seattle-resident/participating-candidates" target="_blank"><span style="font-size:18px;line-height:111%;">eligible candidates</span></a><span style="font-size:18px;line-height:111%;">. The program has arguably successfully flooded city elections with small, publicly-funded donations that&nbsp;</span><a href="https://prospect.org/politics/grassroots-money-beats-amazon-in-seattle/"><span style="font-size:18px;line-height:111%;">have reduced the influence of powerful donors</span></a><span style="font-size:18px;line-height:111%;">&nbsp;while giving residents unprecedented freedom to support their preferred campaigns. Interestingly, many Seattleites that have contributed to candidates using the Democracy Voucher program have also donated vouchers to opposing candidates running for the same position. This behavior may seem strange, but it likely reflects voters&rsquo; complicated and overlapping candidate preferences.</span></p>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>The chart below shows how Seattleites&nbsp;</span><a href="https://www.seattle.gov/democracyvoucher/program-data"><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>have contributed</span></a><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>&nbsp;Democracy Vouchers to  eligible candidates as of March 19. Each circle represents a campaign, and the circle sizes are directly proportional to the number of vouchers assigned to that campaign. The lines connecting the circles vary in thickness to represent the number of shared individual donors each candidate has with every other candidate.&nbsp;</span></p>
+<br>
+<iframe src="./network.html" style="display:block;margin:auto;border:none" name="myiFrame" scrolling="no" marginheight="0px" marginwidth="0px" height="405px" width="680px" allowfullscreen></iframe>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><em><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>Network Graph of Democracy Voucher Donations as of March 19. Hover your mouse over the nodes (circles) and links (lines) to view more details. Drag the nodes to rearrange the network. (Note: the data displayed in the graph show vouchers that have been allocated by Seattle residents and they may not have been reviewed, accepted, or redeemed. Also, many candidates have only recently declared or have not yet declared their candidacies and will likely have more vouchers soon.)&nbsp;</span></em></p>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>The visualization above displays how support for different candidates has overlapped. As one might expect, Councilmember Teresa Mosqueda, running to maintain her District 8 Council seat, shares a large number of donors (760 total) with mayoral candidate and current Council President Lorena Gonz&aacute;lez. But, strangely, Gonz&aacute;lez has had more voucher donors in common with her mayoral race opponent Colleen Echohawk (882 total). In fact, a slight majority (1,145 of 2,030 or 56.4%) of Gonzalez&rsquo;s Democracy Voucher donors to-date have also donated to at least one other opposing mayoral candidate.&nbsp;</span></p>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>The top three current fundraisers, Colleen Echohawk, Andrew Grant Houston, and Lorena Gonz&aacute;lez, all competing for the same mayoral election, currently share 238 common donors who donated at least one of their four Democracy Vouchers to all three campaigns. Overall, 5,958 donors assigned one or more voucher to a mayoral candidate, and 1,602 (26.8%) donated vouchers to at least two opposing candidates.</span></p>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>This behavior may be baffling to some political campaigns. They may think that donors are confused: why would they effectively cancel out their donation to one politician by donating to another competing politician? Large corporations,&nbsp;</span><a href="https://www.opensecrets.org/news/2010/11/democrats-and-republicans-sharing-b/" target="_blank"><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>such as Comcast</span></a><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>, often contribute large donations to opposing candidates so they can&nbsp;</span><a href="https://www.cio.com/article/3037467/comcast-us-telcos-gave-88m-to-lawmakers-in-2015.html" target="_blank"><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>influence law and policy</span></a><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>&nbsp;regardless of who wins. But nobody is buying a local official for a few $25 Democracy Vouchers. So what gives?</span></p>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>As a voter, I think voucher splitting can make sense. In the last mayoral race, for example, I would have been happy to have candidate A or candidate B win, just as long as candidate C didn&rsquo;t. In most races, I have a preferred candidate, other candidates who I may also support, and others who I don&rsquo;t. With Democracy Vouchers, we have the power and freedom to support whoever we want.&nbsp;</span></p>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>Ranked-choice voting, a system that allows individuals to vote for multiple candidates based on their order of preference, would give us similar freedom to vote for who we want, in the order we want. We would have the freedom to vote for a preferred outsider candidate without fear of &ldquo;</span><a href="https://utahrcv.com/why-ranked-choice-voting/more-choices-more-voices/"><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>throwing our vote away</span></a><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>&rdquo; and avoid &ldquo;</span><a href="https://en.wikipedia.org/wiki/Vote_splitting"><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>vote splitting</span></a><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>&rdquo; with similar candidates who we might also support.&nbsp;</span></p>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>Similar to what we see in the network graph above, ranked-choice voting allows citizens to voice their complex and often overlapping preferences for different political campaigns in ways that have&nbsp;</span><a href="https://www.fairvote.org/research_rcvrepresentation"><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>shown to increase representation</span></a><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>&nbsp;among female candidates and candidates of color. It is &ldquo;the most promising reform to democratize and depolarize our politics,&rdquo;&nbsp;</span><a href="https://time.com/5718941/ranked-choice-voting/" target="_blank"><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>according to Larry Diamond</span></a><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>, former director of Stanford&rsquo;s Center on Democracy, Development, and the Rule of Law.&nbsp;</span></p>
+<div style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:none;border-bottom:solid windowtext 1.0pt;padding:0in 0in 1.0pt 0in;'>
+    <p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;border:none;padding:0in;'><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>Together, Democracy Vouchers and ranked-choice voting could dramatically improve elections nationwide. These systems underscore that our officials are selected by coalitions of people, not corporations, who come together to freely pick their preferred candidates.</span></p>
+    <p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;border:none;padding:0in;'><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>&nbsp;</span></p>
+    <p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;border:none;padding:0in;'><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>&nbsp;</span></p>
+</div>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><span style='font-size:15px;line-height:111%;font-family:"Calibri",sans-serif;'>&nbsp;</span></p>
+<p style='margin-right:0in;margin-left:0in;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-bottom:8.0pt;line-height:111%;'><em><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>Bio: Harry was born in NY, went to college in Iowa, and kept moving West to Seattle where he&rsquo;s stayed since 2016. For his day job, he is a data analyst at&nbsp;</span></em><a href="https://www.bigwaterconsulting.net/"><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>Big Water Consulting</span></a><em><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>&nbsp;and in his free time he is a volunteer organizer with the&nbsp;</span></em><a href="https://transitriders.org/"><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>Transit Riders Union</span></a><em><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>, which is a member of&nbsp;</span></em><a href="https://representingwa.org/"><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>Washington For Equitable Representation</span></a><em><span style='font-size:18px;line-height:111%;font-family:"Calibri",sans-serif;'>, a coalition of 25+ organizations working to ensure fair representation in our elected bodies through ranked-choice voting.</span></em></p>
+
+      <p></p>
+        <br><br><br>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<!-- <div id ="CheckLegend">
+  <input type="checkbox" class="checkbox" value="A" checked><label>City Attorney</label><br>
+  <input type="checkbox" class="checkbox" value="B" checked><label>Council 8</label><br>
+  <input type="checkbox" class="checkbox" value="C" checked><label>Council 9</label><br>
+  <input type="checkbox" class="checkbox" value="D" checked><label>Mayor</label><br>
+</div> -->
+
+</body>
+
+
+<script>
+            
+
+</script>
+
+    </div>  
+    </p>
+    </div>
+    
+</div>
+  
+</div>
+</div>
+</body>
+</html>
+</div>

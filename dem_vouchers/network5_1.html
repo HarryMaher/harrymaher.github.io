@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<!-- Graph Code implemented from: https://bl.ocks.org/almsuarez/4333a12d2531d6c1f6f22b74f2c57102 -->
+<head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+<style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    svg {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      width: 620px;
+      height:400px;
+      border:1px solid black;
+    }
+    .link {
+      stroke: #c1c1c1;
+    /*stroke-width: 2px;*/
+    pointer-events: all;
+    }
+
+  .node circle {
+      pointer-events: all;
+      stroke: #777;
+      stroke-width: 1px;
+    }
+  
+    
+    div.tooltip {
+    position: absolute;
+    background-color: white;
+    max-width; 200px;
+    height: auto;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 4px;
+    border-width: 1px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+    pointer-events: none;
+    font-size:14px;
+  }
+
+  #reloadbutton{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    text-decoration: none;
+    background-color: #17becf;
+    color: #FFFFFF;
+    padding: 6px 8px 6px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+
+  #reloadbutton:hover{
+    background-color: #0f7d8a;
+  }
+
+</style>
+</head>
+<body>
+<svg width="680" height="375"></svg>
+<a id="reloadbutton" href="#" onClick="window.location.reload();">↻ Refresh position</button>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+        crossorigin="anonymous"></script>
+<!-- <div id ="CheckLegend">
+  <input type="checkbox" class="checkbox" value="A" checked><label>City Attorney</label><br>
+  <input type="checkbox" class="checkbox" value="B" checked><label>Council 8</label><br>
+  <input type="checkbox" class="checkbox" value="C" checked><label>Council 9</label><br>
+  <input type="checkbox" class="checkbox" value="D" checked><label>Mayor</label><br>
+</div> -->
+
+</body>
+
+
+<script>
+            
+
+$( document ).ready(function() {
+var color = d3.scaleOrdinal(d3.schemeSet3);
+
+  
+function numberWithCommas(number) {
+    try {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } catch (e){
+        return "Not Available";
+    }
+}
+
+var tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+  
+  
+d3.json("output5_1_2021.json", function(error, graph) {
+
+
+  // so that the largest node circles stay uniformly not too large
+  lst_vouchers = [];
+  for (i in graph.nodes) {
+    lst_vouchers.push(graph.nodes[i].vouchers)
+  } 
+  circle_size_divisor = d3.max(lst_vouchers)/27;
+
+  function circle_size(vouchers,circle_size_divisor){
+    return (vouchers/circle_size_divisor) + 2;
+  }
+
+  // and same with the links between the nodes (stroke width divider)
+  lst_links = [];
+  // console.log(graph.links)
+  for (i in graph.links){
+    lst_links.push(graph.links[i].value)
+  }
+  line_size_divisor = d3.max(lst_links)/19
+
+  function line_size(donors, line_size_divisor){
+    return (donors/line_size_divisor) + .2;
+  }
+
+  if (error) throw error;
+    const svg = d3.select('svg'),
+        width = +svg.attr('width'),
+            height = +svg.attr('height');
+  const simulation = d3.forceSimulation()
+    .nodes(graph.nodes)
+    .force('link', d3.forceLink().id(d => d.id).strength(0))
+    //.force('charge', d3.forceManyBody())
+    .force('center', d3.forceCenter(width / 2, height / 2))
+    .force("collide", d3.forceCollide(40))
+    .force("x", d3.forceX())
+    .force("y", d3.forceY())
+    .on('tick', ticked);
+
+  simulation.force('link')
+    .links(graph.links);
+
+  // force.nodes(data)
+  //   .on('tick', function() {
+  //       node
+  //           .attr('transform', (d) => {
+  //               return 'translate(' + (d.x) + ',' + (d.y) + ')';
+  //           });
+  //   });
+
+
+  //this const was the circle size, fyi.
+  //const R = 6;
+
+  function tooltipX(pagex){
+    if (pagex<500){
+      return pagex
+    }else{
+      return pagex-100
+    }
+    
+  }
+
+  function tooltipY1(pagey){
+    //console.log(pagey)
+    if(pagey > 315){
+      return pagey-85
+    } else{
+      return pagey+10
+    }
+  }
+
+  function tooltipY(pagey){
+    //console.log(pagey)
+    if(pagey > 350){
+      return pagey-42
+    } else{
+      return pagey+10
+    }
+  }
+
+
+  let link = svg.selectAll('line')
+    .data(graph.links)
+    .enter().append('line')
+      .attr("class", "link")
+    .style("stroke-width", function(d) { return line_size(d.value, line_size_divisor); });
+
+  link 
+    .attr('class', 'link')
+    .on('mouseover.tooltip', function(d) {
+        tooltip.transition()
+            .duration(300)
+            .style("opacity", .8);
+        tooltip.html("<div class = 'tooltip_div'><b>"+ d.source.id + 
+                     " and " + d.target.id +
+                    "</b><br>" + numberWithCommas(d.value) + " Common Donors</div>")
+            .style("left", (tooltipX(d3.event.pageX)) + "px")
+            .style("top", (tooltipY(d3.event.pageY)) + "px");
+        })
+        .on("mouseout.tooltip", function() {
+          tooltip.transition()
+            .duration(100)
+            .style("opacity", 0);
+        })
+        .on('mouseout.fade', fade(1))
+        .on("mousemove", function() {
+          tooltip.style("left", (tooltipX(d3.event.pageX)) + "px")
+            .style("top", (tooltipY(d3.event.pageY)) + "px");
+        });
+  let node = svg.selectAll('.node')
+    .data(graph.nodes)
+    .enter().append('g')
+    .attr('class', 'node')
+    .call(d3.drag()
+        .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended));;
+  node.append('circle')
+    .attr('r', function(d) {return circle_size(d.vouchers, circle_size_divisor)})
+    .attr("fill", function(d) {return color(d.group);})    
+    .on('mouseover.tooltip', function(d) {
+        tooltip.transition()
+            .duration(300)
+            .style("opacity", .8);
+        tooltip.html("<div class= 'tooltip_div' ><b>" + d.id + " (" + d.group + ")</b>" + "<br>" + numberWithCommas(d.vouchers) + " Vouchers" + "<br>" + numberWithCommas(d.donors) + " Donors"+ "<br>" + d.ratio + " Average</div>")
+            .style("left", (tooltipX(d3.event.pageX)) + "px")
+            .style("top", (tooltipY1(d3.event.pageY)) + "px");
+        })
+    .on('mouseover.fade', fade(0.1))
+    .on("mouseout.tooltip", function() {
+        tooltip.transition()
+            .duration(100)
+            .style("opacity", 0);
+        })
+    .on('mouseout.fade', fade(1))
+        .on("mousemove", function() {
+          tooltip.style("left", tooltipX((d3.event.pageX)) + "px")
+            .style("top", tooltipY1((d3.event.pageY)) + "px");
+        })
+    .on('dblclick', releasenode)
+    
+    
+  node.append('text')
+    .attr('x', 0)
+    .attr('dy', '.35em')
+    .text(d => d.name);
+
+  function ticked() {
+    link
+      .attr('x1', d => d.source.x)
+      .attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x)
+      .attr('y2', d => d.target.y);
+
+    node
+      .attr('transform', d => `translate(${d.x},${d.y})`)
+  }
+
+function dragstarted(d) {
+  if (!d3.event.active) simulation.alphaTarget(0.1).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragged(d) {
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+
+function dragended(d) {
+  if (!d3.event.active) simulation.alphaTarget(0);
+  //d.fx = null;
+  //d.fy = null;
+}
+function releasenode(d) {
+    d.fx = null;
+    d.fy = null;
+}
+  
+  const linkedByIndex = {};
+  graph.links.forEach(d => {
+    linkedByIndex[`${d.source.index},${d.target.index}`] = 1;
+  });
+
+  function isConnected(a, b) {
+    return linkedByIndex[`${a.index},${b.index}`] || linkedByIndex[`${b.index},${a.index}`] || a.index === b.index;
+  }
+
+  function fade(opacity) {
+    return d => {
+      node.style('stroke-opacity', function (o) {
+        const thisOpacity = isConnected(d, o) ? 1 : opacity;
+        this.setAttribute('fill-opacity', thisOpacity);
+        return thisOpacity;
+      });
+
+      link.style('stroke-opacity', o => (o.source === d || o.target === d ? 1 : opacity));
+
+    };
+  }
+  var sequentialScale = d3.scaleOrdinal(d3.schemeSet3)
+  .domain(["City Attorney", "Council 8", "Council 9", "Mayor"]);
+
+
+svg.append("g")
+  .attr("class", "legendSequential")
+  .attr("transform", "translate("+(width/14)+","+(height/6)+")");
+
+var legendSequential = d3.legendColor()
+    .shapeWidth(30)
+    .cells(11)
+    .orient("vertical")
+    .scale(sequentialScale)
+    .title("Race:")
+
+svg.select(".legendSequential")
+  .call(legendSequential); 
+
+  
+})
+});
+
+
+</script>
