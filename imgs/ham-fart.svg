@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="HAM FART  flatulence acoustic radio transmission">
+  <rect width="400" height="240" fill="#0a0a12"/>
+  <rect x="8" y="8" width="384" height="224" fill="none" stroke="#39ff14" stroke-width="2" stroke-dasharray="8 4"/>
+  <text x="200" y="42" fill="#ff6600" font-family="monospace" font-size="22" font-weight="bold" text-anchor="middle">HAM FART</text>
+  <text x="200" y="64" fill="#00ffff" font-family="monospace" font-size="10" text-anchor="middle">HARRY &amp; MORIMOTO'S FLATULENCE</text>
+  <text x="200" y="78" fill="#00ffff" font-family="monospace" font-size="10" text-anchor="middle">ACOUSTIC RADIO TRANSMISSION</text>
+  <!-- radio -->
+  <rect x="130" y="100" width="140" height="80" rx="6" fill="#225ea8" stroke="#7df9ff" stroke-width="2"/>
+  <rect x="145" y="115" width="50" height="30" rx="3" fill="#0a0a12" stroke="#39ff14" stroke-width="1"/>
+  <circle cx="220" cy="130" r="12" fill="#41b6c4" stroke="#7df9ff" stroke-width="1"/>
+  <rect x="145" y="155" width="110" height="8" rx="2" fill="#1a1a2e"/>
+  <rect x="145" y="155" width="60" height="8" rx="2" fill="#39ff14"/>
+  <!-- radio waves -->
+  <path d="M290 110 Q310 130 290 150" fill="none" stroke="#39ff14" stroke-width="2"/>
+  <path d="M300 100 Q330 130 300 160" fill="none" stroke="#39ff14" stroke-width="2"/>
+  <path d="M310 90 Q350 130 310 170" fill="none" stroke="#39ff14" stroke-width="2"/>
+  <!-- tone waves -->
+  <path d="M110 130 Q115 120 120 130 Q125 140 130 130 Q135 120 140 130" fill="none" stroke="#7fcdbb" stroke-width="2"/>
+  <path d="M100 145 Q108 132 116 145 Q124 158 132 145 Q140 132 148 145" fill="none" stroke="#7fcdbb" stroke-width="2"/>
+  <text x="200" y="220" fill="#8899aa" font-family="monospace" font-size="9" text-anchor="middle">DUAL-TOOT MULTI-FREQUENCY · GEORGETOWN STEAM PLANT 2025</text>
+</svg>
