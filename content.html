@@ -1,201 +1,138 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Harry Maher ★ Stuff ★</title>
+  <title>STUFF I MADE!!! - harry maher</title>
   <link rel="icon" type="image/ico" href="north.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Projects and work by Harry Maher — maps, data viz, stupid hacks, and FART PANTS.">
   <link rel="stylesheet" href="css/retro.css">
 </head>
-<body class="starfield">
+<body>
 
-<div class="site-wrap">
+<div class="wrap">
 
-  <header class="title-bar">
-    <h1><a href="index.html">★ HARRY MAHER ★</a></h1>
-    <nav>
-      <ul class="retro-nav">
-        <li><a href="index.html">home</a></li>
-        <li><a href="content.html" class="active">stuff</a></li>
-        <li><a href="about.html">about</a></li>
-        <li><a href="contact.html">contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div class="panel">
-    <div class="panel-header">Projects</div>
-    <p class="projects-intro">Click any project to open it in a new tab.</p>
+  <div class="top">
+    <h1 class="rainbow">★ HARRY MAHER ★</h1>
+    <div class="navlinks">
+      <a href="index.html">HOME</a> ·
+      <a href="content.html">STUFF I MADE</a> ·
+      <a href="about.html">ABOUT ME</a> ·
+      <a href="contact.html">EMAIL ME!!!</a>
+    </div>
   </div>
 
-  <div class="project-grid">
-
-    <article class="project-card" id="fart-pants">
-      <a class="card-link" href="https://github.com/HarryMaher/HAM-FART" target="_blank" rel="noopener">
-        <img class="project-thumb svg-thumb" src="./imgs/fart-pants.svg" alt="FART PANTS — VOC sensor overalls and HAM radio transmission">
-        <div class="project-body">
-          <h3>FART PANTS</h3>
-          <p><strong>Flatulence Automatic Recognition Tool with the Public Alert Notification Telemetry system</strong> — overalls decked out with a VOC sensor and Christmas tree lights that lit up when they detected flatulence on the wearer. Also includes <strong>HAM FART</strong> (Harry and Morimoto's Flatulence Acoustic Radio Transmission): text encoded as 20 unique fart tones and transmitted over HAM radio using Dual-Toot Multi-Frequency. Built for the Georgetown Steam Plant Science Fair 2025.</p>
-          <div class="project-tags">
-            <span class="tag hot">Wearable</span>
-            <span class="tag">VOC Sensor</span>
-            <span class="tag">HAM Radio</span>
-            <span class="tag">Python</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
-    <article class="project-card">
-      <a class="card-link" href="https://raincitymaps.github.io/maps/scattermap/" target="_blank" rel="noopener">
-        <img class="project-thumb" src="./imgs/scattermap.png" alt="Regression scattermap tool">
-        <div class="project-body">
-          <h3>Regression Scattermap</h3>
-          <p>Map residuals of bivariate regression models with D3, regression-js, and Leaflet. Shows where observed values deviate from expected — using King County election data.</p>
-          <div class="project-tags">
-            <span class="tag">D3</span>
-            <span class="tag">Leaflet</span>
-            <span class="tag">Maps</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
-    <article class="project-card">
-      <a class="card-link" href="https://www.theurbanist.org/2021/03/23/why-are-seattle-democracy-voucher-users-funding-opposing-campaigns/" target="_blank" rel="noopener">
-        <img class="project-thumb" src="./imgs/network_graph.png" alt="Democracy vouchers network graph">
-        <div class="project-body">
-          <h3>Democracy Vouchers</h3>
-          <p>Article for The Urbanist on Democracy Vouchers and Ranked Choice Voting, featuring a D3 network graph built from publicly-available campaign finance data.</p>
-          <div class="project-tags">
-            <span class="tag">D3</span>
-            <span class="tag">Journalism</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
-    <article class="project-card">
-      <a class="card-link" href="https://raincitymaps.github.io/" target="_blank" rel="noopener">
-        <img class="project-thumb" src="./imgs/raincitymaps.png" alt="Rain City Maps">
-        <div class="project-body">
-          <h3>Rain City Maps</h3>
-          <p>When I first moved to Seattle, I made maps to understand the city — immunization rates, election results, and more. The collection lives at raincitymaps.github.io.</p>
-          <div class="project-tags">
-            <span class="tag">Maps</span>
-            <span class="tag">Seattle</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
-    <article class="project-card">
-      <a class="card-link" href="http://harrymaher.github.io/stupid/tunnel_to_viaduct/" target="_blank" rel="noopener">
-        <img class="project-thumb" src="./imgs/graphs.png" alt="Musical race data charts">
-        <div class="project-body">
-          <h3>Musical Charts</h3>
-          <p>Interactive musical chart of scraped race finishing times — D3 + Tone.js. Goal: a band called "The Why Not Axis" that plays pop covers using charts as instruments. Click to play tones!</p>
-          <div class="project-tags">
-            <span class="tag">D3</span>
-            <span class="tag">Tone.js</span>
-            <span class="tag">Scraping</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
-    <article class="project-card">
-      <a class="card-link" href="https://www.bigwaterconsulting.net/participatory-mapping" target="_blank" rel="noopener">
-        <img class="project-thumb" src="./imgs/particpatory_mapping.png" alt="Participatory mapping app">
-        <div class="project-body">
-          <h3>Participatory Mapping</h3>
-          <p>Custom web app at Big Water Consulting for community members to describe spatial experiences. Leaflet + Google Forms + OpenStreetMap.</p>
-          <div class="project-tags">
-            <span class="tag">GIS</span>
-            <span class="tag">Leaflet</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
-    <article class="project-card">
-      <a class="card-link" href="./stupid/index.html" target="_blank" rel="noopener">
-        <img class="project-thumb" src="./imgs/stupid_apps.png" alt="Stupid hackathon apps">
-        <div class="project-body">
-          <h3>Stupid Hackathon Apps</h3>
-          <p>Assortment of useless programs from the Seattle Stupid Hackathon — including Kondofy It!, the bookmarklet that removes things that don't spark joy online.</p>
-          <div class="project-tags">
-            <span class="tag hot">FUN</span>
-            <span class="tag">Hackathon</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
-    <article class="project-card">
-      <a class="card-link" href="mapcompar-en.html" target="_blank" rel="noopener">
-        <img class="project-thumb" src="./imgs/mapcompar1.png" alt="Brazil health maps">
-        <div class="project-body">
-          <h3>Brazil Health Maps</h3>
-          <p>Interactive maps exploring how lifestyles influence health outcomes at the Brazilian state level. Semester-long Applied GIS project.</p>
-          <div class="project-tags">
-            <span class="tag">GIS</span>
-            <span class="tag">Brazil</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
-    <article class="project-card">
-      <a class="card-link" href="https://www.bigwaterconsulting.net/field-data-collection-dash" target="_blank" rel="noopener">
-        <img class="project-thumb" src="./imgs/dashboard.png" alt="Field data collection dashboard">
-        <div class="project-body">
-          <h3>Field Data Dashboards</h3>
-          <p>Custom interactive dashboards for Big Water data collection projects — live data via R Shiny so stakeholders can track progress in real time.</p>
-          <div class="project-tags">
-            <span class="tag">R</span>
-            <span class="tag">Shiny</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
-    <article class="project-card">
-      <a class="card-link" href="https://drive.google.com/file/d/0B_LT_T69LOyhazdVNElQSVVaVmc/view?usp=sharing" target="_blank" rel="noopener">
-        <img class="project-thumb" src="./imgs/paper1.png" alt="Social norms research paper">
-        <div class="project-body">
-          <h3>Junk Food &amp; Social Norms</h3>
-          <p>Undergraduate research: can fabricated "low-norm" conditions reduce junk food consumption? Lab experiment with a lab partner at Grinnell College.</p>
-          <div class="project-tags">
-            <span class="tag">Psychology</span>
-            <span class="tag">Research</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
-    <article class="project-card">
-      <a class="card-link" href="Presentation.pdf" target="_blank" rel="noopener">
-        <img class="project-thumb" src="./imgs/LISA.png" alt="LISA spatial regression presentation">
-        <div class="project-body">
-          <h3>Spatial Error Regression</h3>
-          <p>Senior-year GIS presentation on how spatial error regression improves OLS models — census data modeling life expectancy in Brazil.</p>
-          <div class="project-tags">
-            <span class="tag">GIS</span>
-            <span class="tag">Statistics</span>
-          </div>
-        </div>
-      </a>
-    </article>
-
+  <div class="box orange">
+    <h2 class="blue">STUFF I MADE</h2>
+    <p><b>click the pictures!!!</b> (opens new tab)</p>
   </div>
 
-  <hr class="retro">
+  <div class="proj" id="fart-pants">
+    <h3>FART PANTS ★★★</h3>
+    <a href="https://github.com/HarryMaher/HAM-FART" target="_blank" rel="noopener">
+      <img src="./imgs/fart-pants.svg" alt="FART PANTS">
+    </a>
+    <p>
+      <b>Flatulence Automatic Recognition Tool with the Public Alert Notification Telemetry system</b> —
+      overalls with a VOC sensor and christmas tree lights that light up when they detect flatulence.
+      also includes <b>HAM FART</b> (Harry and Morimoto's Flatulence Acoustic Radio Transmission): text as fart tones over ham radio.
+      georgetown steam plant science fair 2025.
+    </p>
+    <p class="tags"><span>wearable</span><span>voc sensor</span><span>ham radio</span><span>python</span></p>
+  </div>
 
-  <footer class="site-footer">
-    <p>harry maher — 2016–2026 — <a href="contact.html">contact</a></p>
-  </footer>
+  <div class="proj">
+    <h3>Regression Scattermap</h3>
+    <a href="https://raincitymaps.github.io/maps/scattermap/" target="_blank" rel="noopener">
+      <img src="./imgs/scattermap.png" alt="scattermap">
+    </a>
+    <p>Map regression residuals with D3 + Leaflet. King County election data.</p>
+    <p class="tags"><span>D3</span><span>maps</span></p>
+  </div>
+
+  <div class="proj">
+    <h3>Democracy Vouchers</h3>
+    <a href="https://www.theurbanist.org/2021/03/23/why-are-seattle-democracy-voucher-users-funding-opposing-campaigns/" target="_blank" rel="noopener">
+      <img src="./imgs/network_graph.png" alt="network graph">
+    </a>
+    <p>Article for The Urbanist with a D3 network graph of campaign finance data.</p>
+    <p class="tags"><span>D3</span><span>journalism</span></p>
+  </div>
+
+  <div class="proj">
+    <h3>Rain City Maps</h3>
+    <a href="https://raincitymaps.github.io/" target="_blank" rel="noopener">
+      <img src="./imgs/raincitymaps.png" alt="rain city maps">
+    </a>
+    <p>Seattle maps — immunization rates, elections, etc.</p>
+    <p class="tags"><span>maps</span><span>seattle</span></p>
+  </div>
+
+  <div class="proj">
+    <h3>Musical Charts</h3>
+    <a href="http://harrymaher.github.io/stupid/tunnel_to_viaduct/" target="_blank" rel="noopener">
+      <img src="./imgs/graphs.png" alt="musical charts">
+    </a>
+    <p>Scraped race data + D3 + Tone.js. click the charts to play sounds!!!</p>
+    <p class="tags"><span>D3</span><span>Tone.js</span></p>
+  </div>
+
+  <div class="proj">
+    <h3>Participatory Mapping</h3>
+    <a href="https://www.bigwaterconsulting.net/participatory-mapping" target="_blank" rel="noopener">
+      <img src="./imgs/particpatory_mapping.png" alt="participatory mapping">
+    </a>
+    <p>Community mapping app. Leaflet + Google Forms + OSM.</p>
+    <p class="tags"><span>GIS</span><span>Leaflet</span></p>
+  </div>
+
+  <div class="proj">
+    <h3>Stupid Hackathon Apps</h3>
+    <a href="./stupid/index.html" target="_blank" rel="noopener">
+      <img src="./imgs/stupid_apps.png" alt="stupid apps">
+    </a>
+    <p>Useless programs from Seattle Stupid Hackathon. includes Kondofy It!!!</p>
+    <p class="tags"><span>fun</span><span>hackathon</span></p>
+  </div>
+
+  <div class="proj">
+    <h3>Brazil Health Maps</h3>
+    <a href="mapcompar-en.html" target="_blank" rel="noopener">
+      <img src="./imgs/mapcompar1.png" alt="brazil maps">
+    </a>
+    <p>Interactive maps about lifestyle and health in Brazil. GIS class project.</p>
+    <p class="tags"><span>GIS</span><span>Brazil</span></p>
+  </div>
+
+  <div class="proj">
+    <h3>Field Data Dashboards</h3>
+    <a href="https://www.bigwaterconsulting.net/field-data-collection-dash" target="_blank" rel="noopener">
+      <img src="./imgs/dashboard.png" alt="dashboard">
+    </a>
+    <p>Live R Shiny dashboards for field data collection.</p>
+    <p class="tags"><span>R</span><span>Shiny</span></p>
+  </div>
+
+  <div class="proj">
+    <h3>Junk Food &amp; Social Norms</h3>
+    <a href="https://drive.google.com/file/d/0B_LT_T69LOyhazdVNElQSVVaVmc/view?usp=sharing" target="_blank" rel="noopener">
+      <img src="./imgs/paper1.png" alt="research paper">
+    </a>
+    <p>Undergrad psych research at Grinnell about junk food and social norms.</p>
+    <p class="tags"><span>psychology</span><span>research</span></p>
+  </div>
+
+  <div class="proj">
+    <h3>Spatial Error Regression</h3>
+    <a href="Presentation.pdf" target="_blank" rel="noopener">
+      <img src="./imgs/LISA.png" alt="LISA map">
+    </a>
+    <p>GIS presentation on spatial error regression and life expectancy in Brazil.</p>
+    <p class="tags"><span>GIS</span><span>stats</span></p>
+  </div>
+
+  <hr>
+
+  <p class="footer">harry maher · 2016-2026 · <a href="contact.html">contact</a></p>
 
 </div>
 
