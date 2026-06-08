@@ -1,5 +1,11 @@
 /* intentionally not vibecoded. harry's nephew made this probably */
 
+@import url('https://fonts.cdnfonts.com/css/comic-sans-ms');
+
+html {
+  font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;
+}
+
 body {
   margin: 8px;
   background-color: #ffff00;
@@ -10,10 +16,14 @@ body {
     #ff99cc 12px,
     #ff99cc 24px
   );
-  font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+  font-family: inherit;
   color: #000080;
   font-size: 18px;
   line-height: 1.35;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li, ul, marquee, font, button, input, textarea {
+  font-family: inherit;
 }
 
 a {
@@ -76,7 +86,7 @@ table {
 
 .top h1 {
   margin: 0 0 8px;
-  font-family: Impact, "Arial Black", sans-serif;
+  font-family: inherit;
   font-size: clamp(28px, 8vw, 52px);
   letter-spacing: 2px;
 }
@@ -103,7 +113,7 @@ table {
 
 .box h2 {
   margin: 0 0 10px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: inherit;
   font-size: clamp(22px, 5vw, 30px);
   text-decoration: underline;
 }
@@ -159,7 +169,7 @@ table {
 
 .proj h3 {
   margin: 0 0 6px;
-  font-family: Impact, sans-serif;
+  font-family: inherit;
   font-size: 24px;
   color: #800080;
 }
@@ -198,7 +208,7 @@ hr {
 .footer {
   text-align: center;
   font-size: 14px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: inherit;
   margin: 20px 0 30px;
 }
 
